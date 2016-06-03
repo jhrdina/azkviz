@@ -1,6 +1,8 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
 
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
 <dom-module id="az-hex">
   <template>
     <style>
@@ -60,13 +62,13 @@
       }
 
       .content-wrapper {
-        display: block;
+        @apply(--layout-fit);
+        @apply(--layout);
+        @apply(--layout-center);
+        @apply(--layout-center-justified);
+
         font-size: 22px;
         font-weight: bold;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        position: absolute;
       }
     </style>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 59.000001">
