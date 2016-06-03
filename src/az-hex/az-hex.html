@@ -1,0 +1,83 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
+
+<dom-module id="az-hex">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+        cursor: pointer;
+
+        position: relative;
+        line-height: 1;
+        width: var(--az-hex-width, 51px);
+        height: calc(var(--az-hex-width, 51px) * 1.15463);
+      }
+
+      .hex-path {
+        fill: var(--az-hex-bkg-color, #e9e9e9);
+      }
+
+      :host[animate] {
+        transition: color 1s;
+      }
+
+      :host[animate] .hex-path {
+        transition: fill 1s;
+      }
+
+      :host[hex-state="1"] {
+        color: var(--az-hex1-text-color, #ffffff);
+      }
+
+      :host[hex-state="1"] .hex-path {
+        fill: var(--az-hex1-bkg-color, #ff8427);
+      }
+
+      :host[hex-state="2"] {
+        color: var(--az-hex2-text-color, #ffffff);
+      }
+
+      :host[hex-state="2"] .hex-path {
+        fill: var(--az-hex2-bkg-color, #00d3d8);
+      }
+
+      :host[hex-state="3"] {
+        color: var(--az-hex3-text-color, #ffffff);
+      }
+
+      :host[hex-state="3"] .hex-path {
+        fill: var(--az-hex2-bkg-color, #3e3e3e);
+      }
+
+      :host[disabled] {
+        cursor: default;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+      }
+
+      .content-wrapper {
+        display: block;
+        font-size: 22px;
+        font-weight: bold;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+      }
+    </style>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 59.000001">
+      <path
+        d="M51 44.222L25.5 58.945 0 44.222V14.778L25.5.055 51 14.778z"
+        class="hex-path"/>
+    </svg>
+    <div class="content-wrapper">
+      <content></content>
+    </div>
+  </template>
+
+  <script src="az-hex.js"></script>
+</dom-module>

@@ -19,7 +19,8 @@
         "./src/**/*.ts"
     ],
     "files": [
-        "./src/az-app/az-app.ts"
+        "./src/az-app/az-app.ts",
+        "./src/az-hex/az-hex.ts"
     ],
     "atom": {
         "rewriteTsconfig": true
