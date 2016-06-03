@@ -1,9 +1,10 @@
 {
   "name": "azkviz",
-  "description": "Simple quiz app inspired by a Czech TV show",
+  "description": "Simple quiz app inspired by a Czech TV-show",
   "main": "index.html",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0"
+    "polymer": "Polymer/polymer#^1.4.0",
+    "polymer-ts": "^0.1.26"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

@@ -1,6 +1,6 @@
 # \<azkviz\>
 
-Simple quiz app inspired by a Czech TV show
+Simple quiz app inspired by a Czech TV-show
 
 ## Install the Polymer-CLI
 
