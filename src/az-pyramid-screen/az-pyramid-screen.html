@@ -1,20 +1,38 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
 
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 
 <link rel="import" href="../az-pyramid/az-pyramid.html">
+<link rel="import" href="../az-team-indicator/az-team-indicator.html">
 
 <dom-module id="az-pyramid-screen">
   <template>
     <style>
       :host {
-        display: block;
+        @apply(--layout-vertical);
+        position: relative;
+      }
+
+      #backButton {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+      }
+
+      az-pyramid {
+        @apply(--layout-flex);
       }
     </style>
-    <paper-icon-button icon="arrow-back"></paper-icon-button>
-    <az-pyramid></az-pyramid>
+    <paper-icon-button
+      id="backButton"
+      icon="arrow-back"
+      on-tap="_onBackTap">
+    </paper-icon-button>
+    <az-team-indicator team="[[game.curentTeam]]"></az-team-indicator>
+    <az-pyramid states="[[game.pyramid]]"></az-pyramid>
   </template>
 
   <script src="az-pyramid-screen.js"></script>

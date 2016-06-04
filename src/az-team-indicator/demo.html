@@ -1,14 +1,14 @@
 <!doctype html>
 <!--
-DEMO PAGE FOR COMPONENT 'az-pyramid'
+DEMO PAGE FOR COMPONENT 'az-team-indicator'
 -->
 <html>
 <head>
-  <title>DEMO az-pyramid</title>
+  <title>DEMO az-team-indicator</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
   <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
 
-  <link rel="import" href="az-pyramid.html">
+  <link rel="import" href="az-team-indicator.html">
 </head>
 
 <body unresolved>
@@ -20,17 +20,13 @@ DEMO PAGE FOR COMPONENT 'az-pyramid'
         .horizontal-section {
           min-width: 100px;
         }
-        az-pyramid {
-          border: 1px solid grey;
-          height: 420px;
-        }
       </style>
       <div>
-        <h3>Demo: az-pyramid</h3>
+        <h3>Demo: az-team-indicator</h3>
         <div class="horizontal-section">
-          <az-pyramid
+          <az-team-indicator
             prop1="{{prop1}}">
-          </az-pyramid>
+          </az-team-indicator>
         </div>
       </div>
     </template>
@@ -40,7 +36,7 @@ DEMO PAGE FOR COMPONENT 'az-pyramid'
     Polymer({
       is: 'x-app',
       ready: function() {
-        this.prop1 = "az-pyramid demo";
+        this.prop1 = "az-team-indicator demo";
       }
     });
 

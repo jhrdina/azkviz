@@ -1,0 +1,29 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
+
+<dom-module id="az-team-indicator">
+  <template>
+    <style>
+      :host {
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 20px 40px 0 40px;
+        border-color: transparent;
+
+        margin: auto;
+      }
+
+      :host[team="teamA"] {
+        border-top-color: var(--az-team-indicator-team-a-color, #ff8427);
+      }
+
+      :host[team="teamB"] {
+        border-top-color: var(--az-team-indicator-team-b-color, #00d3d8);
+      }
+    </style>
+  </template>
+
+  <script src="az-team-indicator.js"></script>
+</dom-module>

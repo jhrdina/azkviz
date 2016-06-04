@@ -3,8 +3,12 @@
 @component('az-pyramid-screen')
 class AzPyramidScreen extends polymer.Base {
 
-  @property({ type: String, value: 'az-pyramid-screen' })
-  public prop1: string;
+  @property({ type: Object })
+  public game: AzGame;
+
+  private _onBackTap() {
+    this.fire('back-tap');
+  }
 }
 
 AzPyramidScreen.register();

@@ -1,19 +1,30 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
 
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
 <link rel="import" href="../az-hex/az-hex.html">
 
 <dom-module id="az-pyramid">
   <template>
     <style>
       :host {
-        display: block;
+        @apply(--layout-vertical);
+        @apply(--layout-center-justified);
       }
 
       .pyramid-line {
-        margin: -10px auto;
+        margin: -5px auto;
         text-align: center;
         font-size: 0;
+      }
+
+      .pyramid-line:first-child {
+        margin-top: 0;
+      }
+
+      .pyramid-line:last-child {
+        margin-bottom: 0;
       }
 
       az-hex {
