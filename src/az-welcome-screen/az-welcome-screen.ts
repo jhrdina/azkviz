@@ -3,8 +3,18 @@
 @component('az-welcome-screen')
 class AzWelcomeScreen extends polymer.Base {
 
-  @property({ type: String, value: 'az-welcome-screen' })
-  public prop1: string;
+  private _onOpenButtonTap() {
+    this.$.file.click();
+  }
+
+  private _onFileChange(e) {
+    if (!e.target.files[0])
+      return;
+
+    this.fire('file-change', {
+      file: e.target.files[0]
+    });
+  }
 }
 
 AzWelcomeScreen.register();

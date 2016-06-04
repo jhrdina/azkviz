@@ -3,8 +3,15 @@
 @component('az-app')
 class AzApp extends polymer.Base {
 
-  @property({ type: String, value: 'az-app' })
-  public prop1: string;
+  private _onFileChange(e, detail) {
+    var reader = new FileReader();
+
+    reader.addEventListener('load', e => {
+      console.log(JSON.parse((<any>e.target).result));
+    });
+
+    reader.readAsText(detail.file);
+  }
 }
 
 AzApp.register();

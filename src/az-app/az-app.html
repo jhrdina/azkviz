@@ -1,14 +1,21 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
 
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../az-welcome-screen/az-welcome-screen.html">
+
 <dom-module id="az-app">
   <template>
     <style>
       :host {
         display: block;
       }
+
+      az-welcome-screen {
+        @apply(--layout-fit);
+      }
     </style>
-    <h2>Hello [[prop1]]</h2>
+    <az-welcome-screen on-file-change="_onFileChange"></az-welcome-screen>
   </template>
 
   <script src="az-app.js"></script>

@@ -41,13 +41,24 @@
         color: #777;
         font-size: 14px;
       }
+
+      #file {
+        display: none;
+      }
     </style>
 
     <div id="headerBox">
       <h1><span style="font-weight: 300;">AZ</span><span style="font-weight: 900;">Kvíz</span></h1>
-      <az-hex id="openHex" title="Otevřít soubor">
+      <az-hex
+        id="openHex"
+        title="Otevřít soubor"
+        on-tap="_onOpenButtonTap">
         <iron-icon icon="folder"></iron-icon>
       </az-hex>
+      <input
+        id="file"
+        type="file"
+        on-change="_onFileChange"/>
     </div>
 
     <div id="footer">
