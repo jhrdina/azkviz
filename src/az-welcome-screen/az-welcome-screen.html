@@ -1,0 +1,59 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+
+<link rel="import" href="../roboto.html">
+<link rel="import" href="../az-hex/az-hex.html">
+
+<dom-module id="az-welcome-screen">
+  <template>
+    <style>
+      :host {
+        @apply(--layout-vertical);
+        font-family: 'Roboto', 'Noto', sans-serif;
+      }
+
+      #headerBox {
+        @apply(--layout-flex);
+
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+        @apply(--layout-center-justified);
+      }
+
+      #headerBox h1 {
+        margin: 0 0.3em;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      #openHex {
+        --az-hex-width: 60px;
+        color: #fff;
+        --az-hex-bkg-color: #ff8427;
+      }
+
+      #footer {
+        margin: 0.5em 1.7em 1.7em 1.7em;
+        text-align: center;
+        color: #777;
+        font-size: 14px;
+      }
+    </style>
+
+    <div id="headerBox">
+      <h1><span style="font-weight: 300;">AZ</span><span style="font-weight: 900;">Kvíz</span></h1>
+      <az-hex id="openHex" title="Otevřít soubor">
+        <iron-icon icon="folder"></iron-icon>
+      </az-hex>
+    </div>
+
+    <div id="footer">
+      Copyright © 2016 Jan Hrdina
+    </div>
+  </template>
+
+  <script src="az-welcome-screen.js"></script>
+</dom-module>
