@@ -2,7 +2,9 @@
 <link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../az-welcome-screen/az-welcome-screen.html">
+<link rel="import" href="../az-pyramid-screen/az-pyramid-screen.html">
 
 <dom-module id="az-app">
   <template>
@@ -11,11 +13,15 @@
         display: block;
       }
 
-      az-welcome-screen {
+      iron-pages > * {
         @apply(--layout-fit);
       }
     </style>
-    <az-welcome-screen on-file-change="_onFileChange"></az-welcome-screen>
+    <iron-pages selected="welcome" attr-for-selected="page-name">
+      <az-welcome-screen page-name="welcome" on-file-change="_onFileChange"></az-welcome-screen>
+      <az-pyramid-screen page-name="pyramid"></az-pyramid-screen>
+    </iron-pages>
+
   </template>
 
   <script src="az-app.js"></script>
