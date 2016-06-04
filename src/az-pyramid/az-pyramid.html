@@ -1,0 +1,68 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
+
+<link rel="import" href="../az-hex/az-hex.html">
+
+<dom-module id="az-pyramid">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .pyramid-line {
+        margin: -10px auto;
+        text-align: center;
+        font-size: 0;
+      }
+
+      az-hex {
+        margin: 0 2.5px;
+      }
+    </style>
+    <div class="pyramid-line">
+      <az-hex on-tap="_onHexTap">1</az-hex>
+    </div>
+    <div class="pyramid-line">
+      <az-hex on-tap="_onHexTap">2</az-hex>
+      <az-hex on-tap="_onHexTap">3</az-hex>
+    </div>
+    <div class="pyramid-line">
+      <az-hex on-tap="_onHexTap">4</az-hex>
+      <az-hex on-tap="_onHexTap">5</az-hex>
+      <az-hex on-tap="_onHexTap">6</az-hex>
+    </div>
+    <div class="pyramid-line">
+      <az-hex on-tap="_onHexTap">7</az-hex>
+      <az-hex on-tap="_onHexTap">8</az-hex>
+      <az-hex on-tap="_onHexTap">9</az-hex>
+      <az-hex on-tap="_onHexTap">10</az-hex>
+    </div>
+    <div class="pyramid-line">
+      <az-hex on-tap="_onHexTap">11</az-hex>
+      <az-hex on-tap="_onHexTap">12</az-hex>
+      <az-hex on-tap="_onHexTap">13</az-hex>
+      <az-hex on-tap="_onHexTap">14</az-hex>
+      <az-hex on-tap="_onHexTap">15</az-hex>
+    </div>
+    <div class="pyramid-line">
+      <az-hex on-tap="_onHexTap">16</az-hex>
+      <az-hex on-tap="_onHexTap">17</az-hex>
+      <az-hex on-tap="_onHexTap">18</az-hex>
+      <az-hex on-tap="_onHexTap">19</az-hex>
+      <az-hex on-tap="_onHexTap">20</az-hex>
+      <az-hex on-tap="_onHexTap">21</az-hex>
+    </div>
+    <div class="pyramid-line">
+      <az-hex on-tap="_onHexTap">22</az-hex>
+      <az-hex on-tap="_onHexTap">23</az-hex>
+      <az-hex on-tap="_onHexTap">24</az-hex>
+      <az-hex on-tap="_onHexTap">25</az-hex>
+      <az-hex on-tap="_onHexTap">26</az-hex>
+      <az-hex on-tap="_onHexTap">27</az-hex>
+      <az-hex on-tap="_onHexTap">28</az-hex>
+    </div>
+  </template>
+
+  <script src="az-pyramid.js"></script>
+</dom-module>

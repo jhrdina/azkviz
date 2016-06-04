@@ -1,0 +1,48 @@
+<!doctype html>
+<!--
+DEMO PAGE FOR COMPONENT 'az-pyramid'
+-->
+<html>
+<head>
+  <title>DEMO az-pyramid</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="az-pyramid.html">
+</head>
+
+<body unresolved>
+  <x-app></x-app>
+
+  <dom-module id="x-app">
+    <template>
+      <style>
+        .horizontal-section {
+          min-width: 100px;
+        }
+      </style>
+      <div>
+        <h3>Demo: az-pyramid</h3>
+        <div class="horizontal-section">
+          <az-pyramid
+            prop1="{{prop1}}">
+          </az-pyramid>
+        </div>
+      </div>
+    </template>
+  </dom-module>
+
+  <script>
+    Polymer({
+      is: 'x-app',
+      ready: function() {
+        this.prop1 = "az-pyramid demo";
+      }
+    });
+
+    (function(document) {
+      'use strict';
+    })(document);
+  </script>
+</body>
+</html>

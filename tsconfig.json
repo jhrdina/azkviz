@@ -21,6 +21,8 @@
     "files": [
         "./src/az-app/az-app.ts",
         "./src/az-hex/az-hex.ts",
+        "./src/az-pyramid-screen/az-pyramid-screen.ts",
+        "./src/az-pyramid/az-pyramid.ts",
         "./src/az-welcome-screen/az-welcome-screen.ts"
     ],
     "atom": {
