@@ -3,6 +3,9 @@
 @component('az-pyramid')
 class AzPyramid extends polymer.Base {
 
+  @property({ type: Object })
+  public states: AzPyramidStates;
+
   private _onHexTap(e: Event) {
     var hexNum = parseInt((<HTMLElement>e.currentTarget).innerText);
     if (hexNum === NaN) {

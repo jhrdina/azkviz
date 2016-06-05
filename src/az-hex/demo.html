@@ -35,15 +35,15 @@ DEMO PAGE FOR COMPONENT 'az-hex'
         <h3>Demo: az-hex</h3>
         <div class="horizontal-section">
           <az-hex animate hex-state="[[hexState]]" on-tap="onTap">42</az-hex>
-          <az-hex hex-state="1">42</az-hex>
-          <az-hex hex-state="2">42</az-hex>
-          <az-hex hex-state="3">42</az-hex>
+          <az-hex hex-state="teamA">42</az-hex>
+          <az-hex hex-state="teamB">42</az-hex>
+          <az-hex hex-state="unknown">42</az-hex>
         </div>
         <div class="horizontal-section">
           <az-hex animate hex-state="[[hexState]]" on-tap="onTap"><iron-icon icon="add"></iron-icon></az-hex>
-          <az-hex hex-state="1"><iron-icon icon="delete"></iron-icon></az-hex>
-          <az-hex hex-state="2"><iron-icon icon="done"></iron-icon></az-hex>
-          <az-hex hex-state="3"><iron-icon icon="favorite"></iron-icon></az-hex>
+          <az-hex hex-state="teamA"><iron-icon icon="delete"></iron-icon></az-hex>
+          <az-hex hex-state="teamB"><iron-icon icon="done"></iron-icon></az-hex>
+          <az-hex hex-state="unknown"><iron-icon icon="favorite"></iron-icon></az-hex>
         </div>
         <div class="horizontal-section">
           <az-hex class="big" animate hex-state="[[hexState]]" on-tap="onTap">
@@ -55,14 +55,21 @@ DEMO PAGE FOR COMPONENT 'az-hex'
   </dom-module>
 
   <script>
+    var NEXT_STATE = {
+      '': 'teamA',
+      'teamA': 'teamB',
+      'teamB': 'unknown',
+      'unknown': ''
+    };
+
     Polymer({
       is: 'x-app',
       ready: function() {
         this.prop1 = "az-hex demo";
-        this.hexState = 0;
+        this.hexState = '';
       },
       onTap: function() {
-        this.hexState = (this.hexState + 1) % 4;
+        this.hexState = NEXT_STATE[this.hexState];
       }
     });
 

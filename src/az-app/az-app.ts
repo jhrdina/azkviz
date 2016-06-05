@@ -10,6 +10,7 @@ class AzApp extends polymer.Base {
 
     reader.addEventListener('load', e => {
       (<AzQuestionsModel>this.$.questionsModel).parseXLSX(e.target.result);
+      this.$.gameModel.newGame();
       this.screen = 'pyramid';
     });
 

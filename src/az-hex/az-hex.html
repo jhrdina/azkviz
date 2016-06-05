@@ -31,27 +31,27 @@
         transition: fill 1s;
       }
 
-      :host[hex-state="1"] {
+      :host[hex-state="teamA"] {
         color: var(--az-hex1-text-color, #ffffff);
       }
 
-      :host[hex-state="1"] .hex-path {
+      :host[hex-state="teamA"] .hex-path {
         fill: var(--az-hex1-bkg-color, #ff8427);
       }
 
-      :host[hex-state="2"] {
+      :host[hex-state="teamB"] {
         color: var(--az-hex2-text-color, #ffffff);
       }
 
-      :host[hex-state="2"] .hex-path {
+      :host[hex-state="teamB"] .hex-path {
         fill: var(--az-hex2-bkg-color, #00d3d8);
       }
 
-      :host[hex-state="3"] {
+      :host[hex-state="unknown"] {
         color: var(--az-hex3-text-color, #ffffff);
       }
 
-      :host[hex-state="3"] .hex-path {
+      :host[hex-state="unknown"] .hex-path {
         fill: var(--az-hex2-bkg-color, #3e3e3e);
       }
 
