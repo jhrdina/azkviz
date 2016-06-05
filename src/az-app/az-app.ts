@@ -4,6 +4,7 @@
 class AzApp extends polymer.Base {
 
   screen: string = 'welcome';
+  _hexNumber: number;
 
   private _onFileChange(e, detail) {
     var reader = new FileReader();
@@ -17,8 +18,21 @@ class AzApp extends polymer.Base {
     reader.readAsBinaryString(detail.file);
   }
 
+  private _onPyramidHexTap(event: Event, detail): void {
+    this._hexNumber = detail.hexNumber
+    this.screen = 'question';
+  }
+
+  private _onAnswerSelect(event: Event, detail): void {
+    (<AzGameModel>this.$.gameModel).selectAnswer(detail.correct, this._hexNumber);
+  }
+
   private _goToWelcomeScreen() {
     this.screen = 'welcome';
+  }
+
+  private _goToPyramid() {
+    this.screen = 'pyramid';
   }
 }
 

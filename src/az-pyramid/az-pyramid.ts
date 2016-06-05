@@ -14,7 +14,7 @@ class AzPyramid extends polymer.Base {
     }
 
     this.fire('hex-tap', {
-      hexNum: hexNum
+      hexNumber: hexNum
     });
   }
 }

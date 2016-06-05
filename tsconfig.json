@@ -24,6 +24,10 @@
         "./src/az-hex/az-hex.ts",
         "./src/az-pyramid-screen/az-pyramid-screen.ts",
         "./src/az-pyramid/az-pyramid.ts",
+        "./src/az-question-multiple-answers/az-question-multiple-answers.ts",
+        "./src/az-question-screen/az-question-screen.ts",
+        "./src/az-question-screen/az-question-type-behavior.ts",
+        "./src/az-question-single-answer/az-question-single-answer.ts",
         "./src/az-questions-model/az-questions-model.ts",
         "./src/az-team-indicator/az-team-indicator.ts",
         "./src/az-welcome-screen/az-welcome-screen.ts"

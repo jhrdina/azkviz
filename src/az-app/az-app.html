@@ -8,6 +8,7 @@
 <link rel="import" href="../az-pyramid-screen/az-pyramid-screen.html">
 <link rel="import" href="../az-questions-model/az-questions-model.html">
 <link rel="import" href="../az-welcome-screen/az-welcome-screen.html">
+<link rel="import" href="../az-question-screen/az-question-screen.html">
 
 <dom-module id="az-app">
   <template>
@@ -41,8 +42,16 @@
       <az-pyramid-screen
         page-name="pyramid"
         game="[[game]]"
-        on-back-tap="_goToWelcomeScreen">
+        on-back-tap="_goToWelcomeScreen"
+        on-hex-tap="_onPyramidHexTap">
       </az-pyramid-screen>
+      <az-question-screen
+        page-name="question"
+        game="[[game]]"
+        hex-number="[[_hexNumber]]"
+        on-back-tap="_goToPyramid"
+        on-select-answer="_onAnswerSelect">
+      </az-question-screen>
     </iron-pages>
 
   </template>

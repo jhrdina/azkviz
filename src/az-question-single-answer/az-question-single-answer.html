@@ -1,0 +1,85 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+
+<link rel="import" href="../az-question-screen/shared-styles.html">
+<link rel="import" href="../az-hex/az-hex.html">
+
+
+<dom-module id="az-question-single-answer">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      #question {
+        @apply(--az-question);
+      }
+
+      #question.clickable {
+        cursor: pointer;
+      }
+
+      #answerLine {
+        @apply(--layout-horizontal);
+      }
+
+      #answer {
+        @apply(--az-answer);
+        @apply(--layout-flex);
+      }
+
+      #correctWrongBtns {
+        margin-top: -9px;
+      }
+
+      #correctButton,
+      #wrongButton {
+        color: #fff;
+        opacity: 0.4;
+        transition: opacity 0.5s;
+      }
+
+      #correctButton.active,
+      #wrongButton.active {
+        opacity: 1;
+      }
+
+      #correctButton {
+        --az-hex-bkg-color: #97d71e;
+      }
+
+      #wrongButton {
+        --az-hex-bkg-color: #ff602b;
+      }
+    </style>
+
+    <div
+      id="question"
+      class$="[[_questionClickableClass]]"
+      on-tap="_onQuestionTap">
+      {{question.text}}
+    </div>
+
+    <div id="answerLine" hidden$="[[!_answerVisible]]">
+      <div id="answer">
+        [[_correctAnswer.text]]
+      </div>
+
+      <div id="correctWrongBtns">
+        <az-hex id="wrongButton" class$="[[_computeButtonActiveClass('wrong', _buttonsState)]]" on-tap="_onWrongTap">
+          <iron-icon icon="close"></iron-icon>
+        </az-hex>
+        <az-hex id="correctButton" class$="[[_computeButtonActiveClass('correct', _buttonsState)]]" on-tap="_onCorrectTap">
+          <iron-icon icon="check"></iron-icon>
+        </az-hex>
+      </div>
+    </div>
+  </template>
+
+  <script src="az-question-single-answer.js"></script>
+</dom-module>

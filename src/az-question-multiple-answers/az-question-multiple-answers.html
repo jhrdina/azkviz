@@ -1,0 +1,58 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
+
+<link rel="import" href="../az-question-screen/shared-styles.html">
+
+<dom-module id="az-question-multiple-answers">
+  <template>
+    <style>
+      :host {
+        display: block;
+        line-height: 1.42857;
+      }
+
+      #question {
+        @apply(--az-question);
+      }
+
+      #answersList {
+        list-style-position: inside;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      .answer {
+        @apply(--az-answer);
+      }
+
+      .answer.clickable {
+        cursor: pointer;
+      }
+
+      .answer.correct {
+        background: var(--az-answer-correct-bkg);
+      }
+
+      .answer.wrong {
+        background: var(--az-answer-wrong-bkg);
+      }
+    </style>
+
+    <!-- Question -->
+    <div id="question">{{question.text}}</div>
+
+    <!-- Answers -->
+    <ol id="answersList" type="A">
+      <template id="answersRepeat" is="dom-repeat" items="[[question.answers]]">
+        <li
+          class$="answer [[_computeAnswerClasses(item, answered)]]"
+          on-tap="_onAnswerTap">
+          [[item.text]]
+        </li>
+      </template>
+    </ol>
+
+  </template>
+
+  <script src="az-question-multiple-answers.js"></script>
+</dom-module>
