@@ -3,14 +3,21 @@
 @component('az-app')
 class AzApp extends polymer.Base {
 
+  screen: string = 'welcome';
+
   private _onFileChange(e, detail) {
     var reader = new FileReader();
 
     reader.addEventListener('load', e => {
-      console.log(JSON.parse((<any>e.target).result));
+      (<AzQuestionsModel>this.$.questionsModel).parseXLSX(e.target.result);
+      this.screen = 'pyramid';
     });
 
-    reader.readAsText(detail.file);
+    reader.readAsBinaryString(detail.file);
+  }
+
+  private _goToWelcomeScreen() {
+    this.screen = 'welcome';
   }
 }
 

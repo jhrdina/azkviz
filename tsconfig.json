@@ -20,9 +20,11 @@
     ],
     "files": [
         "./src/az-app/az-app.ts",
+        "./src/az-game-model/az-game-model.ts",
         "./src/az-hex/az-hex.ts",
         "./src/az-pyramid-screen/az-pyramid-screen.ts",
         "./src/az-pyramid/az-pyramid.ts",
+        "./src/az-questions-model/az-questions-model.ts",
         "./src/az-team-indicator/az-team-indicator.ts",
         "./src/az-welcome-screen/az-welcome-screen.ts"
     ],

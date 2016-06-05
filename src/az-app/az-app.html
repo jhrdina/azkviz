@@ -3,8 +3,11 @@
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../az-welcome-screen/az-welcome-screen.html">
+
+<link rel="import" href="../az-game-model/az-game-model.html">
 <link rel="import" href="../az-pyramid-screen/az-pyramid-screen.html">
+<link rel="import" href="../az-questions-model/az-questions-model.html">
+<link rel="import" href="../az-welcome-screen/az-welcome-screen.html">
 
 <dom-module id="az-app">
   <template>
@@ -17,9 +20,29 @@
         @apply(--layout-fit);
       }
     </style>
-    <iron-pages selected="welcome" attr-for-selected="page-name">
-      <az-welcome-screen page-name="welcome" on-file-change="_onFileChange"></az-welcome-screen>
-      <az-pyramid-screen page-name="pyramid"></az-pyramid-screen>
+
+    <!-- Data -->
+    <az-questions-model
+      id="questionsModel"
+      questions="{{questions}}">
+    </az-questions-model>
+    <az-game-model
+      id="gameModel"
+      questions="[[questions]]"
+      game="{{game}}">
+    </az-game-model>
+
+    <!-- Pages -->
+    <iron-pages selected="{{screen}}" attr-for-selected="page-name">
+      <az-welcome-screen
+        page-name="welcome"
+        on-file-change="_onFileChange">
+      </az-welcome-screen>
+      <az-pyramid-screen
+        page-name="pyramid"
+        game="[[game]]"
+        on-back-tap="_goToWelcomeScreen">
+      </az-pyramid-screen>
     </iron-pages>
 
   </template>
