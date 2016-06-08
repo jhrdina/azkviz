@@ -7,6 +7,7 @@
 <link rel="import" href="../az-game-model/az-game-model.html">
 <link rel="import" href="../az-pyramid-screen/az-pyramid-screen.html">
 <link rel="import" href="../az-questions-model/az-questions-model.html">
+<link rel="import" href="../az-team-selection-screen/az-team-selection-screen.html">
 <link rel="import" href="../az-welcome-screen/az-welcome-screen.html">
 <link rel="import" href="../az-question-screen/az-question-screen.html">
 
@@ -39,6 +40,10 @@
         page-name="welcome"
         on-file-change="_onFileChange">
       </az-welcome-screen>
+      <az-team-selection-screen
+        page-name="team"
+        on-team-select="_onTeamSelect">
+      </az-team-selection-screen>
       <az-pyramid-screen
         page-name="pyramid"
         game="[[game]]"

@@ -11,11 +11,16 @@ class AzApp extends polymer.Base {
 
     reader.addEventListener('load', e => {
       (<AzQuestionsModel>this.$.questionsModel).parseXLSX(e.target.result);
-      this.$.gameModel.newGame();
-      this.screen = 'pyramid';
+      this.screen = 'team';
     });
 
     reader.readAsBinaryString(detail.file);
+  }
+
+  private _onTeamSelect(e, detail) {
+    var team = detail.selectedTeam !== 'random' ? detail.selectedTeam : undefined;
+    this.$.gameModel.newGame(team);
+    this.screen = 'pyramid';
   }
 
   private _onPyramidHexTap(event: Event, detail): void {

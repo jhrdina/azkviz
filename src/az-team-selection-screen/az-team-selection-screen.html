@@ -1,0 +1,48 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
+
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="../az-hex/az-hex.html">
+<link rel="import" href="../roboto.html">
+
+<dom-module id="az-team-selection-screen">
+  <template>
+    <style>
+      :host {
+        @apply(--layout);
+        @apply(--layout-center);
+        @apply(--layout-center-justified);
+      }
+
+      #whoText {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 33px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      #teamAButton {
+
+      }
+
+      #teamBButton {
+
+      }
+
+      #randomButton {
+
+      }
+    </style>
+
+    <div id="whoBox">
+      <div id="whoText">Kdo začne?</div>
+      <az-hex id="teamAButton" hex-state="teamA" on-tap="_onTeamATap"></az-hex>
+      <az-hex id="randomButton" hex-state="unknown" on-tap="_onRandomTap">?</az-hex>
+      <az-hex id="teamBButton" hex-state="teamB" on-tap="_onTeamBTap"></az-hex>
+    </div>
+
+  </template>
+
+  <script src="az-team-selection-screen.js"></script>
+</dom-module>
