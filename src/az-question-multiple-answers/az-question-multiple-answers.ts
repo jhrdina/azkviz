@@ -14,25 +14,30 @@ class AzQuestionMultipleAnswers extends polymer.Base {
   public answered: boolean;
   private _setAnswered: (correct: boolean) => void;
 
-  private _selectedAnswer: AzAnswer;
+  private _selectedAnswer: AzAnswer | undefined;
 
-  public reset() {
+  public reset(): void {
     this._setAnswered(false);
     this._selectedAnswer = undefined;
   }
 
-  private _onAnswerTap(event: Event) {
+  private _onAnswerTap(event: Event): void {
     this._selectedAnswer = this.$.answersRepeat.itemForElement(event.target);
+    if (!this._selectedAnswer) {
+      return;
+    }
     this._setCorrect(this._selectedAnswer.correct);
     this._setAnswered(true);
   }
 
-  private _computeAnswerClasses(item: AzAnswer, isAnswered) {
-    if (isAnswered) {
+  private _computeAnswerClasses(item: AzAnswer): string {
+    if (this.answered) {
       if (item.correct) {
         return 'correct';
-      } else if (!item.correct && item === this._selectedAnswer) {
+      } else if (item === this._selectedAnswer) {
         return 'wrong';
+      } else {
+        return ''
       }
     } else {
       return 'clickable';

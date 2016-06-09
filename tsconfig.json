@@ -13,7 +13,8 @@
         "preserveConstEnums": true,
         "suppressImplicitAnyIndexErrors": true,
         "sourceMap": true,
-        "inlineSourceMap": true
+        "inlineSourceMap": true,
+        "strictNullChecks": true
     },
     "filesGlob": [
         "./src/**/*.ts"

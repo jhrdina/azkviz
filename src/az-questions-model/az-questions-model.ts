@@ -2,7 +2,7 @@
 
 interface AzQuestion {
   text: string;
-  answers: Array<AzAnswer>;
+  answers: AzAnswer[];
 }
 
 interface AzAnswer {
@@ -10,31 +10,29 @@ interface AzAnswer {
   correct: boolean;
 }
 
-interface XLSX {
-  read(data, params: {type: 'binary'}): Workbook;
-}
+declare module XLSX {
+  function read(data, params: {type: 'binary'}): Workbook;
 
-interface Workbook {
-  Sheets: Array<Sheet>;
-  SheetNames: Array<string>;
-}
+  interface Workbook {
+    Sheets: Sheet[];
+    SheetNames: string[];
+  }
 
-interface Sheet {
-  [address: string]: Cell;
-}
+  interface Sheet {
+    [address: string]: Cell;
+  }
 
-interface Cell {
-  v: string;
+  interface Cell {
+    v: string;
+  }
 }
-
-var XLSX: XLSX = XLSX || null;
 
 @component('az-questions-model')
 class AzQuestionsModel extends polymer.Base {
 
   @property({ type: Array, notify: true, readOnly: true })
-  public questions: Array<AzQuestion>;
-  private _setQuestions: (questions: Array<AzQuestion>) => void;
+  public questions: AzQuestion[];
+  private _setQuestions: (questions: AzQuestion[]) => void;
 
   public clear(): void {
     this._setQuestions([]);
@@ -49,16 +47,16 @@ class AzQuestionsModel extends polymer.Base {
 
     var wb = XLSX.read(data, {type: 'binary'});
 
-    var sheet: Sheet = wb.Sheets[wb.SheetNames[0]];
+    var sheet: XLSX.Sheet = wb.Sheets[wb.SheetNames[0]];
 
-    var questions: Array<AzQuestion> = [];
+    var questions: AzQuestion[] = [];
     var col = 0,
         row = 0,
-        cell: Cell;
+        cell: XLSX.Cell;
 
-    while (sheet[toAddress(row, col)] !== undefined) {
+    while (sheet[toAddress(row, col)]) {
 
-      while ((cell = sheet[toAddress(row, col)]) !== undefined) {
+      while (cell = sheet[toAddress(row, col)]) {
 
         if (col === 0) {
           questions[row] = {

@@ -1,5 +1,9 @@
 /// <reference path="../../bower_components/polymer-ts/polymer-ts.d.ts"/>
 
+interface AzSelectAnswerEventDetail {
+  correct: boolean;
+}
+
 @component('az-question-screen')
 class AzQuestionScreen extends polymer.Base {
 
@@ -34,7 +38,7 @@ class AzQuestionScreen extends polymer.Base {
         break;
     }
 
-    this.fire('select-answer', {
+    this.fire('select-answer', <AzSelectAnswerEventDetail> {
       correct: this._correct
     });
 

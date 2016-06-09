@@ -3,33 +3,38 @@
 @component('az-app')
 class AzApp extends polymer.Base {
 
+  $: {
+    gameModel: AzGameModel;
+    questionsModel: AzQuestionsModel;
+  }
+
   screen: string = 'welcome';
   _hexNumber: number;
 
-  private _onFileChange(e, detail) {
+  private _onFileChange(e, detail: AzFileChangeDetail) {
     var reader = new FileReader();
 
     reader.addEventListener('load', e => {
-      (<AzQuestionsModel>this.$.questionsModel).parseXLSX(e.target.result);
+      this.$.questionsModel.parseXLSX((<FileReader>e.target).result);
       this.screen = 'team';
     });
 
     reader.readAsBinaryString(detail.file);
   }
 
-  private _onTeamSelect(e, detail) {
+  private _onTeamSelect(e, detail: AzTeamSelectEventDetail) {
     var team = detail.selectedTeam !== 'random' ? detail.selectedTeam : undefined;
-    this.$.gameModel.newGame(team);
+    this.$.gameModel.newGame(<any>team);
     this.screen = 'pyramid';
   }
 
-  private _onPyramidHexTap(event: Event, detail): void {
+  private _onPyramidHexTap(event: Event, detail: AzHexTapEventDetail): void {
     this._hexNumber = detail.hexNumber
     this.screen = 'question';
   }
 
-  private _onAnswerSelect(event: Event, detail): void {
-    (<AzGameModel>this.$.gameModel).selectAnswer(detail.correct, this._hexNumber);
+  private _onAnswerSelect(event: Event, detail: AzSelectAnswerEventDetail): void {
+    this.$.gameModel.selectAnswer(detail.correct, this._hexNumber);
   }
 
   private _goToWelcomeScreen() {

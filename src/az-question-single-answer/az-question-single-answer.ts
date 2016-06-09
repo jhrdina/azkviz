@@ -54,7 +54,7 @@ class AzQuestionSingleAnswer extends polymer.Base {
     return !answerVisible ? 'clickable' : '';
   }
 
-  private _computeButtonActiveClass(button, buttonsState) {
+  private _computeButtonActiveClass(button, buttonsState): string {
     return buttonsState === button ? 'active' : '';
   }
 }

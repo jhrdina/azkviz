@@ -15,14 +15,14 @@ interface AzPyramidStates {
 class AzGameModel extends polymer.Base {
 
   @property({ type: Object, value: [] })
-  public questions: Array<AzQuestion>;
+  public questions: AzQuestion[];
 
   @property({ type: Object, notify: true })
   public game: AzGame;
 
-  private _remainingQuestions: Array<AzQuestion>;
+  private _remainingQuestions: AzQuestion[];
 
-  public newGame(startingTeam?: 'teamA' | 'teamB') {
+  public newGame(startingTeam?: 'teamA' | 'teamB'): void {
     this.game = {
       currentTeam: startingTeam || AzGameModel._getRandomTeam(),
       pyramid: {}
@@ -77,7 +77,7 @@ class AzGameModel extends polymer.Base {
     return Math.floor(Math.random() * max);
   }
 
-  private static _shuffleArray(o: Array<any>): Array<any> {
+  private static _shuffleArray(o: any[]): any[] {
     for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
   }
