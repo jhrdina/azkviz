@@ -15,6 +15,12 @@
         @apply(--layout-center-justified);
       }
 
+      #backButton {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+      }
+
       #whoText {
         font-family: 'Roboto Condensed', sans-serif;
         font-size: 33px;
@@ -35,6 +41,11 @@
       }
     </style>
 
+    <paper-icon-button
+      id="backButton"
+      icon="arrow-back"
+      on-tap="_onBackTap">
+    </paper-icon-button>
     <div id="whoBox">
       <div id="whoText">Kdo začne?</div>
       <az-hex id="teamAButton" hex-state="teamA" on-tap="_onTeamATap"></az-hex>

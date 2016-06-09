@@ -7,6 +7,10 @@ interface AzTeamSelectEventDetail {
 @component('az-team-selection-screen')
 class AzTeamSelectionScreen extends polymer.Base {
 
+  private _onBackTap() {
+    this.fire('back-tap');
+  }
+
   private _onTeamATap() {
     this.fire('team-select', <AzTeamSelectEventDetail> {
       selectedTeam: 'teamA'
