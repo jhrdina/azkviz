@@ -27,6 +27,7 @@ class AzGameModel extends polymer.Base {
       currentTeam: startingTeam || AzGameModel._getRandomTeam(),
       pyramid: {}
     };
+    this._remainingQuestions = [];
     this._newQuestion();
   }
 
