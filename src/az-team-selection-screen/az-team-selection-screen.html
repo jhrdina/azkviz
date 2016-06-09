@@ -29,15 +29,18 @@
       }
 
       #teamAButton {
-
+        color: #fff;
+        --az-hex-bkg-color: #ff8427;
       }
 
       #teamBButton {
-
+        color: #fff;
+        --az-hex-bkg-color: #00d3d8;
       }
 
       #randomButton {
-
+        color: #fff;
+        --az-hex-bkg-color: #3e3e3e;
       }
     </style>
 
@@ -48,9 +51,9 @@
     </paper-icon-button>
     <div id="whoBox">
       <div id="whoText">Kdo začne?</div>
-      <az-hex id="teamAButton" hex-state="teamA" on-tap="_onTeamATap"></az-hex>
-      <az-hex id="randomButton" hex-state="unknown" on-tap="_onRandomTap">?</az-hex>
-      <az-hex id="teamBButton" hex-state="teamB" on-tap="_onTeamBTap"></az-hex>
+      <az-hex id="teamAButton" on-tap="_onTeamATap"></az-hex>
+      <az-hex id="randomButton" on-tap="_onRandomTap">?</az-hex>
+      <az-hex id="teamBButton" on-tap="_onTeamBTap"></az-hex>
     </div>
 
   </template>

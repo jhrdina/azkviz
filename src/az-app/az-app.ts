@@ -8,6 +8,7 @@ class AzApp extends polymer.Base {
     questionsModel: AzQuestionsModel;
   };
 
+  game: AzGame | undefined;
   screen: string = 'welcome';
   _hexNumber: number;
 
@@ -29,7 +30,11 @@ class AzApp extends polymer.Base {
   }
 
   private _onPyramidHexTap(event: Event, detail: AzHexTapEventDetail): void {
-    this._hexNumber = detail.hexNumber
+    if (!this.$.gameModel.hexIsAvailable(detail.hexNumber)) {
+      return;
+    }
+
+    this._hexNumber = detail.hexNumber;
     this.screen = 'question';
   }
 

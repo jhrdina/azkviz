@@ -18,7 +18,7 @@ class AzGameModel extends polymer.Base {
   public questions: AzQuestion[];
 
   @property({ type: Object, notify: true })
-  public game: AzGame;
+  public game: AzGame | undefined;
 
   private _remainingQuestions: AzQuestion[];
 
@@ -49,10 +49,12 @@ class AzGameModel extends polymer.Base {
   }
 
   public selectAnswer(correct: boolean, hexNumber: number): void {
-    if (this.game.pyramid[hexNumber] === 'teamA' ||
-        this.game.pyramid[hexNumber] === 'teamB') {
-      console.warn('Selecting answer for hex ' + hexNumber + ', that is already successfully answered.');
-      return;
+    if (!this.game) {
+      throw 'Cannot select answer because no game has been created yet.'
+    }
+
+    if (!this.hexIsAvailable(hexNumber)) {
+      throw 'Selecting answer for hex ' + hexNumber + ', that is already successfully answered.';
     }
 
     this.set(
@@ -64,10 +66,20 @@ class AzGameModel extends polymer.Base {
   }
 
   private _toggleTeam(): void {
+    if (!this.game) {
+      throw 'Cannot toggle team because no game has been created yet.';
+    }
+
     this.set(
       'game.currentTeam',
       this.game.currentTeam === 'teamA' ? 'teamB' : 'teamA'
     );
+  }
+
+  public hexIsAvailable(hexNumber: number): boolean {
+    return Boolean(this.game
+        && this.game.pyramid[hexNumber] !== 'teamA'
+        && this.game.pyramid[hexNumber] !== 'teamB');
   }
 
   //=================================================================
