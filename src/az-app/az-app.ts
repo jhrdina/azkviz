@@ -6,12 +6,12 @@ class AzApp extends polymer.Base {
   $: {
     gameModel: AzGameModel;
     questionsModel: AzQuestionsModel;
-  }
+  };
 
   screen: string = 'welcome';
   _hexNumber: number;
 
-  private _onFileChange(e, detail: AzFileChangeDetail) {
+  private _onFileChange(event: Event, detail: AzFileChangeDetail) {
     var reader = new FileReader();
 
     reader.addEventListener('load', e => {
@@ -22,7 +22,7 @@ class AzApp extends polymer.Base {
     reader.readAsBinaryString(detail.file);
   }
 
-  private _onTeamSelect(e, detail: AzTeamSelectEventDetail) {
+  private _onTeamSelect(event: Event, detail: AzTeamSelectEventDetail) {
     var team = detail.selectedTeam !== 'random' ? detail.selectedTeam : undefined;
     this.$.gameModel.newGame(<any>team);
     this.screen = 'pyramid';
