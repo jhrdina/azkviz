@@ -23,6 +23,7 @@
 
       neon-animated-pages {
         @apply(--layout-fit);
+        overflow-x: hidden;
       }
 
       /*iron-pages > * {
@@ -42,7 +43,7 @@
     </az-game-model>
 
     <!-- Pages -->
-    <neon-animated-pages selected="{{screen}}" attr-for-selected="page-name">
+    <neon-animated-pages selected="{{screen}}" attr-for-selected="page-name" entry-animation="[[pageEntryAnimation]]" exit-animation="[[pageExitAnimation]]">
       <az-welcome-screen
         page-name="welcome"
         on-file-change="_onFileChange">
@@ -62,7 +63,7 @@
         page-name="question"
         game="[[game]]"
         hex-number="[[_hexNumber]]"
-        on-back-tap="_goToPyramid"
+        on-back-tap="_onQuestionBackTap"
         on-select-answer="_onAnswerSelect">
       </az-question-screen>
     </neon-animated-pages>

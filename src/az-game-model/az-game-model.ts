@@ -28,10 +28,9 @@ class AzGameModel extends polymer.Base {
       pyramid: {}
     };
     this._remainingQuestions = [];
-    this._newQuestion();
   }
 
-  private _newQuestion(): void {
+  public newQuestion(): void {
     // TODO: handle not initialized game
     if (!this._remainingQuestions || this._remainingQuestions.length === 0) {
       this._remainingQuestions = this.questions.slice();
@@ -62,7 +61,6 @@ class AzGameModel extends polymer.Base {
       correct ? this.game.currentTeam : 'unknown'
     );
     this._toggleTeam();
-    this._newQuestion();
   }
 
   private _toggleTeam(): void {
