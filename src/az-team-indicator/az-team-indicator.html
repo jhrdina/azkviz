@@ -1,6 +1,9 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
 
+<link rel="import" href="../../bower_components/neon-animation/neon-animation-runner-behavior.html">
+<link rel="import" href="wave-animation.html">
+
 <dom-module id="az-team-indicator">
   <template>
     <style>
@@ -13,6 +16,8 @@
         border-color: transparent;
 
         margin: auto;
+
+        position: relative;
       }
 
       :host[team="teamA"] {
@@ -22,7 +27,30 @@
       :host[team="teamB"] {
         border-top-color: var(--az-team-indicator-team-b-color, #00d3d8);
       }
+
+      #wave {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        background-color: var(--az-team-indicator-team-a-color, #ff8427);
+      }
+
+      :host[team="teamA"] #wave {
+        background-color: var(--az-team-indicator-team-a-color, #ff8427);
+      }
+
+      :host[team="teamB"] #wave {
+        background-color: var(--az-team-indicator-team-b-color, #00d3d8);
+      }
     </style>
+
+    <div id="wave"></div>
   </template>
 
   <script src="az-team-indicator.js"></script>

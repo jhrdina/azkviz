@@ -24,8 +24,9 @@ DEMO PAGE FOR COMPONENT 'az-team-indicator'
       <div>
         <h3>Demo: az-team-indicator</h3>
         <div class="horizontal-section">
+          <button type="button" on-tap="toggleTeam">Toggle Team</button>
           <az-team-indicator
-            prop1="{{prop1}}">
+            team="[[team]]">
           </az-team-indicator>
         </div>
       </div>
@@ -36,7 +37,10 @@ DEMO PAGE FOR COMPONENT 'az-team-indicator'
     Polymer({
       is: 'x-app',
       ready: function() {
-        this.prop1 = "az-team-indicator demo";
+        this.team = "teamA";
+      },
+      toggleTeam: function() {
+        this.team = this.team === 'teamA' ? 'teamB' : 'teamA';
       }
     });
 
