@@ -4,6 +4,9 @@
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 
+<link rel="import" href="../../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../../bower_components/neon-animation/neon-animations.html">
+
 <link rel="import" href="../az-game-model/az-game-model.html">
 <link rel="import" href="../az-pyramid-screen/az-pyramid-screen.html">
 <link rel="import" href="../az-questions-model/az-questions-model.html">
@@ -18,9 +21,13 @@
         display: block;
       }
 
-      iron-pages > * {
+      neon-animated-pages {
         @apply(--layout-fit);
       }
+
+      /*iron-pages > * {
+        @apply(--layout-fit);
+      }*/
     </style>
 
     <!-- Data -->
@@ -35,7 +42,7 @@
     </az-game-model>
 
     <!-- Pages -->
-    <iron-pages selected="{{screen}}" attr-for-selected="page-name">
+    <neon-animated-pages selected="{{screen}}" attr-for-selected="page-name">
       <az-welcome-screen
         page-name="welcome"
         on-file-change="_onFileChange">
@@ -58,7 +65,7 @@
         on-back-tap="_goToPyramid"
         on-select-answer="_onAnswerSelect">
       </az-question-screen>
-    </iron-pages>
+    </neon-animated-pages>
 
   </template>
 

@@ -5,6 +5,7 @@ interface AzSelectAnswerEventDetail {
 }
 
 @component('az-question-screen')
+@behavior(Polymer['NeonSharedElementAnimatableBehavior'])
 class AzQuestionScreen extends polymer.Base {
 
   @property({ type: Object, notify: true })
@@ -12,6 +13,35 @@ class AzQuestionScreen extends polymer.Base {
 
   @property({ type: Number })
   public hexNumber: number;
+
+  @property({ type: Object, value: function() {
+    return {
+      'hero': this.$.currentHex
+    };
+  }})
+  public sharedElements: any;
+
+  @property({ type: Object, value: function() {
+    return {
+      'entry': [{
+        name: 'hero-animation',
+        id: 'hero',
+        toPage: this
+      }, {
+        name: 'fade-in-animation',
+        node: this
+      }],
+      'exit': [{
+        name: 'hero-animation',
+        id: 'hero',
+        fromPage: this
+      }, {
+        name: 'fade-out-animation',
+        node: this
+      }]
+    };
+  }})
+  public animationConfig: any;
 
   private _isAnswered: boolean;
   private _correct: boolean;

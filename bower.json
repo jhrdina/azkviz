@@ -10,7 +10,8 @@
     "iron-icon": "^1.0.8",
     "paper-icon-button": "PolymerElements/paper-icon-button#^1.1.1",
     "iron-pages": "^1.0.7",
-    "js-xlsx": "^0.8.0"
+    "js-xlsx": "^0.8.0",
+    "neon-animation": "PolymerElements/neon-animation#^1.2.3"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
