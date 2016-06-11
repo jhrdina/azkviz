@@ -1,0 +1,5 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/az-app/az-app.html",
+  "fragments": []
+}
