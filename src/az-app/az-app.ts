@@ -15,6 +15,21 @@ class AzApp extends polymer.Base {
   pageEntryAnimation: string | undefined;
   pageExitAnimation: string | undefined;
 
+  @observe('screen')
+  private _screenChanged(screen): void {
+    switch (screen) {
+      case 'pyramid':
+      case 'question':
+        window.onbeforeunload = () => {
+          return 'Opravdu si přejete opustit AZKvíz? Rozehraná hra bude ztracena!';
+        };
+        break;
+      default:
+        window.onbeforeunload = () => { return null };
+        break;
+    }
+  }
+
   private _onFileChange(event: Event, detail: AzFileChangeDetail) {
     var reader = new FileReader();
 
