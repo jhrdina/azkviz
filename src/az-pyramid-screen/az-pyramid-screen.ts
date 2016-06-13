@@ -32,7 +32,7 @@ class AzPyramidScreen extends polymer.Base {
   public sharedElements: any;
 
   private _onBackTap() {
-    this.fire('back-tap');
+    this.$.exitDialog.open();
   }
 
   private _onHexTap(event: Event, detail: AzHexTapEventDetail) {
@@ -40,10 +40,12 @@ class AzPyramidScreen extends polymer.Base {
     this.sharedElements = {
       'hero': detail.hexElement
     };
-    // this.animationConfig['exit'][0].gesture = {
-    //   x: event.x || event.pageX,
-    //   y: event.y || event.pageY
-    // };
+  }
+
+  private _onExitDialogClosed(event: Event, detail) {
+    if (detail.confirmed) {
+      this.fire('back-tap');
+    }
   }
 }
 

@@ -2,8 +2,12 @@
 <link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
 <link rel="import" href="../../bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
 
 <link rel="import" href="../az-pyramid/az-pyramid.html">
@@ -37,6 +41,17 @@
       states="[[game.pyramid]]"
       on-hex-tap="_onHexTap">
     </az-pyramid>
+
+    <paper-dialog id="exitDialog" on-iron-overlay-closed="_onExitDialogClosed" modal>
+      <h2>Ukončit hru?</h2>
+      <p>
+        Opravdu se chcete vrátit na úvodní obrazovku? Rozehraná hra bude ztracena.
+      </p>
+      <div class="buttons">
+        <paper-button dialog-dismiss>Zrušit</paper-button>
+        <paper-button dialog-confirm>Ukončit hru</paper-button>
+      </div>
+    </paper-dialog>
   </template>
 
   <script src="az-pyramid-screen.js"></script>
