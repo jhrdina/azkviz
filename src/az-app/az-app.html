@@ -13,6 +13,7 @@
 <link rel="import" href="../az-team-selection-screen/az-team-selection-screen.html">
 <link rel="import" href="../az-welcome-screen/az-welcome-screen.html">
 <link rel="import" href="../az-question-screen/az-question-screen.html">
+<link rel="import" href="../az-help-screen/az-help-screen.html">
 
 <dom-module id="az-app">
   <template>
@@ -73,6 +74,10 @@
         on-back-tap="_onQuestionBackTap"
         on-select-answer="_onAnswerSelect">
       </az-question-screen>
+      <az-help-screen
+        page-name="help"
+        on-back-tap="_onHelpBackTap">
+      </az-help-screen>
     </neon-animated-pages>
 
   </template>

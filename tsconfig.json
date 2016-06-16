@@ -22,6 +22,7 @@
     "files": [
         "./src/az-app/az-app.ts",
         "./src/az-game-model/az-game-model.ts",
+        "./src/az-help-screen/az-help-screen.ts",
         "./src/az-hex/az-hex.ts",
         "./src/az-pyramid-screen/az-pyramid-screen.ts",
         "./src/az-pyramid/az-pyramid.ts",

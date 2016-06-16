@@ -1,0 +1,52 @@
+<!doctype html>
+<!--
+DEMO PAGE FOR COMPONENT 'az-help-screen'
+-->
+<html>
+<head>
+  <title>DEMO az-help-screen</title>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+  <link rel="import" href="az-help-screen.html">
+</head>
+
+<body unresolved>
+  <x-app></x-app>
+
+  <dom-module id="x-app">
+    <template>
+      <style>
+        .horizontal-section {
+          min-width: 100px;
+        }
+
+        az-help-screen {
+          border: 1px solid grey;
+        }
+      </style>
+      <div>
+        <h3>Demo: az-help-screen</h3>
+        <div class="horizontal-section">
+          <az-help-screen
+            prop1="{{prop1}}">
+          </az-help-screen>
+        </div>
+      </div>
+    </template>
+  </dom-module>
+
+  <script>
+    Polymer({
+      is: 'x-app',
+      ready: function() {
+        this.prop1 = "az-help-screen demo";
+      }
+    });
+
+    (function(document) {
+      'use strict';
+    })(document);
+  </script>
+</body>
+</html>

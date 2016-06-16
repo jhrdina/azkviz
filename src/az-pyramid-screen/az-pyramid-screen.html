@@ -2,7 +2,6 @@
 <link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
 
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
@@ -12,6 +11,7 @@
 
 <link rel="import" href="../az-pyramid/az-pyramid.html">
 <link rel="import" href="../az-team-indicator/az-team-indicator.html">
+<link rel="import" href="../az-icons.html">
 
 <dom-module id="az-pyramid-screen">
   <template>
@@ -33,7 +33,7 @@
     </style>
     <paper-icon-button
       id="backButton"
-      icon="arrow-back"
+      icon="az:arrow-back"
       on-tap="_onBackTap">
     </paper-icon-button>
     <az-team-indicator team="[[game.currentTeam]]"></az-team-indicator>

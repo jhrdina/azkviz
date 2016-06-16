@@ -70,6 +70,11 @@ class AzApp extends polymer.Base {
     this.screen = 'pyramid';
   }
 
+  private _onHelpBackTap(event: Event) {
+    this._setAnimation('left');
+    this.screen = 'welcome';
+  }
+
   private _setAnimation(direction: string | undefined) {
     switch (direction) {
       case 'left':

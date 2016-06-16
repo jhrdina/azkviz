@@ -13,7 +13,8 @@
     "js-xlsx": "^0.8.0",
     "neon-animation": "PolymerElements/neon-animation#^1.2.3",
     "paper-dialog": "PolymerElements/paper-dialog#^1.0.4",
-    "paper-button": "PolymerElements/paper-button#^1.0.12"
+    "paper-button": "PolymerElements/paper-button#^1.0.12",
+    "paper-styles": "^1.1.4"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
