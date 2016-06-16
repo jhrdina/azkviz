@@ -54,7 +54,8 @@
     <neon-animated-pages selected="{{screen}}" attr-for-selected="page-name" entry-animation="[[pageEntryAnimation]]" exit-animation="[[pageExitAnimation]]">
       <az-welcome-screen
         page-name="welcome"
-        on-file-change="_onFileChange">
+        on-file-change="_onFileChange"
+        on-open-help="_onOpenHelp">
       </az-welcome-screen>
       <az-team-selection-screen
         page-name="team"
@@ -76,7 +77,8 @@
       </az-question-screen>
       <az-help-screen
         page-name="help"
-        on-back-tap="_onHelpBackTap">
+        on-back-tap="_onHelpBackTap"
+        on-open-demo="_onHelpOpenDemo">
       </az-help-screen>
     </neon-animated-pages>
 

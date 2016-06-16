@@ -61,6 +61,11 @@ class AzApp extends polymer.Base {
     this.screen = 'question';
   }
 
+  private _onOpenHelp() {
+    this._setAnimation('right');
+    this.screen = 'help';
+  }
+
   private _onAnswerSelect(event: Event, detail: AzSelectAnswerEventDetail): void {
     this.$.gameModel.selectAnswer(detail.correct, this._hexNumber);
   }
@@ -73,6 +78,13 @@ class AzApp extends polymer.Base {
   private _onHelpBackTap(event: Event) {
     this._setAnimation('left');
     this.screen = 'welcome';
+  }
+
+  private _onHelpOpenDemo(event: Event, detail: AzOpenDemoEventDetail) {
+    this.$.questionsModel.parseXLSX(detail.binaryStream);
+
+    this._setAnimation('right');
+    this.screen = 'team';
   }
 
   private _setAnimation(direction: string | undefined) {

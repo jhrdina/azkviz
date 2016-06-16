@@ -5,6 +5,7 @@
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
 <link rel="import" href="../../bower_components/paper-styles/default-theme.html">
 <link rel="import" href="../../bower_components/paper-styles/typography.html">
@@ -70,6 +71,10 @@
         }
       }
 
+      a {
+        text-decoration: none;
+      }
+
       img {
         display: block;
         margin: 0 auto;
@@ -117,6 +122,13 @@
         border-color: #646464;
       }
     </style>
+
+    <iron-ajax
+      id="demoFileAjax"
+      url="/demo.xlsx"
+      handle-as="arraybuffer"
+      on-response="_onDemoFileResponse"></iron-ajax>
+
     <div class="content">
       <div class="header-box">
         <paper-icon-button
@@ -129,11 +141,13 @@
       <p>Pro zahájení hry je nutné dodat vlastní soubor s otázkami a odpověďmi ve formátu .xlsx vytvořený buďto v aplikaci MS Excel 2007 a vyšší nebo ve zdarma dostupném LibreOffice Calc.</p>
       <p>Pro rychlý start doporučujeme prozkoumat ukázkový soubor:</p>
       <p>
-        <paper-button id="downloadButton" raised>
-          <iron-icon icon="az:file-download"></iron-icon>
-          Stáhnout ukázkový soubor
-        </paper-button>
-        <paper-button id="openButton">
+        <a href="/demo.xlsx">
+          <paper-button id="downloadButton" raised>
+            <iron-icon icon="az:file-download"></iron-icon>
+            Stáhnout ukázkový soubor
+          </paper-button>
+        </a>
+        <paper-button id="openButton" on-tap="_onOpenButtonTap">
           <iron-icon icon="az:play-arrow"></iron-icon>
           Otevřít ukázkový soubor
         </paper-button>

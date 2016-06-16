@@ -3,6 +3,8 @@
 
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/paper-styles/default-theme.html">
 
 <link rel="import" href="../roboto.html">
 <link rel="import" href="../az-hex/az-hex.html">
@@ -54,6 +56,10 @@
       #file {
         display: none;
       }
+
+      #helpButton {
+        color: var(--secondary-text-color);
+      }
     </style>
 
     <div id="headerBox">
@@ -68,6 +74,7 @@
         id="file"
         type="file"
         on-change="_onFileChange"/>
+      <paper-icon-button id="helpButton" icon="az:help-outline" on-tap="_onHelpButtonTap"></paper-icon-button>
     </div>
 
     <div id="footer">

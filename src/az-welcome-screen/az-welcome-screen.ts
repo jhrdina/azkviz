@@ -11,6 +11,10 @@ class AzWelcomeScreen extends polymer.Base {
     file: HTMLInputElement;
   };
 
+  private _onHelpButtonTap() {
+    this.fire('open-help');
+  }
+
   private _onOpenButtonTap() {
     this.$.file.click();
   }
