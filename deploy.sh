@@ -18,6 +18,8 @@ mkdir "$DIST_DIR"
 cd build/bundled
 
 cp --parents -t "$DIST_DIR" \
+images/* \
+demo.xlsx \
 src/az-app/az-app.html \
 bower_components/webcomponentsjs/webcomponents-lite.min.js \
 CNAME \
