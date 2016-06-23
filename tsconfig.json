@@ -33,6 +33,7 @@
         "./src/az-questions-model/az-questions-model.ts",
         "./src/az-team-indicator/az-team-indicator.ts",
         "./src/az-team-selection-screen/az-team-selection-screen.ts",
+        "./src/az-timer-setup/az-timer-setup.ts",
         "./src/az-welcome-screen/az-welcome-screen.ts"
     ],
     "atom": {

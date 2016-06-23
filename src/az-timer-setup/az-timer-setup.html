@@ -1,0 +1,56 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
+
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../az-icons.html">
+<link rel="import" href="../../bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-styles/default-theme.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+
+<link rel="import" href="../roboto.html">
+
+<dom-module id="az-timer-setup">
+  <template>
+    <style>
+      :host {
+        @apply(--layout-horizontal);
+        font-family: 'Roboto', 'Noto', sans-serif;
+        font-size: 14px;
+      }
+
+      #timerIcon[active] {
+        color: var(--primary-color);
+      }
+
+      .right-box {
+        height: 40px;
+      }
+
+      .right-box .label {
+        line-height: 40px;
+      }
+
+      paper-input {
+        margin-top: -20px;
+      }
+
+      .right-box,
+      paper-input {
+        display: inline-block;
+      }
+    </style>
+    <paper-icon-button id="timerIcon" icon="[[_timerIcon]]" toggles active="{{active}}"></paper-icon-button>
+    <div class="right-box">
+      <iron-collapse opened="[[active]]">
+        <span class="label">Časový limit</span>
+        <paper-input size="2" maxlength="3"></paper-input>s
+      </iron-collapse>
+      <iron-collapse opened="[[!active]]">
+        <span class="label">Bez časového limitu</span>
+      </iron-collapse>
+    </div>
+  </template>
+
+  <script src="az-timer-setup.js"></script>
+</dom-module>
