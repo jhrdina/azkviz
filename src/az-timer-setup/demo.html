@@ -25,9 +25,12 @@ DEMO PAGE FOR COMPONENT 'az-timer-setup'
         <h3>Demo: az-timer-setup</h3>
         <div class="horizontal-section">
           <az-timer-setup
-            prop1="{{prop1}}">
+            time="{{time}}"
+            active="{{active}}">
           </az-timer-setup>
         </div>
+        <p>Time: [[time]]</p>
+        <p>Active: [[active]]</p>
       </div>
     </template>
   </dom-module>

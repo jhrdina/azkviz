@@ -3,7 +3,7 @@
 @component('az-timer-setup')
 class AzTimerSetup extends polymer.Base {
 
-  @property({ type: Boolean, value: false })
+  @property({ type: Boolean, notify: true, value: false })
   public active: string;
 
   @property({ type: Number, notify: true, value: 6 })

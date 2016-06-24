@@ -17,6 +17,7 @@
         @apply(--layout-horizontal);
         font-family: 'Roboto', 'Noto', sans-serif;
         font-size: 14px;
+        color: var(--az-timer-setup-text-color, --secondary-text-color);
       }
 
       #timerIcon[active] {
@@ -42,11 +43,11 @@
     </style>
     <paper-icon-button id="timerIcon" icon="[[_timerIcon]]" toggles active="{{active}}"></paper-icon-button>
     <div class="right-box">
-      <iron-collapse opened="[[active]]">
+      <iron-collapse opened="[[active]]" no-animation>
         <span class="label">Časový limit</span>
-        <paper-input size="2" maxlength="3"></paper-input>s
+        <paper-input size="2" maxlength="3" value="{{time}}"></paper-input>s
       </iron-collapse>
-      <iron-collapse opened="[[!active]]">
+      <iron-collapse opened="[[!active]]" no-animation>
         <span class="label">Bez časového limitu</span>
       </iron-collapse>
     </div>
