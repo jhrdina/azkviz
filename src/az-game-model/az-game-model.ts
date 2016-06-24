@@ -5,6 +5,7 @@ interface AzGame {
   currentHex?: number;
   currentQuestion?: AzQuestion;
   pyramid: AzPyramidStates;
+  timeout: number;
 }
 
 interface AzPyramidStates {
@@ -22,10 +23,11 @@ class AzGameModel extends polymer.Base {
 
   private _remainingQuestions: AzQuestion[];
 
-  public newGame(startingTeam?: 'teamA' | 'teamB'): void {
+  public newGame(timeout: number, startingTeam?: 'teamA' | 'teamB'): void {
     this.game = {
       currentTeam: startingTeam || AzGameModel._getRandomTeam(),
-      pyramid: {}
+      pyramid: {},
+      timeout: timeout
     };
     this._remainingQuestions = [];
   }

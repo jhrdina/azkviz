@@ -5,7 +5,7 @@ class AzHexTimer extends polymer.Base {
 
   private static FRAME_MS = 30;
 
-  @property({ type: Number, value: 6 })
+  @property({ type: Number, value: 30 })
   public seconds: number;
 
   @property({ type: Boolean, notify: true, value: false })
@@ -24,7 +24,7 @@ class AzHexTimer extends polymer.Base {
 
   public attached() {
     this._angle = 0;
-    this._sound = new Audio("sound.ogg");
+    this._sound = new Audio("/src/az-hex-timer/sound.ogg");
   }
 
   @observe('seconds')
@@ -92,7 +92,7 @@ class AzHexTimer extends polymer.Base {
 
   private _stopSound() {
     if (!this._sound) return;
-    
+
     this._sound.pause();
     this._sound.currentTime = 0;
   }

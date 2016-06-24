@@ -59,6 +59,8 @@
       </az-welcome-screen>
       <az-team-selection-screen
         page-name="team"
+        timeout-active="{{_timeoutActive}}"
+        timeout-seconds="{{_timeoutSeconds}}"
         on-team-select="_onTeamSelect"
         on-back-tap="_goToWelcomeScreen">
       </az-team-selection-screen>
@@ -70,6 +72,7 @@
       </az-pyramid-screen>
       <az-question-screen
         page-name="question"
+        id="questionScreen"
         game="[[game]]"
         hex-number="[[_hexNumber]]"
         on-back-tap="_onQuestionBackTap"

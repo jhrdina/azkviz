@@ -6,13 +6,11 @@ class AzQuestionSingleAnswer extends polymer.Base {
   @property({ type: Object })
   public question: AzQuestion;
 
-  @property({ type: Boolean, notify: true, readOnly: true })
-  public correct: boolean;
-  private _setCorrect: (correct: boolean) => void;
+  @property({ type: Boolean, notify: true })
+  public correct: boolean | null;
 
-  @property({ type: Boolean, notify: true, readOnly: true, value: false })
+  @property({ type: Boolean, notify: true, value: false })
   public answered: boolean;
-  private _setAnswered: (correct: boolean) => void;
 
   private _answerVisible: boolean;
   private _correctAnswer: AzAnswer;
@@ -23,7 +21,8 @@ class AzQuestionSingleAnswer extends polymer.Base {
   }
 
   public reset() {
-    this._setAnswered(false);
+    this.correct = null;
+    this.answered = false;
     this._answerVisible = false;
     this._buttonsState = 'unknown';
   }
@@ -38,15 +37,27 @@ class AzQuestionSingleAnswer extends polymer.Base {
   }
 
   private _onCorrectTap() {
-    this._buttonsState = 'correct';
-    this._setCorrect(true);
-    this._setAnswered(true);
+    this.correct = true;
+    this.answered = true;
   }
 
   private _onWrongTap() {
-    this._buttonsState = 'wrong';
-    this._setCorrect(false);
-    this._setAnswered(true);
+    this.correct = false;
+    this.answered = true;
+  }
+
+  @observe('answered')
+  private _answeredChanged(answered): void {
+    this._answerVisible = true;
+  }
+
+  @observe('correct')
+  private _correctChanged(correct: boolean | null): void {
+    if (correct === null) {
+      this._buttonsState = 'unknown';
+    } else {
+      this._buttonsState = correct ? 'correct' : 'wrong';
+    }
   }
 
   @property({computed: '_answerVisible'})

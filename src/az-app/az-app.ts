@@ -6,11 +6,15 @@ class AzApp extends polymer.Base {
   $: {
     gameModel: AzGameModel;
     questionsModel: AzQuestionsModel;
+    questionScreen: AzQuestionScreen;
   };
 
   game: AzGame | undefined;
   screen: string = 'welcome';
   _hexNumber: number;
+
+  _timeoutActive: boolean;
+  _timeoutSeconds: number;
 
   pageEntryAnimation: string | undefined;
   pageExitAnimation: string | undefined;
@@ -45,7 +49,7 @@ class AzApp extends polymer.Base {
 
   private _onTeamSelect(event: Event, detail: AzTeamSelectEventDetail) {
     var team = detail.selectedTeam !== 'random' ? detail.selectedTeam : undefined;
-    this.$.gameModel.newGame(<any>team);
+    this.$.gameModel.newGame(this._timeoutActive ? this._timeoutSeconds : 0, <any>team);
     this._goToPyramid();
   }
 
@@ -59,6 +63,10 @@ class AzApp extends polymer.Base {
     this._hexNumber = detail.hexNumber;
     this._setAnimation(undefined);
     this.screen = 'question';
+
+    if (this.game && this.game.timeout > 0) {
+      this.$.questionScreen.startTimer();
+    }
   }
 
   private _onOpenHelp() {

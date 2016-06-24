@@ -7,6 +7,12 @@ interface AzTeamSelectEventDetail {
 @component('az-team-selection-screen')
 class AzTeamSelectionScreen extends polymer.Base {
 
+  @property({ type: Boolean, notify: true, value: false })
+  public timeoutActive: boolean;
+
+  @property({ type: Number, notify: true })
+  public timeoutSeconds: number;
+
   private _onBackTap() {
     this.fire('back-tap');
   }

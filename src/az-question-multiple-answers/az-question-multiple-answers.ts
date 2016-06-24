@@ -6,18 +6,16 @@ class AzQuestionMultipleAnswers extends polymer.Base {
   @property({ type: Object })
   public question: AzQuestion;
 
-  @property({ type: Boolean, notify: true, readOnly: true })
+  @property({ type: Boolean, notify: true })
   public correct: boolean;
-  private _setCorrect: (correct: boolean) => void;
 
-  @property({ type: Boolean, notify: true, readOnly: true, value: false })
+  @property({ type: Boolean, notify: true, value: false })
   public answered: boolean;
-  private _setAnswered: (correct: boolean) => void;
 
   private _selectedAnswer: AzAnswer | undefined;
 
   public reset(): void {
-    this._setAnswered(false);
+    this.answered = false;
     this._selectedAnswer = undefined;
   }
 
@@ -26,8 +24,8 @@ class AzQuestionMultipleAnswers extends polymer.Base {
     if (!this._selectedAnswer) {
       return;
     }
-    this._setCorrect(this._selectedAnswer.correct);
-    this._setAnswered(true);
+    this.correct = this._selectedAnswer.correct;
+    this.answered = true;
   }
 
   private _computeAnswerClasses(item: AzAnswer): string {

@@ -1,16 +1,19 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/polymer-ts/polymer-ts.html">
 
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
 
+<link rel="import" href="../az-timer-setup/az-timer-setup.html">
 <link rel="import" href="../az-hex/az-hex.html">
 <link rel="import" href="../roboto.html">
+<link rel="import" href="../az-icons.html">
 
 <dom-module id="az-team-selection-screen">
   <template>
     <style>
       :host {
-        @apply(--layout);
+        @apply(--layout-vertical);
         @apply(--layout-center);
         @apply(--layout-center-justified);
       }
@@ -42,11 +45,15 @@
         color: #fff;
         --az-hex-bkg-color: #3e3e3e;
       }
+
+      az-timer-setup {
+        margin: 8px 0 20px -8px;
+      }
     </style>
 
     <paper-icon-button
       id="backButton"
-      icon="arrow-back"
+      icon="az:arrow-back"
       on-tap="_onBackTap">
     </paper-icon-button>
     <div id="whoBox">
@@ -55,6 +62,10 @@
       <az-hex id="randomButton" on-tap="_onRandomTap">?</az-hex>
       <az-hex id="teamBButton" on-tap="_onTeamBTap"></az-hex>
     </div>
+    <az-timer-setup
+      active="{{timeoutActive}}"
+      time="{{timeoutSeconds}}">
+    </az-timer-setup>
 
   </template>
 

@@ -14,6 +14,9 @@ class AzQuestionScreen extends polymer.Base {
   @property({ type: Number })
   public hexNumber: number;
 
+  private _timerEnabled: boolean;
+  private _timerRunning: boolean;
+
   @property({ type: Object, value: function() {
     return {
       'hero': this.$.currentHex
@@ -51,12 +54,47 @@ class AzQuestionScreen extends polymer.Base {
     this._isAnswered = false;
   }
 
+  public startTimer() {
+    this._timerRunning = false;
+    this._timerRunning = true;
+  }
+
+  private _timerFinishing: boolean;
+
+  private _onTimerFinish() {
+    this._timerFinishing = true;
+
+    this._isAnswered = true;
+    this._correct = false;
+
+    this._timerFinishing = false;
+  }
+
+  @observe('_isAnswered')
+  private _isAnsweredChanged(isAnswered): void {
+    if (this._isAnswered && this.game.timeout > 0 && !this._timerFinishing) {
+      this._timerRunning = false;
+    }
+  }
+
+  @observe('game.timeout')
+  private _gameTimeoutChanged(timeout): void {
+      this._timerEnabled = timeout > 0;
+  }
+
   @observe('game.currentQuestion.answers')
   private _answersChanged(answers): void {
     this._mode = answers && answers.length > 1 ? 'multiple' : 'single';
   }
 
   private _onBackTap() {
+    
+    this.fire('select-answer', <AzSelectAnswerEventDetail> {
+      correct: this._correct
+    });
+
+    this._isAnswered = false;
+    this.fire('back-tap');
 
     // Warning: Resetting can influence value of _isAnswered
     switch (this._mode) {
@@ -67,13 +105,6 @@ class AzQuestionScreen extends polymer.Base {
         (<AzQuestionSingleAnswer>document.querySelector('az-question-single-answer')).reset();
         break;
     }
-
-    this.fire('select-answer', <AzSelectAnswerEventDetail> {
-      correct: this._correct
-    });
-
-    this._isAnswered = false;
-    this.fire('back-tap');
   }
 
   private _modeMatches(mode, comp) {
