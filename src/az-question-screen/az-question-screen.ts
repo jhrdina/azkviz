@@ -88,7 +88,7 @@ class AzQuestionScreen extends polymer.Base {
   }
 
   private _onBackTap() {
-    
+
     this.fire('select-answer', <AzSelectAnswerEventDetail> {
       correct: this._correct
     });

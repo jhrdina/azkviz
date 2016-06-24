@@ -58,6 +58,14 @@
         @apply(--layout-flex);
         margin-right: 90px;
       }
+
+      az-hex-timer {
+        --az-hex-timer-color: #ff8427;
+      }
+
+      az-hex-timer.teamB {
+        --az-hex-timer-color: #00d3d8;
+      }
     </style>
 
     <div class="container">
@@ -67,7 +75,8 @@
             active="[[_timerRunning]]"
             seconds="[[game.timeout]]"
             on-finish="_onTimerFinish"
-            hidden$="[[_isAnswered]]">
+            hidden$="[[_isAnswered]]"
+            class$="{{game.currentTeam}}">
           </az-hex-timer>
         </template>
         <az-hex id="backButton" on-tap="_onBackTap" hidden$="[[!_isAnswered]]">
