@@ -71,10 +71,10 @@
       </div>
 
       <div id="correctWrongBtns">
-        <az-hex id="wrongButton" class$="[[_computeButtonActiveClass('wrong', _buttonsState)]]" on-tap="_onWrongTap">
+        <az-hex id="wrongButton" class$="[[_computeWrongButtonActiveClass(correct)]]" on-tap="_onWrongTap">
           <iron-icon icon="az:close"></iron-icon>
         </az-hex>
-        <az-hex id="correctButton" class$="[[_computeButtonActiveClass('correct', _buttonsState)]]" on-tap="_onCorrectTap">
+        <az-hex id="correctButton" class$="[[_computeCorrectButtonActiveClass(correct)]]" on-tap="_onCorrectTap">
           <iron-icon icon="az:check"></iron-icon>
         </az-hex>
       </div>

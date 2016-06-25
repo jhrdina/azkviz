@@ -43,7 +43,7 @@
       }
 
       #backButton[hidden],
-      az-hex-timer([hidden]) {
+      az-hex-timer[hidden] {
         display: initial !important;
         transform: scale(0);
       }
@@ -59,7 +59,9 @@
         margin-right: 90px;
       }
 
-      az-hex-timer {
+      /* Not working in the shim,
+         changed programatically. */
+      az-hex-timer.teamA {
         --az-hex-timer-color: #ff8427;
       }
 

@@ -47,7 +47,7 @@ class AzQuestionScreen extends polymer.Base {
   public animationConfig: any;
 
   private _isAnswered: boolean;
-  private _correct: boolean;
+  private _correct: boolean | null;
   private _mode: string;
 
   public ready() {
@@ -87,6 +87,12 @@ class AzQuestionScreen extends polymer.Base {
     this._mode = answers && answers.length > 1 ? 'multiple' : 'single';
   }
 
+  @observe('game.currentTeam')
+  private _currentTeamChanged(currentTeam): void {
+    // this.customStyle['--az-hex-timer-color'] = 'blue';
+    this.updateStyles();
+  }
+
   private _onBackTap() {
 
     this.fire('select-answer', <AzSelectAnswerEventDetail> {
@@ -94,6 +100,7 @@ class AzQuestionScreen extends polymer.Base {
     });
 
     this._isAnswered = false;
+    this._correct = null;
     this.fire('back-tap');
 
     // Warning: Resetting can influence value of _isAnswered

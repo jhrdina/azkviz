@@ -6,15 +6,14 @@ class AzQuestionSingleAnswer extends polymer.Base {
   @property({ type: Object })
   public question: AzQuestion;
 
-  @property({ type: Boolean, notify: true })
+  @property({ type: Boolean, notify: true, value: null })
   public correct: boolean | null;
 
   @property({ type: Boolean, notify: true, value: false })
   public answered: boolean;
 
   private _answerVisible: boolean;
-  private _correctAnswer: AzAnswer;
-  private _buttonsState: 'correct' | 'wrong' | 'unknown';
+  private _correctAnswer: AzAnswer | null;
 
   public ready() {
     this.reset();
@@ -23,13 +22,16 @@ class AzQuestionSingleAnswer extends polymer.Base {
   public reset() {
     this.correct = null;
     this.answered = false;
-    this._answerVisible = false;
-    this._buttonsState = 'unknown';
   }
 
   @observe('question.answers')
-  private _answersChanged(answers): void {
+  private _answersChanged(answers: AzAnswer[]): void {
     this._correctAnswer = answers && answers.length > 0 ? answers[0] : null;
+  }
+
+  @observe('answered')
+  private _answeredChanged(answered: boolean): void {
+    this._answerVisible = answered;
   }
 
   private _onQuestionTap() {
@@ -46,27 +48,17 @@ class AzQuestionSingleAnswer extends polymer.Base {
     this.answered = true;
   }
 
-  @observe('answered')
-  private _answeredChanged(answered): void {
-    this._answerVisible = true;
-  }
-
-  @observe('correct')
-  private _correctChanged(correct: boolean | null): void {
-    if (correct === null) {
-      this._buttonsState = 'unknown';
-    } else {
-      this._buttonsState = correct ? 'correct' : 'wrong';
-    }
-  }
-
   @property({computed: '_answerVisible'})
-  private _questionClickableClass(answerVisible): string {
+  private _questionClickableClass(answerVisible: boolean): string {
     return !answerVisible ? 'clickable' : '';
   }
 
-  private _computeButtonActiveClass(button, buttonsState): string {
-    return buttonsState === button ? 'active' : '';
+  private _computeWrongButtonActiveClass(correct: boolean | null): string {
+    return correct === false ? 'active' : '';
+  }
+
+  private _computeCorrectButtonActiveClass(correct: boolean | null, value: boolean): string {
+    return correct === true ? 'active' : '';
   }
 }
 
