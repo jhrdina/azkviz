@@ -48,6 +48,12 @@
         transform: scale(0);
       }
 
+      /* Delay hex-timer animation especially when leaving the page
+         so az-hex-timer's ghost doesn't reappear */
+      :host.neon-animating az-hex-timer {
+        transition-delay: 0.28s;
+      }
+
       #currentHex {
         position: absolute;
         top: 5px;
