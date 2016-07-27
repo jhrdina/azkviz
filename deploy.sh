@@ -21,6 +21,7 @@ cp --parents -t "$DIST_DIR" \
 images/* \
 demo.xlsx \
 src/az-app/az-app.html \
+src/az-hex-timer/sound.ogg \
 bower_components/webcomponentsjs/webcomponents-lite.min.js \
 CNAME \
 index.html \
