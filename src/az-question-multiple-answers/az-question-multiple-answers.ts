@@ -21,7 +21,7 @@ class AzQuestionMultipleAnswers extends polymer.Base {
 
   private _onAnswerTap(event: Event): void {
     this._selectedAnswer = this.$.answersRepeat.itemForElement(event.target);
-    if (!this._selectedAnswer) {
+    if (!this._selectedAnswer || this.answered) {
       return;
     }
     this.correct = this._selectedAnswer.correct;
