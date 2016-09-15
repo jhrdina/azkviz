@@ -9,24 +9,28 @@ if [ "$1" != "nobuild" ] ; then
   polymer build || { echo 'Polymer Build failed'; exit 1; }
 fi
 
-DIST_DIR="`pwd`/build/final"
-GH_PAGES_DIR="`pwd`/.gh"
+BASE_DIR="`pwd`"
+DIST_DIR="$BASE_DIR/build/final"
+GH_PAGES_DIR="$BASE_DIR/.gh"
 
 
 rm -rf "$DIST_DIR"
 mkdir "$DIST_DIR"
+
+cp --parents -t "$DIST_DIR" \
+bower_components/webcomponentsjs/webcomponents-lite.min.js \
+images/* \
+demo.xlsx \
+CNAME \
+favicon.ico \
+manifest.json
+
 cd build/bundled
 
 cp --parents -t "$DIST_DIR" \
-images/* \
-demo.xlsx \
 src/az-app/az-app.html \
 src/az-hex-timer/sound.ogg \
-bower_components/webcomponentsjs/webcomponents-lite.min.js \
-CNAME \
-index.html \
-favicon.ico \
-manifest.json
+index.html
 
 #git clone -b gh-pages https://github.com/jhrdina/alllangs.git .
 cd "$GH_PAGES_DIR"
