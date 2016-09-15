@@ -77,9 +77,357 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 
 
 <script>function component(e,t){return function(r){r.prototype.is=e,void 0!==t&&(r.prototype.extends=t)}}function extend(e){return function(t){t.prototype.extends=e}}function template(e){return function(t){t.prototype.template=e}}function style(e){return function(t){t.prototype.style=e}}function hostAttributes(e){return function(t){t.prototype.hostAttributes=e}}function property(e){return function(t,r){if(t.properties=t.properties||{},"function"==typeof t[r]){var o=e.computed,n="get_computed_"+r;e.computed=n+"("+o+")",t.properties[r]=e,t[n]=t[r]}else t.properties[r]=e||{}}}function computed(e){return function(t,r){t.properties=t.properties||{};var o=e||{},n="get_computed_"+r,s=t[r].toString(),i=s.indexOf("("),p=s.indexOf(")"),a=s.substring(i+1,p);o.computed=n+"("+a+")",t.properties[r]=o,t[n]=t[r]}}function listen(e){return function(t,r){t.listeners=t.listeners||{},t.listeners[e]=r}}function behavior(e){return function(t){if("function"==typeof t){t.prototype.behaviors=t.prototype.behaviors||[];var r=void 0===e.prototype?e:e.prototype;t.prototype.behaviors.push(r)}else{t.behaviors=t.behaviors||[];var r=void 0===e.prototype?e:e.prototype;t.behaviors.push(r)}}}function observe(e){return e.indexOf(",")>0||e.indexOf(".")>0?function(t,r){t.observers=t.observers||[],t.observers.push(r+"("+e+")")}:function(t,r){t.properties=t.properties||{},t.properties[e]=t.properties[e]||{},t.properties[e].observer=r}}var polymer;!function(e){function t(){var t=function(){};window.polymer.Base=t,t.create=function(){throw"element not yet registered in Polymer"},t.register=function(t){t===!0?e.createClass(this):e.createElement(this)}}function r(e){function t(e,r){void 0!==r&&null!==r&&(Object.keys(r).map(function(t){e.hasOwnProperty(t)||(e[t]=r[t])}),t(e,r.__proto__))}if(void 0===e.prototype.is){var r=e.prototype,o=new e;if(!o.is)throw new Error("no name for "+e);r.is=o.is,o.extends&&(r.extends=o.extends),o.properties&&(r.properties=o.properties),o.listeners&&(r.listeners=o.listeners),o.observers&&(r.observers=o.observers),o.behaviors&&(r.behaviors=o.behaviors),o.hostAttributes&&(r.hostAttributes=o.hostAttributes),o.style&&(r.style=o.style),o.template&&(r.template=o.template)}var n=e.prototype;if(n.$custom_cons=function(){var t=this.$custom_cons_args;e.apply(this,t)},n.$custom_cons_args=[],void 0!==n.factoryImpl)throw"do not use factoryImpl() use constructor() instead";n.factoryImpl=function(){this.$custom_cons_args=arguments};var s="attached",i=n[s];return n[s]=function(){this.$custom_cons(),void 0!==i&&i.apply(this)},t(n,e.prototype.__proto__),n}function o(e){var t=document.createElement("dom-module"),r=e.prototype;t.id=r.is;var o="";void 0!==r.style&&(o+="<style>"+r.style+"</style>"),void 0!==r.template&&(o+="<template>"+r.template+"</template>"),t.innerHTML=o,t.createdCallback()}function n(t){if(e.isRegistered(t))throw"element already registered in Polymer";void 0===t.prototype.template&&void 0===t.prototype.style||e.createDomModule(t);var r=Polymer(e.prepareForRegistration(t));return t.create=function(){var e=Object.create(r.prototype);return r.apply(e,arguments)},r}function s(t){if(e.isRegistered(t))throw"element already registered in Polymer";void 0===t.prototype.template&&void 0===t.prototype.style||e.createDomModule(t);var r=Polymer.Class(e.prepareForRegistration(t));return t.create=function(){var e=Object.create(r.prototype);return r.apply(e,arguments)},r}function i(e){return void 0!==e.prototype.$custom_cons}e.createEs6PolymerBase=t,e.prepareForRegistration=r,e.createDomModule=o,e.createElement=n,e.createClass=s,e.isRegistered=i}(polymer||(polymer={})),polymer.createEs6PolymerBase();</script>
-<style>[hidden]{display:none !important;}</style>
+<style>
+  /* IE 10 support for HTML5 hidden attr */
+  [hidden] {
+    display: none !important;
+  }
+</style>
 
-<style is="custom-style">:root{--layout:{display:-ms-flexbox;display:-webkit-flex;display:flex;};--layout-inline:{display:-ms-inline-flexbox;display:-webkit-inline-flex;display:inline-flex;};--layout-horizontal:{@apply (--layout);-ms-flex-direction:row;-webkit-flex-direction:row;flex-direction:row;};--layout-horizontal-reverse:{@apply (--layout);-ms-flex-direction:row-reverse;-webkit-flex-direction:row-reverse;flex-direction:row-reverse;};--layout-vertical:{@apply (--layout);-ms-flex-direction:column;-webkit-flex-direction:column;flex-direction:column;};--layout-vertical-reverse:{@apply (--layout);-ms-flex-direction:column-reverse;-webkit-flex-direction:column-reverse;flex-direction:column-reverse;};--layout-wrap:{-ms-flex-wrap:wrap;-webkit-flex-wrap:wrap;flex-wrap:wrap;};--layout-wrap-reverse:{-ms-flex-wrap:wrap-reverse;-webkit-flex-wrap:wrap-reverse;flex-wrap:wrap-reverse;};--layout-flex-auto:{-ms-flex:1 1 auto;-webkit-flex:1 1 auto;flex:1 1 auto;};--layout-flex-none:{-ms-flex:none;-webkit-flex:none;flex:none;};--layout-flex:{-ms-flex:1 1 0.000000001px;-webkit-flex:1;flex:1;-webkit-flex-basis:0.000000001px;flex-basis:0.000000001px;};--layout-flex-2:{-ms-flex:2;-webkit-flex:2;flex:2;};--layout-flex-3:{-ms-flex:3;-webkit-flex:3;flex:3;};--layout-flex-4:{-ms-flex:4;-webkit-flex:4;flex:4;};--layout-flex-5:{-ms-flex:5;-webkit-flex:5;flex:5;};--layout-flex-6:{-ms-flex:6;-webkit-flex:6;flex:6;};--layout-flex-7:{-ms-flex:7;-webkit-flex:7;flex:7;};--layout-flex-8:{-ms-flex:8;-webkit-flex:8;flex:8;};--layout-flex-9:{-ms-flex:9;-webkit-flex:9;flex:9;};--layout-flex-10:{-ms-flex:10;-webkit-flex:10;flex:10;};--layout-flex-11:{-ms-flex:11;-webkit-flex:11;flex:11;};--layout-flex-12:{-ms-flex:12;-webkit-flex:12;flex:12;};--layout-start:{-ms-flex-align:start;-webkit-align-items:flex-start;align-items:flex-start;};--layout-center:{-ms-flex-align:center;-webkit-align-items:center;align-items:center;};--layout-end:{-ms-flex-align:end;-webkit-align-items:flex-end;align-items:flex-end;};--layout-baseline:{-ms-flex-align:baseline;-webkit-align-items:baseline;align-items:baseline;};--layout-start-justified:{-ms-flex-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;};--layout-center-justified:{-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;};--layout-end-justified:{-ms-flex-pack:end;-webkit-justify-content:flex-end;justify-content:flex-end;};--layout-around-justified:{-ms-flex-pack:distribute;-webkit-justify-content:space-around;justify-content:space-around;};--layout-justified:{-ms-flex-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;};--layout-center-center:{@apply (--layout-center);@apply (--layout-center-justified);};--layout-self-start:{-ms-align-self:flex-start;-webkit-align-self:flex-start;align-self:flex-start;};--layout-self-center:{-ms-align-self:center;-webkit-align-self:center;align-self:center;};--layout-self-end:{-ms-align-self:flex-end;-webkit-align-self:flex-end;align-self:flex-end;};--layout-self-stretch:{-ms-align-self:stretch;-webkit-align-self:stretch;align-self:stretch;};--layout-self-baseline:{-ms-align-self:baseline;-webkit-align-self:baseline;align-self:baseline;};--layout-start-aligned:{-ms-flex-line-pack:start;-ms-align-content:flex-start;-webkit-align-content:flex-start;align-content:flex-start;};--layout-end-aligned:{-ms-flex-line-pack:end;-ms-align-content:flex-end;-webkit-align-content:flex-end;align-content:flex-end;};--layout-center-aligned:{-ms-flex-line-pack:center;-ms-align-content:center;-webkit-align-content:center;align-content:center;};--layout-between-aligned:{-ms-flex-line-pack:justify;-ms-align-content:space-between;-webkit-align-content:space-between;align-content:space-between;};--layout-around-aligned:{-ms-flex-line-pack:distribute;-ms-align-content:space-around;-webkit-align-content:space-around;align-content:space-around;};--layout-block:{display:block;};--layout-invisible:{visibility:hidden !important;};--layout-relative:{position:relative;};--layout-fit:{position:absolute;top:0;right:0;bottom:0;left:0;};--layout-scroll:{-webkit-overflow-scrolling:touch;overflow:auto;};--layout-fullbleed:{margin:0;height:100vh;};--layout-fixed-top:{position:fixed;top:0;left:0;right:0;};--layout-fixed-right:{position:fixed;top:0;right:0;bottom:0;};--layout-fixed-bottom:{position:fixed;right:0;bottom:0;left:0;};--layout-fixed-left:{position:fixed;top:0;bottom:0;left:0;};}</style>
+<style is="custom-style">
+  :root {
+
+    --layout: {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+    };
+
+    --layout-inline: {
+      display: -ms-inline-flexbox;
+      display: -webkit-inline-flex;
+      display: inline-flex;
+    };
+
+    --layout-horizontal: {
+      @apply(--layout);
+
+      -ms-flex-direction: row;
+      -webkit-flex-direction: row;
+      flex-direction: row;
+    };
+
+    --layout-horizontal-reverse: {
+      @apply(--layout);
+
+      -ms-flex-direction: row-reverse;
+      -webkit-flex-direction: row-reverse;
+      flex-direction: row-reverse;
+    };
+
+    --layout-vertical: {
+      @apply(--layout);
+
+      -ms-flex-direction: column;
+      -webkit-flex-direction: column;
+      flex-direction: column;
+    };
+
+    --layout-vertical-reverse: {
+      @apply(--layout);
+
+      -ms-flex-direction: column-reverse;
+      -webkit-flex-direction: column-reverse;
+      flex-direction: column-reverse;
+    };
+
+    --layout-wrap: {
+      -ms-flex-wrap: wrap;
+      -webkit-flex-wrap: wrap;
+      flex-wrap: wrap;
+    };
+
+    --layout-wrap-reverse: {
+      -ms-flex-wrap: wrap-reverse;
+      -webkit-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
+    };
+
+    --layout-flex-auto: {
+      -ms-flex: 1 1 auto;
+      -webkit-flex: 1 1 auto;
+      flex: 1 1 auto;
+    };
+
+    --layout-flex-none: {
+      -ms-flex: none;
+      -webkit-flex: none;
+      flex: none;
+    };
+
+    --layout-flex: {
+      -ms-flex: 1 1 0.000000001px;
+      -webkit-flex: 1;
+      flex: 1;
+      -webkit-flex-basis: 0.000000001px;
+      flex-basis: 0.000000001px;
+    };
+
+    --layout-flex-2: {
+      -ms-flex: 2;
+      -webkit-flex: 2;
+      flex: 2;
+    };
+
+    --layout-flex-3: {
+      -ms-flex: 3;
+      -webkit-flex: 3;
+      flex: 3;
+    };
+
+    --layout-flex-4: {
+      -ms-flex: 4;
+      -webkit-flex: 4;
+      flex: 4;
+    };
+
+    --layout-flex-5: {
+      -ms-flex: 5;
+      -webkit-flex: 5;
+      flex: 5;
+    };
+
+    --layout-flex-6: {
+      -ms-flex: 6;
+      -webkit-flex: 6;
+      flex: 6;
+    };
+
+    --layout-flex-7: {
+      -ms-flex: 7;
+      -webkit-flex: 7;
+      flex: 7;
+    };
+
+    --layout-flex-8: {
+      -ms-flex: 8;
+      -webkit-flex: 8;
+      flex: 8;
+    };
+
+    --layout-flex-9: {
+      -ms-flex: 9;
+      -webkit-flex: 9;
+      flex: 9;
+    };
+
+    --layout-flex-10: {
+      -ms-flex: 10;
+      -webkit-flex: 10;
+      flex: 10;
+    };
+
+    --layout-flex-11: {
+      -ms-flex: 11;
+      -webkit-flex: 11;
+      flex: 11;
+    };
+
+    --layout-flex-12: {
+      -ms-flex: 12;
+      -webkit-flex: 12;
+      flex: 12;
+    };
+
+    /* alignment in cross axis */
+
+    --layout-start: {
+      -ms-flex-align: start;
+      -webkit-align-items: flex-start;
+      align-items: flex-start;
+    };
+
+    --layout-center: {
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    };
+
+    --layout-end: {
+      -ms-flex-align: end;
+      -webkit-align-items: flex-end;
+      align-items: flex-end;
+    };
+
+    --layout-baseline: {
+      -ms-flex-align: baseline;
+      -webkit-align-items: baseline;
+      align-items: baseline;
+    };
+
+    /* alignment in main axis */
+
+    --layout-start-justified: {
+      -ms-flex-pack: start;
+      -webkit-justify-content: flex-start;
+      justify-content: flex-start;
+    };
+
+    --layout-center-justified: {
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+    };
+
+    --layout-end-justified: {
+      -ms-flex-pack: end;
+      -webkit-justify-content: flex-end;
+      justify-content: flex-end;
+    };
+
+    --layout-around-justified: {
+      -ms-flex-pack: distribute;
+      -webkit-justify-content: space-around;
+      justify-content: space-around;
+    };
+
+    --layout-justified: {
+      -ms-flex-pack: justify;
+      -webkit-justify-content: space-between;
+      justify-content: space-between;
+    };
+
+    --layout-center-center: {
+      @apply(--layout-center);
+      @apply(--layout-center-justified);
+    };
+
+    /* self alignment */
+
+    --layout-self-start: {
+      -ms-align-self: flex-start;
+      -webkit-align-self: flex-start;
+      align-self: flex-start;
+    };
+
+    --layout-self-center: {
+      -ms-align-self: center;
+      -webkit-align-self: center;
+      align-self: center;
+    };
+
+    --layout-self-end: {
+      -ms-align-self: flex-end;
+      -webkit-align-self: flex-end;
+      align-self: flex-end;
+    };
+
+    --layout-self-stretch: {
+      -ms-align-self: stretch;
+      -webkit-align-self: stretch;
+      align-self: stretch;
+    };
+
+    --layout-self-baseline: {
+      -ms-align-self: baseline;
+      -webkit-align-self: baseline;
+      align-self: baseline;
+    };
+
+    /* multi-line alignment in main axis */
+
+    --layout-start-aligned: {
+      -ms-flex-line-pack: start;  /* IE10 */
+      -ms-align-content: flex-start;
+      -webkit-align-content: flex-start;
+      align-content: flex-start;
+    };
+
+    --layout-end-aligned: {
+      -ms-flex-line-pack: end;  /* IE10 */
+      -ms-align-content: flex-end;
+      -webkit-align-content: flex-end;
+      align-content: flex-end;
+    };
+
+    --layout-center-aligned: {
+      -ms-flex-line-pack: center;  /* IE10 */
+      -ms-align-content: center;
+      -webkit-align-content: center;
+      align-content: center;
+    };
+
+    --layout-between-aligned: {
+      -ms-flex-line-pack: justify;  /* IE10 */
+      -ms-align-content: space-between;
+      -webkit-align-content: space-between;
+      align-content: space-between;
+    };
+
+    --layout-around-aligned: {
+      -ms-flex-line-pack: distribute;  /* IE10 */
+      -ms-align-content: space-around;
+      -webkit-align-content: space-around;
+      align-content: space-around;
+    };
+
+    /*******************************
+              Other Layout
+    *******************************/
+
+    --layout-block: {
+      display: block;
+    };
+
+    --layout-invisible: {
+      visibility: hidden !important;
+    };
+
+    --layout-relative: {
+      position: relative;
+    };
+
+    --layout-fit: {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    };
+
+    --layout-scroll: {
+      -webkit-overflow-scrolling: touch;
+      overflow: auto;
+    };
+
+    --layout-fullbleed: {
+      margin: 0;
+      height: 100vh;
+    };
+
+    /* fixed position */
+
+    --layout-fixed-top: {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    };
+
+    --layout-fixed-right: {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    };
+
+    --layout-fixed-bottom: {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    };
+
+    --layout-fixed-left: {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    };
+
+  }
+
+</style>
 <script>Polymer.IronResizableBehavior={properties:{_parentResizable:{type:Object,observer:"_parentResizableChanged"},_notifyingDescendant:{type:Boolean,value:!1}},listeners:{"iron-request-resize-notifications":"_onIronRequestResizeNotifications"},created:function(){this._interestedResizables=[],this._boundNotifyResize=this.notifyResize.bind(this)},attached:function(){this.fire("iron-request-resize-notifications",null,{node:this,bubbles:!0,cancelable:!0}),this._parentResizable||(window.addEventListener("resize",this._boundNotifyResize),this.notifyResize())},detached:function(){this._parentResizable?this._parentResizable.stopResizeNotificationsFor(this):window.removeEventListener("resize",this._boundNotifyResize),this._parentResizable=null},notifyResize:function(){this.isAttached&&(this._interestedResizables.forEach(function(e){this.resizerShouldNotify(e)&&this._notifyDescendant(e)},this),this._fireResize())},assignParentResizable:function(e){this._parentResizable=e},stopResizeNotificationsFor:function(e){var i=this._interestedResizables.indexOf(e);i>-1&&(this._interestedResizables.splice(i,1),this.unlisten(e,"iron-resize","_onDescendantIronResize"))},resizerShouldNotify:function(e){return!0},_onDescendantIronResize:function(e){return this._notifyingDescendant?void e.stopPropagation():void(Polymer.Settings.useShadow||this._fireResize())},_fireResize:function(){this.fire("iron-resize",null,{node:this,bubbles:!1})},_onIronRequestResizeNotifications:function(e){var i=e.path?e.path[0]:e.target;i!==this&&(this._interestedResizables.indexOf(i)===-1&&(this._interestedResizables.push(i),this.listen(i,"iron-resize","_onDescendantIronResize")),i.assignParentResizable(this),this._notifyDescendant(i),e.stopPropagation())},_parentResizableChanged:function(e){e&&window.removeEventListener("resize",this._boundNotifyResize)},_notifyDescendant:function(e){this.isAttached&&(this._notifyingDescendant=!0,e.notifyResize(),this._notifyingDescendant=!1)}};</script>
 
 <script>Polymer.IronSelection=function(e){this.selection=[],this.selectCallback=e},Polymer.IronSelection.prototype={get:function(){return this.multi?this.selection.slice():this.selection[0]},clear:function(e){this.selection.slice().forEach(function(t){(!e||e.indexOf(t)<0)&&this.setItemSelected(t,!1)},this)},isSelected:function(e){return this.selection.indexOf(e)>=0},setItemSelected:function(e,t){if(null!=e&&t!==this.isSelected(e)){if(t)this.selection.push(e);else{var i=this.selection.indexOf(e);i>=0&&this.selection.splice(i,1)}this.selectCallback&&this.selectCallback(e,t)}},select:function(e){this.multi?this.toggle(e):this.get()!==e&&(this.setItemSelected(this.get(),!1),this.setItemSelected(e,!0))},toggle:function(e){this.setItemSelected(e,!this.isSelected(e))}};</script>
@@ -87,7 +435,15 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 <dom-module id="iron-pages" assetpath="../../bower_components/iron-pages/">
 
   <template>
-    <style>:host{display:block;}:host > ::content > :not(.iron-selected){display:none !important;}</style>
+    <style>
+      :host {
+        display: block;
+      }
+
+      :host > ::content > :not(.iron-selected) {
+        display: none !important;
+      }
+    </style>
 
     <content></content>
   </template>
@@ -103,7 +459,30 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 <script>Polymer({is:"opaque-animation",behaviors:[Polymer.NeonAnimationBehavior],configure:function(e){var i=e.node;return this._effect=new KeyframeEffect(i,[{opacity:"1"},{opacity:"1"}],this.timingFromConfig(e)),i.style.opacity="0",this._effect},complete:function(e){e.node.style.opacity=""}});</script>
 <dom-module id="neon-animated-pages" assetpath="../../bower_components/neon-animation/">
 
-  <style>:host{display:block;position:relative;}:host > ::content > *{position:absolute;top:0;left:0;bottom:0;right:0;}:host > ::content > :not(.iron-selected):not(.neon-animating){display:none !important;}:host > ::content > .neon-animating{pointer-events:none;}</style>
+  <style>
+
+    :host {
+      display: block;
+      position: relative;
+    }
+
+    :host > ::content > * {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    :host > ::content > :not(.iron-selected):not(.neon-animating) {
+      display: none !important;
+    }
+
+    :host > ::content > .neon-animating {
+      pointer-events: none;
+    }
+
+  </style>
 
   <template>
     <content id="content"></content>
@@ -133,7 +512,21 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 <script>var __extends=this&&this.__extends||function(e,t){function a(){this.constructor=e}for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n]);e.prototype=null===t?Object.create(t):(a.prototype=t.prototype,new a)},__decorate=this&&this.__decorate||function(e,t,a,n){var o,r=arguments.length,i=r<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,a):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)i=Reflect.decorate(e,t,a,n);else for(var s=e.length-1;s>=0;s--)(o=e[s])&&(i=(r<3?o(i):r>3?o(t,a,i):o(t,a))||i);return r>3&&i&&Object.defineProperty(t,a,i),i},__metadata=this&&this.__metadata||function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)},AzGameModel=function(e){function t(){e.apply(this,arguments)}return __extends(t,e),t.prototype.newGame=function(e,a){this.game={currentTeam:a||t._getRandomTeam(),pyramid:{},timeout:e},this._remainingQuestions=[]},t.prototype.newQuestion=function(){this._remainingQuestions&&0!==this._remainingQuestions.length||(this._remainingQuestions=this.questions.slice());var e=t._getRandomInt(this._remainingQuestions.length),a=JSON.parse(JSON.stringify(this._remainingQuestions[e]));this._remainingQuestions.splice(e,1),t._shuffleArray(a.answers),this.set("game.currentQuestion",a)},t.prototype.selectAnswer=function(e,t){if(!this.game)throw"Cannot select answer because no game has been created yet.";if(!this.hexIsAvailable(t))throw"Selecting answer for hex "+t+", that is already successfully answered.";this.set("game.pyramid."+t,e?this.game.currentTeam:"unknown"),this._toggleTeam()},t.prototype._toggleTeam=function(){if(!this.game)throw"Cannot toggle team because no game has been created yet.";this.set("game.currentTeam","teamA"===this.game.currentTeam?"teamB":"teamA")},t.prototype.hexIsAvailable=function(e){return Boolean(this.game&&"teamA"!==this.game.pyramid[e]&&"teamB"!==this.game.pyramid[e])},t._getRandomInt=function(e){return Math.floor(Math.random()*e)},t._shuffleArray=function(e){for(var t,a,n=e.length;n;t=Math.floor(Math.random()*n),a=e[--n],e[n]=e[t],e[t]=a);return e},t._getRandomTeam=function(){var e=t._getRandomInt(2);return 0===e?"teamA":"teamB"},__decorate([property({type:Object,value:[]}),__metadata("design:type",Array)],t.prototype,"questions",void 0),__decorate([property({type:Object,notify:!0}),__metadata("design:type",Object)],t.prototype,"game",void 0),t=__decorate([component("az-game-model"),__metadata("design:paramtypes",[])],t)}(polymer.Base);AzGameModel.register();</script>
 <dom-module id="iron-icon" assetpath="../../bower_components/iron-icon/">
 
-  <style>:host{@apply (--layout-inline);@apply (--layout-center-center);position:relative;vertical-align:middle;fill:var(--iron-icon-fill-color, currentcolor);stroke:var(--iron-icon-stroke-color, none);width:var(--iron-icon-width, 24px);height:var(--iron-icon-height, 24px);}</style>
+  <style>
+    :host {
+      @apply(--layout-inline);
+      @apply(--layout-center-center);
+      position: relative;
+
+      vertical-align: middle;
+
+      fill: var(--iron-icon-fill-color, currentcolor);
+      stroke: var(--iron-icon-stroke-color, none);
+
+      width: var(--iron-icon-width, 24px);
+      height: var(--iron-icon-height, 24px);
+    }
+  </style>
 
   <template>
   </template>
@@ -149,14 +542,72 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
   
 
   <template>
-    <style>:host{display:block;position:absolute;border-radius:inherit;overflow:hidden;top:0;left:0;right:0;bottom:0;pointer-events:none;}:host([animating]){-webkit-transform:translate(0, 0);transform:translate3d(0, 0, 0);}#background,
+    <style>
+      :host {
+        display: block;
+        position: absolute;
+        border-radius: inherit;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        /* See PolymerElements/paper-behaviors/issues/34. On non-Chrome browsers,
+         * creating a node (with a position:absolute) in the middle of an event
+         * handler "interrupts" that event handler (which happens when the
+         * ripple is created on demand) */
+        pointer-events: none;
+      }
+
+      :host([animating]) {
+        /* This resolves a rendering issue in Chrome (as of 40) where the
+           ripple is not properly clipped by its parent (which may have
+           rounded corners). See: http://jsbin.com/temexa/4
+
+           Note: We only apply this style conditionally. Otherwise, the browser
+           will create a new compositing layer for every ripple element on the
+           page, and that would be bad. */
+        -webkit-transform: translate(0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+
+      #background,
       #waves,
       .wave-container,
-      .wave{pointer-events:none;position:absolute;top:0;left:0;width:100%;height:100%;}#background,
-      .wave{opacity:0;}#waves,
-      .wave{overflow:hidden;}.wave-container,
-      .wave{border-radius:50%;}:host(.circle) #background,
-      :host(.circle) #waves{border-radius:50%;}:host(.circle) .wave-container{overflow:hidden;}</style>
+      .wave {
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      #background,
+      .wave {
+        opacity: 0;
+      }
+
+      #waves,
+      .wave {
+        overflow: hidden;
+      }
+
+      .wave-container,
+      .wave {
+        border-radius: 50%;
+      }
+
+      :host(.circle) #background,
+      :host(.circle) #waves {
+        border-radius: 50%;
+      }
+
+      :host(.circle) .wave-container {
+        overflow: hidden;
+      }
+    </style>
 
     <div id="background"></div>
     <div id="waves"></div>
@@ -165,11 +616,432 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 <script>!function(){function t(t){this.element=t,this.width=this.boundingRect.width,this.height=this.boundingRect.height,this.size=Math.max(this.width,this.height)}function i(t){this.element=t,this.color=window.getComputedStyle(t).color,this.wave=document.createElement("div"),this.waveContainer=document.createElement("div"),this.wave.style.backgroundColor=this.color,this.wave.classList.add("wave"),this.waveContainer.classList.add("wave-container"),Polymer.dom(this.waveContainer).appendChild(this.wave),this.resetInteractionState()}var e={distance:function(t,i,e,n){var s=t-e,o=i-n;return Math.sqrt(s*s+o*o)},now:window.performance&&window.performance.now?window.performance.now.bind(window.performance):Date.now};t.prototype={get boundingRect(){return this.element.getBoundingClientRect()},furthestCornerDistanceFrom:function(t,i){var n=e.distance(t,i,0,0),s=e.distance(t,i,this.width,0),o=e.distance(t,i,0,this.height),a=e.distance(t,i,this.width,this.height);return Math.max(n,s,o,a)}},i.MAX_RADIUS=300,i.prototype={get recenters(){return this.element.recenters},get center(){return this.element.center},get mouseDownElapsed(){var t;return this.mouseDownStart?(t=e.now()-this.mouseDownStart,this.mouseUpStart&&(t-=this.mouseUpElapsed),t):0},get mouseUpElapsed(){return this.mouseUpStart?e.now()-this.mouseUpStart:0},get mouseDownElapsedSeconds(){return this.mouseDownElapsed/1e3},get mouseUpElapsedSeconds(){return this.mouseUpElapsed/1e3},get mouseInteractionSeconds(){return this.mouseDownElapsedSeconds+this.mouseUpElapsedSeconds},get initialOpacity(){return this.element.initialOpacity},get opacityDecayVelocity(){return this.element.opacityDecayVelocity},get radius(){var t=this.containerMetrics.width*this.containerMetrics.width,e=this.containerMetrics.height*this.containerMetrics.height,n=1.1*Math.min(Math.sqrt(t+e),i.MAX_RADIUS)+5,s=1.1-.2*(n/i.MAX_RADIUS),o=this.mouseInteractionSeconds/s,a=n*(1-Math.pow(80,-o));return Math.abs(a)},get opacity(){return this.mouseUpStart?Math.max(0,this.initialOpacity-this.mouseUpElapsedSeconds*this.opacityDecayVelocity):this.initialOpacity},get outerOpacity(){var t=.3*this.mouseUpElapsedSeconds,i=this.opacity;return Math.max(0,Math.min(t,i))},get isOpacityFullyDecayed(){return this.opacity<.01&&this.radius>=Math.min(this.maxRadius,i.MAX_RADIUS)},get isRestingAtMaxRadius(){return this.opacity>=this.initialOpacity&&this.radius>=Math.min(this.maxRadius,i.MAX_RADIUS)},get isAnimationComplete(){return this.mouseUpStart?this.isOpacityFullyDecayed:this.isRestingAtMaxRadius},get translationFraction(){return Math.min(1,this.radius/this.containerMetrics.size*2/Math.sqrt(2))},get xNow(){return this.xEnd?this.xStart+this.translationFraction*(this.xEnd-this.xStart):this.xStart},get yNow(){return this.yEnd?this.yStart+this.translationFraction*(this.yEnd-this.yStart):this.yStart},get isMouseDown(){return this.mouseDownStart&&!this.mouseUpStart},resetInteractionState:function(){this.maxRadius=0,this.mouseDownStart=0,this.mouseUpStart=0,this.xStart=0,this.yStart=0,this.xEnd=0,this.yEnd=0,this.slideDistance=0,this.containerMetrics=new t(this.element)},draw:function(){var t,i,e;this.wave.style.opacity=this.opacity,t=this.radius/(this.containerMetrics.size/2),i=this.xNow-this.containerMetrics.width/2,e=this.yNow-this.containerMetrics.height/2,this.waveContainer.style.webkitTransform="translate("+i+"px, "+e+"px)",this.waveContainer.style.transform="translate3d("+i+"px, "+e+"px, 0)",this.wave.style.webkitTransform="scale("+t+","+t+")",this.wave.style.transform="scale3d("+t+","+t+",1)"},downAction:function(t){var i=this.containerMetrics.width/2,n=this.containerMetrics.height/2;this.resetInteractionState(),this.mouseDownStart=e.now(),this.center?(this.xStart=i,this.yStart=n,this.slideDistance=e.distance(this.xStart,this.yStart,this.xEnd,this.yEnd)):(this.xStart=t?t.detail.x-this.containerMetrics.boundingRect.left:this.containerMetrics.width/2,this.yStart=t?t.detail.y-this.containerMetrics.boundingRect.top:this.containerMetrics.height/2),this.recenters&&(this.xEnd=i,this.yEnd=n,this.slideDistance=e.distance(this.xStart,this.yStart,this.xEnd,this.yEnd)),this.maxRadius=this.containerMetrics.furthestCornerDistanceFrom(this.xStart,this.yStart),this.waveContainer.style.top=(this.containerMetrics.height-this.containerMetrics.size)/2+"px",this.waveContainer.style.left=(this.containerMetrics.width-this.containerMetrics.size)/2+"px",this.waveContainer.style.width=this.containerMetrics.size+"px",this.waveContainer.style.height=this.containerMetrics.size+"px"},upAction:function(t){this.isMouseDown&&(this.mouseUpStart=e.now())},remove:function(){Polymer.dom(this.waveContainer.parentNode).removeChild(this.waveContainer)}},Polymer({is:"paper-ripple",behaviors:[Polymer.IronA11yKeysBehavior],properties:{initialOpacity:{type:Number,value:.25},opacityDecayVelocity:{type:Number,value:.8},recenters:{type:Boolean,value:!1},center:{type:Boolean,value:!1},ripples:{type:Array,value:function(){return[]}},animating:{type:Boolean,readOnly:!0,reflectToAttribute:!0,value:!1},holdDown:{type:Boolean,value:!1,observer:"_holdDownChanged"},noink:{type:Boolean,value:!1},_animating:{type:Boolean},_boundAnimate:{type:Function,value:function(){return this.animate.bind(this)}}},get target(){var t,i=Polymer.dom(this).getOwnerRoot();return t=11==this.parentNode.nodeType?i.host:this.parentNode},keyBindings:{"enter:keydown":"_onEnterKeydown","space:keydown":"_onSpaceKeydown","space:keyup":"_onSpaceKeyup"},attached:function(){this.keyEventTarget=this.target,this.listen(this.target,"up","uiUpAction"),this.listen(this.target,"down","uiDownAction")},detached:function(){this.unlisten(this.target,"up","uiUpAction"),this.unlisten(this.target,"down","uiDownAction")},get shouldKeepAnimating(){for(var t=0;t<this.ripples.length;++t)if(!this.ripples[t].isAnimationComplete)return!0;return!1},simulatedRipple:function(){this.downAction(null),this.async(function(){this.upAction()},1)},uiDownAction:function(t){this.noink||this.downAction(t)},downAction:function(t){if(!(this.holdDown&&this.ripples.length>0)){var i=this.addRipple();i.downAction(t),this._animating||this.animate()}},uiUpAction:function(t){this.noink||this.upAction(t)},upAction:function(t){this.holdDown||(this.ripples.forEach(function(i){i.upAction(t)}),this.animate())},onAnimationComplete:function(){this._animating=!1,this.$.background.style.backgroundColor=null,this.fire("transitionend")},addRipple:function(){var t=new i(this);return Polymer.dom(this.$.waves).appendChild(t.waveContainer),this.$.background.style.backgroundColor=t.color,this.ripples.push(t),this._setAnimating(!0),t},removeRipple:function(t){var i=this.ripples.indexOf(t);i<0||(this.ripples.splice(i,1),t.remove(),this.ripples.length||this._setAnimating(!1))},animate:function(){var t,i;for(this._animating=!0,t=0;t<this.ripples.length;++t)i=this.ripples[t],i.draw(),this.$.background.style.opacity=i.outerOpacity,i.isOpacityFullyDecayed&&!i.isRestingAtMaxRadius&&this.removeRipple(i);this.shouldKeepAnimating||0!==this.ripples.length?window.requestAnimationFrame(this._boundAnimate):this.onAnimationComplete()},_onEnterKeydown:function(){this.uiDownAction(),this.async(this.uiUpAction,1)},_onSpaceKeydown:function(){this.uiDownAction()},_onSpaceKeyup:function(){this.uiUpAction()},_holdDownChanged:function(t,i){void 0!==i&&(t?this.downAction():this.upAction())}})}();</script>
 <script>Polymer.PaperRippleBehavior={properties:{noink:{type:Boolean,observer:"_noinkChanged"},_rippleContainer:{type:Object}},_buttonStateChanged:function(){this.focused&&this.ensureRipple()},_downHandler:function(e){Polymer.IronButtonStateImpl._downHandler.call(this,e),this.pressed&&this.ensureRipple(e)},ensureRipple:function(e){if(!this.hasRipple()){this._ripple=this._createRipple(),this._ripple.noink=this.noink;var i=this._rippleContainer||this.root;if(i&&Polymer.dom(i).appendChild(this._ripple),e){var n=Polymer.dom(this._rippleContainer||this),t=Polymer.dom(e).rootTarget;n.deepContains(t)&&this._ripple.uiDownAction(e)}}},getRipple:function(){return this.ensureRipple(),this._ripple},hasRipple:function(){return Boolean(this._ripple)},_createRipple:function(){return document.createElement("paper-ripple")},_noinkChanged:function(e){this.hasRipple()&&(this._ripple.noink=e)}};</script>
 <script>Polymer.PaperInkyFocusBehaviorImpl={observers:["_focusedChanged(receivedFocusFromKeyboard)"],_focusedChanged:function(e){e&&this.ensureRipple(),this.hasRipple()&&(this._ripple.holdDown=e)},_createRipple:function(){var e=Polymer.PaperRippleBehavior._createRipple();return e.id="ink",e.setAttribute("center",""),e.classList.add("circle"),e}},Polymer.PaperInkyFocusBehavior=[Polymer.IronButtonState,Polymer.IronControlState,Polymer.PaperRippleBehavior,Polymer.PaperInkyFocusBehaviorImpl];</script>
-<style is="custom-style">:root{--google-red-100:#f4c7c3;--google-red-300:#e67c73;--google-red-500:#db4437;--google-red-700:#c53929;--google-blue-100:#c6dafc;--google-blue-300:#7baaf7;--google-blue-500:#4285f4;--google-blue-700:#3367d6;--google-green-100:#b7e1cd;--google-green-300:#57bb8a;--google-green-500:#0f9d58;--google-green-700:#0b8043;--google-yellow-100:#fce8b2;--google-yellow-300:#f7cb4d;--google-yellow-500:#f4b400;--google-yellow-700:#f09300;--google-grey-100:#f5f5f5;--google-grey-300:#e0e0e0;--google-grey-500:#9e9e9e;--google-grey-700:#616161;--paper-red-50:#ffebee;--paper-red-100:#ffcdd2;--paper-red-200:#ef9a9a;--paper-red-300:#e57373;--paper-red-400:#ef5350;--paper-red-500:#f44336;--paper-red-600:#e53935;--paper-red-700:#d32f2f;--paper-red-800:#c62828;--paper-red-900:#b71c1c;--paper-red-a100:#ff8a80;--paper-red-a200:#ff5252;--paper-red-a400:#ff1744;--paper-red-a700:#d50000;--paper-pink-50:#fce4ec;--paper-pink-100:#f8bbd0;--paper-pink-200:#f48fb1;--paper-pink-300:#f06292;--paper-pink-400:#ec407a;--paper-pink-500:#e91e63;--paper-pink-600:#d81b60;--paper-pink-700:#c2185b;--paper-pink-800:#ad1457;--paper-pink-900:#880e4f;--paper-pink-a100:#ff80ab;--paper-pink-a200:#ff4081;--paper-pink-a400:#f50057;--paper-pink-a700:#c51162;--paper-purple-50:#f3e5f5;--paper-purple-100:#e1bee7;--paper-purple-200:#ce93d8;--paper-purple-300:#ba68c8;--paper-purple-400:#ab47bc;--paper-purple-500:#9c27b0;--paper-purple-600:#8e24aa;--paper-purple-700:#7b1fa2;--paper-purple-800:#6a1b9a;--paper-purple-900:#4a148c;--paper-purple-a100:#ea80fc;--paper-purple-a200:#e040fb;--paper-purple-a400:#d500f9;--paper-purple-a700:#aa00ff;--paper-deep-purple-50:#ede7f6;--paper-deep-purple-100:#d1c4e9;--paper-deep-purple-200:#b39ddb;--paper-deep-purple-300:#9575cd;--paper-deep-purple-400:#7e57c2;--paper-deep-purple-500:#673ab7;--paper-deep-purple-600:#5e35b1;--paper-deep-purple-700:#512da8;--paper-deep-purple-800:#4527a0;--paper-deep-purple-900:#311b92;--paper-deep-purple-a100:#b388ff;--paper-deep-purple-a200:#7c4dff;--paper-deep-purple-a400:#651fff;--paper-deep-purple-a700:#6200ea;--paper-indigo-50:#e8eaf6;--paper-indigo-100:#c5cae9;--paper-indigo-200:#9fa8da;--paper-indigo-300:#7986cb;--paper-indigo-400:#5c6bc0;--paper-indigo-500:#3f51b5;--paper-indigo-600:#3949ab;--paper-indigo-700:#303f9f;--paper-indigo-800:#283593;--paper-indigo-900:#1a237e;--paper-indigo-a100:#8c9eff;--paper-indigo-a200:#536dfe;--paper-indigo-a400:#3d5afe;--paper-indigo-a700:#304ffe;--paper-blue-50:#e3f2fd;--paper-blue-100:#bbdefb;--paper-blue-200:#90caf9;--paper-blue-300:#64b5f6;--paper-blue-400:#42a5f5;--paper-blue-500:#2196f3;--paper-blue-600:#1e88e5;--paper-blue-700:#1976d2;--paper-blue-800:#1565c0;--paper-blue-900:#0d47a1;--paper-blue-a100:#82b1ff;--paper-blue-a200:#448aff;--paper-blue-a400:#2979ff;--paper-blue-a700:#2962ff;--paper-light-blue-50:#e1f5fe;--paper-light-blue-100:#b3e5fc;--paper-light-blue-200:#81d4fa;--paper-light-blue-300:#4fc3f7;--paper-light-blue-400:#29b6f6;--paper-light-blue-500:#03a9f4;--paper-light-blue-600:#039be5;--paper-light-blue-700:#0288d1;--paper-light-blue-800:#0277bd;--paper-light-blue-900:#01579b;--paper-light-blue-a100:#80d8ff;--paper-light-blue-a200:#40c4ff;--paper-light-blue-a400:#00b0ff;--paper-light-blue-a700:#0091ea;--paper-cyan-50:#e0f7fa;--paper-cyan-100:#b2ebf2;--paper-cyan-200:#80deea;--paper-cyan-300:#4dd0e1;--paper-cyan-400:#26c6da;--paper-cyan-500:#00bcd4;--paper-cyan-600:#00acc1;--paper-cyan-700:#0097a7;--paper-cyan-800:#00838f;--paper-cyan-900:#006064;--paper-cyan-a100:#84ffff;--paper-cyan-a200:#18ffff;--paper-cyan-a400:#00e5ff;--paper-cyan-a700:#00b8d4;--paper-teal-50:#e0f2f1;--paper-teal-100:#b2dfdb;--paper-teal-200:#80cbc4;--paper-teal-300:#4db6ac;--paper-teal-400:#26a69a;--paper-teal-500:#009688;--paper-teal-600:#00897b;--paper-teal-700:#00796b;--paper-teal-800:#00695c;--paper-teal-900:#004d40;--paper-teal-a100:#a7ffeb;--paper-teal-a200:#64ffda;--paper-teal-a400:#1de9b6;--paper-teal-a700:#00bfa5;--paper-green-50:#e8f5e9;--paper-green-100:#c8e6c9;--paper-green-200:#a5d6a7;--paper-green-300:#81c784;--paper-green-400:#66bb6a;--paper-green-500:#4caf50;--paper-green-600:#43a047;--paper-green-700:#388e3c;--paper-green-800:#2e7d32;--paper-green-900:#1b5e20;--paper-green-a100:#b9f6ca;--paper-green-a200:#69f0ae;--paper-green-a400:#00e676;--paper-green-a700:#00c853;--paper-light-green-50:#f1f8e9;--paper-light-green-100:#dcedc8;--paper-light-green-200:#c5e1a5;--paper-light-green-300:#aed581;--paper-light-green-400:#9ccc65;--paper-light-green-500:#8bc34a;--paper-light-green-600:#7cb342;--paper-light-green-700:#689f38;--paper-light-green-800:#558b2f;--paper-light-green-900:#33691e;--paper-light-green-a100:#ccff90;--paper-light-green-a200:#b2ff59;--paper-light-green-a400:#76ff03;--paper-light-green-a700:#64dd17;--paper-lime-50:#f9fbe7;--paper-lime-100:#f0f4c3;--paper-lime-200:#e6ee9c;--paper-lime-300:#dce775;--paper-lime-400:#d4e157;--paper-lime-500:#cddc39;--paper-lime-600:#c0ca33;--paper-lime-700:#afb42b;--paper-lime-800:#9e9d24;--paper-lime-900:#827717;--paper-lime-a100:#f4ff81;--paper-lime-a200:#eeff41;--paper-lime-a400:#c6ff00;--paper-lime-a700:#aeea00;--paper-yellow-50:#fffde7;--paper-yellow-100:#fff9c4;--paper-yellow-200:#fff59d;--paper-yellow-300:#fff176;--paper-yellow-400:#ffee58;--paper-yellow-500:#ffeb3b;--paper-yellow-600:#fdd835;--paper-yellow-700:#fbc02d;--paper-yellow-800:#f9a825;--paper-yellow-900:#f57f17;--paper-yellow-a100:#ffff8d;--paper-yellow-a200:#ffff00;--paper-yellow-a400:#ffea00;--paper-yellow-a700:#ffd600;--paper-amber-50:#fff8e1;--paper-amber-100:#ffecb3;--paper-amber-200:#ffe082;--paper-amber-300:#ffd54f;--paper-amber-400:#ffca28;--paper-amber-500:#ffc107;--paper-amber-600:#ffb300;--paper-amber-700:#ffa000;--paper-amber-800:#ff8f00;--paper-amber-900:#ff6f00;--paper-amber-a100:#ffe57f;--paper-amber-a200:#ffd740;--paper-amber-a400:#ffc400;--paper-amber-a700:#ffab00;--paper-orange-50:#fff3e0;--paper-orange-100:#ffe0b2;--paper-orange-200:#ffcc80;--paper-orange-300:#ffb74d;--paper-orange-400:#ffa726;--paper-orange-500:#ff9800;--paper-orange-600:#fb8c00;--paper-orange-700:#f57c00;--paper-orange-800:#ef6c00;--paper-orange-900:#e65100;--paper-orange-a100:#ffd180;--paper-orange-a200:#ffab40;--paper-orange-a400:#ff9100;--paper-orange-a700:#ff6500;--paper-deep-orange-50:#fbe9e7;--paper-deep-orange-100:#ffccbc;--paper-deep-orange-200:#ffab91;--paper-deep-orange-300:#ff8a65;--paper-deep-orange-400:#ff7043;--paper-deep-orange-500:#ff5722;--paper-deep-orange-600:#f4511e;--paper-deep-orange-700:#e64a19;--paper-deep-orange-800:#d84315;--paper-deep-orange-900:#bf360c;--paper-deep-orange-a100:#ff9e80;--paper-deep-orange-a200:#ff6e40;--paper-deep-orange-a400:#ff3d00;--paper-deep-orange-a700:#dd2c00;--paper-brown-50:#efebe9;--paper-brown-100:#d7ccc8;--paper-brown-200:#bcaaa4;--paper-brown-300:#a1887f;--paper-brown-400:#8d6e63;--paper-brown-500:#795548;--paper-brown-600:#6d4c41;--paper-brown-700:#5d4037;--paper-brown-800:#4e342e;--paper-brown-900:#3e2723;--paper-grey-50:#fafafa;--paper-grey-100:#f5f5f5;--paper-grey-200:#eeeeee;--paper-grey-300:#e0e0e0;--paper-grey-400:#bdbdbd;--paper-grey-500:#9e9e9e;--paper-grey-600:#757575;--paper-grey-700:#616161;--paper-grey-800:#424242;--paper-grey-900:#212121;--paper-blue-grey-50:#eceff1;--paper-blue-grey-100:#cfd8dc;--paper-blue-grey-200:#b0bec5;--paper-blue-grey-300:#90a4ae;--paper-blue-grey-400:#78909c;--paper-blue-grey-500:#607d8b;--paper-blue-grey-600:#546e7a;--paper-blue-grey-700:#455a64;--paper-blue-grey-800:#37474f;--paper-blue-grey-900:#263238;--dark-divider-opacity:0.12;--dark-disabled-opacity:0.38;--dark-secondary-opacity:0.54;--dark-primary-opacity:0.87;--light-divider-opacity:0.12;--light-disabled-opacity:0.3;--light-secondary-opacity:0.7;--light-primary-opacity:1.0;}</style>
-<style is="custom-style">:root{--primary-text-color:var(--light-theme-text-color);--primary-background-color:var(--light-theme-background-color);--secondary-text-color:var(--light-theme-secondary-color);--disabled-text-color:var(--light-theme-disabled-color);--divider-color:var(--light-theme-divider-color);--error-color:var(--paper-deep-orange-a700);--primary-color:var(--paper-indigo-500);--light-primary-color:var(--paper-indigo-100);--dark-primary-color:var(--paper-indigo-700);--accent-color:var(--paper-pink-a200);--light-accent-color:var(--paper-pink-a100);--dark-accent-color:var(--paper-pink-a400);--light-theme-background-color:#ffffff;--light-theme-base-color:#000000;--light-theme-text-color:var(--paper-grey-900);--light-theme-secondary-color:#737373;--light-theme-disabled-color:#9b9b9b;--light-theme-divider-color:#dbdbdb;--dark-theme-background-color:var(--paper-grey-900);--dark-theme-base-color:#ffffff;--dark-theme-text-color:#ffffff;--dark-theme-secondary-color:#bcbcbc;--dark-theme-disabled-color:#646464;--dark-theme-divider-color:#3c3c3c;--text-primary-color:var(--dark-theme-text-color);--default-primary-color:var(--primary-color);}</style>
+<style is="custom-style">
+
+  :root {
+
+    /* Material Design color palette for Google products */
+
+    --google-red-100: #f4c7c3;
+    --google-red-300: #e67c73;
+    --google-red-500: #db4437;
+    --google-red-700: #c53929;
+
+    --google-blue-100: #c6dafc;
+    --google-blue-300: #7baaf7;
+    --google-blue-500: #4285f4;
+    --google-blue-700: #3367d6;
+
+    --google-green-100: #b7e1cd;
+    --google-green-300: #57bb8a;
+    --google-green-500: #0f9d58;
+    --google-green-700: #0b8043;
+
+    --google-yellow-100: #fce8b2;
+    --google-yellow-300: #f7cb4d;
+    --google-yellow-500: #f4b400;
+    --google-yellow-700: #f09300;
+
+    --google-grey-100: #f5f5f5;
+    --google-grey-300: #e0e0e0;
+    --google-grey-500: #9e9e9e;
+    --google-grey-700: #616161;
+    
+    /* Material Design color palette from online spec document */
+
+    --paper-red-50: #ffebee;
+    --paper-red-100: #ffcdd2;
+    --paper-red-200: #ef9a9a;
+    --paper-red-300: #e57373;
+    --paper-red-400: #ef5350;
+    --paper-red-500: #f44336;
+    --paper-red-600: #e53935;
+    --paper-red-700: #d32f2f;
+    --paper-red-800: #c62828;
+    --paper-red-900: #b71c1c;
+    --paper-red-a100: #ff8a80;
+    --paper-red-a200: #ff5252;
+    --paper-red-a400: #ff1744;
+    --paper-red-a700: #d50000;
+ 
+    --paper-pink-50: #fce4ec;
+    --paper-pink-100: #f8bbd0;
+    --paper-pink-200: #f48fb1;
+    --paper-pink-300: #f06292;
+    --paper-pink-400: #ec407a;
+    --paper-pink-500: #e91e63;
+    --paper-pink-600: #d81b60;
+    --paper-pink-700: #c2185b;
+    --paper-pink-800: #ad1457;
+    --paper-pink-900: #880e4f;
+    --paper-pink-a100: #ff80ab;
+    --paper-pink-a200: #ff4081;
+    --paper-pink-a400: #f50057;
+    --paper-pink-a700: #c51162;
+ 
+    --paper-purple-50: #f3e5f5;
+    --paper-purple-100: #e1bee7;
+    --paper-purple-200: #ce93d8;
+    --paper-purple-300: #ba68c8;
+    --paper-purple-400: #ab47bc;
+    --paper-purple-500: #9c27b0;
+    --paper-purple-600: #8e24aa;
+    --paper-purple-700: #7b1fa2;
+    --paper-purple-800: #6a1b9a;
+    --paper-purple-900: #4a148c;
+    --paper-purple-a100: #ea80fc;
+    --paper-purple-a200: #e040fb;
+    --paper-purple-a400: #d500f9;
+    --paper-purple-a700: #aa00ff;
+ 
+    --paper-deep-purple-50: #ede7f6;
+    --paper-deep-purple-100: #d1c4e9;
+    --paper-deep-purple-200: #b39ddb;
+    --paper-deep-purple-300: #9575cd;
+    --paper-deep-purple-400: #7e57c2;
+    --paper-deep-purple-500: #673ab7;
+    --paper-deep-purple-600: #5e35b1;
+    --paper-deep-purple-700: #512da8;
+    --paper-deep-purple-800: #4527a0;
+    --paper-deep-purple-900: #311b92;
+    --paper-deep-purple-a100: #b388ff;
+    --paper-deep-purple-a200: #7c4dff;
+    --paper-deep-purple-a400: #651fff;
+    --paper-deep-purple-a700: #6200ea;
+ 
+    --paper-indigo-50: #e8eaf6;
+    --paper-indigo-100: #c5cae9;
+    --paper-indigo-200: #9fa8da;
+    --paper-indigo-300: #7986cb;
+    --paper-indigo-400: #5c6bc0;
+    --paper-indigo-500: #3f51b5;
+    --paper-indigo-600: #3949ab;
+    --paper-indigo-700: #303f9f;
+    --paper-indigo-800: #283593;
+    --paper-indigo-900: #1a237e;
+    --paper-indigo-a100: #8c9eff;
+    --paper-indigo-a200: #536dfe;
+    --paper-indigo-a400: #3d5afe;
+    --paper-indigo-a700: #304ffe;
+ 
+    --paper-blue-50: #e3f2fd;
+    --paper-blue-100: #bbdefb;
+    --paper-blue-200: #90caf9;
+    --paper-blue-300: #64b5f6;
+    --paper-blue-400: #42a5f5;
+    --paper-blue-500: #2196f3;
+    --paper-blue-600: #1e88e5;
+    --paper-blue-700: #1976d2;
+    --paper-blue-800: #1565c0;
+    --paper-blue-900: #0d47a1;
+    --paper-blue-a100: #82b1ff;
+    --paper-blue-a200: #448aff;
+    --paper-blue-a400: #2979ff;
+    --paper-blue-a700: #2962ff;
+ 
+    --paper-light-blue-50: #e1f5fe;
+    --paper-light-blue-100: #b3e5fc;
+    --paper-light-blue-200: #81d4fa;
+    --paper-light-blue-300: #4fc3f7;
+    --paper-light-blue-400: #29b6f6;
+    --paper-light-blue-500: #03a9f4;
+    --paper-light-blue-600: #039be5;
+    --paper-light-blue-700: #0288d1;
+    --paper-light-blue-800: #0277bd;
+    --paper-light-blue-900: #01579b;
+    --paper-light-blue-a100: #80d8ff;
+    --paper-light-blue-a200: #40c4ff;
+    --paper-light-blue-a400: #00b0ff;
+    --paper-light-blue-a700: #0091ea;
+ 
+    --paper-cyan-50: #e0f7fa;
+    --paper-cyan-100: #b2ebf2;
+    --paper-cyan-200: #80deea;
+    --paper-cyan-300: #4dd0e1;
+    --paper-cyan-400: #26c6da;
+    --paper-cyan-500: #00bcd4;
+    --paper-cyan-600: #00acc1;
+    --paper-cyan-700: #0097a7;
+    --paper-cyan-800: #00838f;
+    --paper-cyan-900: #006064;
+    --paper-cyan-a100: #84ffff;
+    --paper-cyan-a200: #18ffff;
+    --paper-cyan-a400: #00e5ff;
+    --paper-cyan-a700: #00b8d4;
+ 
+    --paper-teal-50: #e0f2f1;
+    --paper-teal-100: #b2dfdb;
+    --paper-teal-200: #80cbc4;
+    --paper-teal-300: #4db6ac;
+    --paper-teal-400: #26a69a;
+    --paper-teal-500: #009688;
+    --paper-teal-600: #00897b;
+    --paper-teal-700: #00796b;
+    --paper-teal-800: #00695c;
+    --paper-teal-900: #004d40;
+    --paper-teal-a100: #a7ffeb;
+    --paper-teal-a200: #64ffda;
+    --paper-teal-a400: #1de9b6;
+    --paper-teal-a700: #00bfa5;
+ 
+    --paper-green-50: #e8f5e9;
+    --paper-green-100: #c8e6c9;
+    --paper-green-200: #a5d6a7;
+    --paper-green-300: #81c784;
+    --paper-green-400: #66bb6a;
+    --paper-green-500: #4caf50;
+    --paper-green-600: #43a047;
+    --paper-green-700: #388e3c;
+    --paper-green-800: #2e7d32;
+    --paper-green-900: #1b5e20;
+    --paper-green-a100: #b9f6ca;
+    --paper-green-a200: #69f0ae;
+    --paper-green-a400: #00e676;
+    --paper-green-a700: #00c853;
+ 
+    --paper-light-green-50: #f1f8e9;
+    --paper-light-green-100: #dcedc8;
+    --paper-light-green-200: #c5e1a5;
+    --paper-light-green-300: #aed581;
+    --paper-light-green-400: #9ccc65;
+    --paper-light-green-500: #8bc34a;
+    --paper-light-green-600: #7cb342;
+    --paper-light-green-700: #689f38;
+    --paper-light-green-800: #558b2f;
+    --paper-light-green-900: #33691e;
+    --paper-light-green-a100: #ccff90;
+    --paper-light-green-a200: #b2ff59;
+    --paper-light-green-a400: #76ff03;
+    --paper-light-green-a700: #64dd17;
+ 
+    --paper-lime-50: #f9fbe7;
+    --paper-lime-100: #f0f4c3;
+    --paper-lime-200: #e6ee9c;
+    --paper-lime-300: #dce775;
+    --paper-lime-400: #d4e157;
+    --paper-lime-500: #cddc39;
+    --paper-lime-600: #c0ca33;
+    --paper-lime-700: #afb42b;
+    --paper-lime-800: #9e9d24;
+    --paper-lime-900: #827717;
+    --paper-lime-a100: #f4ff81;
+    --paper-lime-a200: #eeff41;
+    --paper-lime-a400: #c6ff00;
+    --paper-lime-a700: #aeea00;
+ 
+    --paper-yellow-50: #fffde7;
+    --paper-yellow-100: #fff9c4;
+    --paper-yellow-200: #fff59d;
+    --paper-yellow-300: #fff176;
+    --paper-yellow-400: #ffee58;
+    --paper-yellow-500: #ffeb3b;
+    --paper-yellow-600: #fdd835;
+    --paper-yellow-700: #fbc02d;
+    --paper-yellow-800: #f9a825;
+    --paper-yellow-900: #f57f17;
+    --paper-yellow-a100: #ffff8d;
+    --paper-yellow-a200: #ffff00;
+    --paper-yellow-a400: #ffea00;
+    --paper-yellow-a700: #ffd600;
+ 
+    --paper-amber-50: #fff8e1;
+    --paper-amber-100: #ffecb3;
+    --paper-amber-200: #ffe082;
+    --paper-amber-300: #ffd54f;
+    --paper-amber-400: #ffca28;
+    --paper-amber-500: #ffc107;
+    --paper-amber-600: #ffb300;
+    --paper-amber-700: #ffa000;
+    --paper-amber-800: #ff8f00;
+    --paper-amber-900: #ff6f00;
+    --paper-amber-a100: #ffe57f;
+    --paper-amber-a200: #ffd740;
+    --paper-amber-a400: #ffc400;
+    --paper-amber-a700: #ffab00;
+ 
+    --paper-orange-50: #fff3e0;
+    --paper-orange-100: #ffe0b2;
+    --paper-orange-200: #ffcc80;
+    --paper-orange-300: #ffb74d;
+    --paper-orange-400: #ffa726;
+    --paper-orange-500: #ff9800;
+    --paper-orange-600: #fb8c00;
+    --paper-orange-700: #f57c00;
+    --paper-orange-800: #ef6c00;
+    --paper-orange-900: #e65100;
+    --paper-orange-a100: #ffd180;
+    --paper-orange-a200: #ffab40;
+    --paper-orange-a400: #ff9100;
+    --paper-orange-a700: #ff6500;
+ 
+    --paper-deep-orange-50: #fbe9e7;
+    --paper-deep-orange-100: #ffccbc;
+    --paper-deep-orange-200: #ffab91;
+    --paper-deep-orange-300: #ff8a65;
+    --paper-deep-orange-400: #ff7043;
+    --paper-deep-orange-500: #ff5722;
+    --paper-deep-orange-600: #f4511e;
+    --paper-deep-orange-700: #e64a19;
+    --paper-deep-orange-800: #d84315;
+    --paper-deep-orange-900: #bf360c;
+    --paper-deep-orange-a100: #ff9e80;
+    --paper-deep-orange-a200: #ff6e40;
+    --paper-deep-orange-a400: #ff3d00;
+    --paper-deep-orange-a700: #dd2c00;
+ 
+    --paper-brown-50: #efebe9;
+    --paper-brown-100: #d7ccc8;
+    --paper-brown-200: #bcaaa4;
+    --paper-brown-300: #a1887f;
+    --paper-brown-400: #8d6e63;
+    --paper-brown-500: #795548;
+    --paper-brown-600: #6d4c41;
+    --paper-brown-700: #5d4037;
+    --paper-brown-800: #4e342e;
+    --paper-brown-900: #3e2723;
+ 
+    --paper-grey-50: #fafafa;
+    --paper-grey-100: #f5f5f5;
+    --paper-grey-200: #eeeeee;
+    --paper-grey-300: #e0e0e0;
+    --paper-grey-400: #bdbdbd;
+    --paper-grey-500: #9e9e9e;
+    --paper-grey-600: #757575;
+    --paper-grey-700: #616161;
+    --paper-grey-800: #424242;
+    --paper-grey-900: #212121;
+ 
+    --paper-blue-grey-50: #eceff1;
+    --paper-blue-grey-100: #cfd8dc;
+    --paper-blue-grey-200: #b0bec5;
+    --paper-blue-grey-300: #90a4ae;
+    --paper-blue-grey-400: #78909c;
+    --paper-blue-grey-500: #607d8b;
+    --paper-blue-grey-600: #546e7a;
+    --paper-blue-grey-700: #455a64;
+    --paper-blue-grey-800: #37474f;
+    --paper-blue-grey-900: #263238;
+
+    /* opacity for dark text on a light background */
+    --dark-divider-opacity: 0.12;
+    --dark-disabled-opacity: 0.38; /* or hint text or icon */
+    --dark-secondary-opacity: 0.54;
+    --dark-primary-opacity: 0.87;
+
+    /* opacity for light text on a dark background */
+    --light-divider-opacity: 0.12;
+    --light-disabled-opacity: 0.3; /* or hint text or icon */
+    --light-secondary-opacity: 0.7;
+    --light-primary-opacity: 1.0;
+
+  }
+
+</style>
+<style is="custom-style">
+
+  :root {
+    /*
+     * You can use these generic variables in your elements for easy theming.
+     * For example, if all your elements use `--primary-text-color` as its main
+     * color, then switching from a light to a dark theme is just a matter of
+     * changing the value of `--primary-text-color` in your application.
+     */
+    --primary-text-color: var(--light-theme-text-color);
+    --primary-background-color: var(--light-theme-background-color);
+    --secondary-text-color: var(--light-theme-secondary-color);
+    --disabled-text-color: var(--light-theme-disabled-color);
+    --divider-color: var(--light-theme-divider-color);
+    --error-color: var(--paper-deep-orange-a700);
+
+    /*
+     * Primary and accent colors. Also see color.html for more colors.
+     */
+    --primary-color: var(--paper-indigo-500);
+    --light-primary-color: var(--paper-indigo-100);
+    --dark-primary-color: var(--paper-indigo-700);
+
+    --accent-color: var(--paper-pink-a200);
+    --light-accent-color: var(--paper-pink-a100);
+    --dark-accent-color: var(--paper-pink-a400);
+
+
+    /*
+     * Material Design Light background theme
+     */
+    --light-theme-background-color: #ffffff;
+    --light-theme-base-color: #000000;
+    --light-theme-text-color: var(--paper-grey-900);
+    --light-theme-secondary-color: #737373;  /* for secondary text and icons */
+    --light-theme-disabled-color: #9b9b9b;  /* disabled/hint text */
+    --light-theme-divider-color: #dbdbdb;
+
+    /*
+     * Material Design Dark background theme
+     */
+    --dark-theme-background-color: var(--paper-grey-900);
+    --dark-theme-base-color: #ffffff;
+    --dark-theme-text-color: #ffffff;
+    --dark-theme-secondary-color: #bcbcbc;  /* for secondary text and icons */
+    --dark-theme-disabled-color: #646464;  /* disabled/hint text */
+    --dark-theme-divider-color: #3c3c3c;
+
+    /*
+     * Deprecated values because of their confusing names.
+     */
+    --text-primary-color: var(--dark-theme-text-color);
+    --default-primary-color: var(--primary-color);
+
+  }
+
+</style>
 <dom-module id="paper-icon-button" assetpath="../../bower_components/paper-icon-button/">
   <template strip-whitespace="">
-    <style>:host{display:inline-block;position:relative;padding:8px;outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;z-index:0;line-height:1;width:40px;height:40px;box-sizing:border-box !important;@apply (--paper-icon-button);}:host #ink{color:var(--paper-icon-button-ink-color, --primary-text-color);opacity:0.6;}:host([disabled]){color:var(--paper-icon-button-disabled-text, --disabled-text-color);pointer-events:none;cursor:auto;@apply (--paper-icon-button-disabled);}:host(:hover){@apply (--paper-icon-button-hover);}iron-icon{--iron-icon-width:100%;--iron-icon-height:100%;}</style>
+    <style>
+      :host {
+        display: inline-block;
+        position: relative;
+        padding: 8px;
+        outline: none;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        z-index: 0;
+        line-height: 1;
+
+        width: 40px;
+        height: 40px;
+
+        /* Because of polymer/2558, this style has lower specificity than * */
+        box-sizing: border-box !important;
+
+        @apply(--paper-icon-button);
+      }
+
+      :host #ink {
+        color: var(--paper-icon-button-ink-color, --primary-text-color);
+        opacity: 0.6;
+      }
+
+      :host([disabled]) {
+        color: var(--paper-icon-button-disabled-text, --disabled-text-color);
+        pointer-events: none;
+        cursor: auto;
+
+        @apply(--paper-icon-button-disabled);
+      }
+
+      :host(:hover) {
+        @apply(--paper-icon-button-hover);
+      }
+
+      iron-icon {
+        --iron-icon-width: 100%;
+        --iron-icon-height: 100%;
+      }
+    </style>
 
     <iron-icon id="icon" src="[[src]]" icon="[[icon]]" alt$="[[alt]]"></iron-icon>
   </template>
@@ -180,7 +1052,26 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 <dom-module id="iron-overlay-backdrop" assetpath="../../bower_components/iron-overlay-behavior/">
 
   <template>
-    <style>:host{position:fixed;top:0;left:0;width:100%;height:100%;background-color:var(--iron-overlay-backdrop-background-color, #000);opacity:0;transition:opacity 0.2s;pointer-events:none;@apply (--iron-overlay-backdrop);}:host(.opened){opacity:var(--iron-overlay-backdrop-opacity, 0.6);pointer-events:auto;@apply (--iron-overlay-backdrop-opened);}</style>
+    <style>
+      :host {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--iron-overlay-backdrop-background-color, #000);
+        opacity: 0;
+        transition: opacity 0.2s;
+        pointer-events: none;
+        @apply(--iron-overlay-backdrop);
+      }
+
+      :host(.opened) {
+        opacity: var(--iron-overlay-backdrop-opacity, 0.6);
+        pointer-events: auto;
+        @apply(--iron-overlay-backdrop-opened);
+      }
+    </style>
 
     <content></content>
   </template>
@@ -193,25 +1084,272 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 <script>Polymer.PaperDialogBehaviorImpl={hostAttributes:{role:"dialog",tabindex:"-1"},properties:{modal:{type:Boolean,value:!1}},observers:["_modalChanged(modal, _readied)"],listeners:{tap:"_onDialogClick"},ready:function(){this.__prevNoCancelOnOutsideClick=this.noCancelOnOutsideClick,this.__prevNoCancelOnEscKey=this.noCancelOnEscKey,this.__prevWithBackdrop=this.withBackdrop},_modalChanged:function(i,e){i?this.setAttribute("aria-modal","true"):this.setAttribute("aria-modal","false"),e&&(i?(this.__prevNoCancelOnOutsideClick=this.noCancelOnOutsideClick,this.__prevNoCancelOnEscKey=this.noCancelOnEscKey,this.__prevWithBackdrop=this.withBackdrop,this.noCancelOnOutsideClick=!0,this.noCancelOnEscKey=!0,this.withBackdrop=!0):(this.noCancelOnOutsideClick=this.noCancelOnOutsideClick&&this.__prevNoCancelOnOutsideClick,this.noCancelOnEscKey=this.noCancelOnEscKey&&this.__prevNoCancelOnEscKey,this.withBackdrop=this.withBackdrop&&this.__prevWithBackdrop))},_updateClosingReasonConfirmed:function(i){this.closingReason=this.closingReason||{},this.closingReason.confirmed=i},_onDialogClick:function(i){for(var e=Polymer.dom(i).path,t=0;t<e.indexOf(this);t++){var o=e[t];if(o.hasAttribute&&(o.hasAttribute("dialog-dismiss")||o.hasAttribute("dialog-confirm"))){this._updateClosingReasonConfirmed(o.hasAttribute("dialog-confirm")),this.close(),i.stopPropagation();break}}}},Polymer.PaperDialogBehavior=[Polymer.IronOverlayBehavior,Polymer.PaperDialogBehaviorImpl];</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic,500,500italic,700,700italic">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700">
-<style is="custom-style">:root{--paper-font-common-base:{font-family:'Roboto', 'Noto', sans-serif;-webkit-font-smoothing:antialiased;};--paper-font-common-code:{font-family:'Roboto Mono', 'Consolas', 'Menlo', monospace;-webkit-font-smoothing:antialiased;};--paper-font-common-expensive-kerning:{text-rendering:optimizeLegibility;};--paper-font-common-nowrap:{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;};--paper-font-display4:{@apply (--paper-font-common-base);@apply (--paper-font-common-nowrap);font-size:112px;font-weight:300;letter-spacing:-.044em;line-height:120px;};--paper-font-display3:{@apply (--paper-font-common-base);@apply (--paper-font-common-nowrap);font-size:56px;font-weight:400;letter-spacing:-.026em;line-height:60px;};--paper-font-display2:{@apply (--paper-font-common-base);font-size:45px;font-weight:400;letter-spacing:-.018em;line-height:48px;};--paper-font-display1:{@apply (--paper-font-common-base);font-size:34px;font-weight:400;letter-spacing:-.01em;line-height:40px;};--paper-font-headline:{@apply (--paper-font-common-base);font-size:24px;font-weight:400;letter-spacing:-.012em;line-height:32px;};--paper-font-title:{@apply (--paper-font-common-base);@apply (--paper-font-common-nowrap);font-size:20px;font-weight:500;line-height:28px;};--paper-font-subhead:{@apply (--paper-font-common-base);font-size:16px;font-weight:400;line-height:24px;};--paper-font-body2:{@apply (--paper-font-common-base);font-size:14px;font-weight:500;line-height:24px;};--paper-font-body1:{@apply (--paper-font-common-base);font-size:14px;font-weight:400;line-height:20px;};--paper-font-caption:{@apply (--paper-font-common-base);@apply (--paper-font-common-nowrap);font-size:12px;font-weight:400;letter-spacing:0.011em;line-height:20px;};--paper-font-menu:{@apply (--paper-font-common-base);@apply (--paper-font-common-nowrap);font-size:13px;font-weight:500;line-height:24px;};--paper-font-button:{@apply (--paper-font-common-base);@apply (--paper-font-common-nowrap);font-size:14px;font-weight:500;letter-spacing:0.018em;line-height:24px;text-transform:uppercase;};--paper-font-code2:{@apply (--paper-font-common-code);font-size:14px;font-weight:700;line-height:20px;};--paper-font-code1:{@apply (--paper-font-common-code);font-size:14px;font-weight:500;line-height:20px;};}</style>
-<style is="custom-style">:root{--shadow-transition:{transition:box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);};--shadow-none:{box-shadow:none;};--shadow-elevation-2dp:{box-shadow:0 2px 2px 0 rgba(0, 0, 0, 0.14),
+<style is="custom-style">
+
+  :root {
+
+    /* Shared Styles */
+    --paper-font-common-base: {
+      font-family: 'Roboto', 'Noto', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    };
+
+    --paper-font-common-code: {
+      font-family: 'Roboto Mono', 'Consolas', 'Menlo', monospace;
+      -webkit-font-smoothing: antialiased;
+    };
+
+    --paper-font-common-expensive-kerning: {
+      text-rendering: optimizeLegibility;
+    };
+
+    --paper-font-common-nowrap: {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    };
+
+    /* Material Font Styles */
+
+    --paper-font-display4: {
+      @apply(--paper-font-common-base);
+      @apply(--paper-font-common-nowrap);
+
+      font-size: 112px;
+      font-weight: 300;
+      letter-spacing: -.044em;
+      line-height: 120px;
+    };
+
+    --paper-font-display3: {
+      @apply(--paper-font-common-base);
+      @apply(--paper-font-common-nowrap);
+
+      font-size: 56px;
+      font-weight: 400;
+      letter-spacing: -.026em;
+      line-height: 60px;
+    };
+
+    --paper-font-display2: {
+      @apply(--paper-font-common-base);
+
+      font-size: 45px;
+      font-weight: 400;
+      letter-spacing: -.018em;
+      line-height: 48px;
+    };
+
+    --paper-font-display1: {
+      @apply(--paper-font-common-base);
+
+      font-size: 34px;
+      font-weight: 400;
+      letter-spacing: -.01em;
+      line-height: 40px;
+    };
+
+    --paper-font-headline: {
+      @apply(--paper-font-common-base);
+
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: -.012em;
+      line-height: 32px;
+    };
+
+    --paper-font-title: {
+      @apply(--paper-font-common-base);
+      @apply(--paper-font-common-nowrap);
+
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 28px;
+    };
+
+    --paper-font-subhead: {
+      @apply(--paper-font-common-base);
+
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+    };
+
+    --paper-font-body2: {
+      @apply(--paper-font-common-base);
+
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 24px;
+    };
+
+    --paper-font-body1: {
+      @apply(--paper-font-common-base);
+
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+    };
+
+    --paper-font-caption: {
+      @apply(--paper-font-common-base);
+      @apply(--paper-font-common-nowrap);
+
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.011em;
+      line-height: 20px;
+    };
+
+    --paper-font-menu: {
+      @apply(--paper-font-common-base);
+      @apply(--paper-font-common-nowrap);
+
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 24px;
+    };
+
+    --paper-font-button: {
+      @apply(--paper-font-common-base);
+      @apply(--paper-font-common-nowrap);
+
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.018em;
+      line-height: 24px;
+      text-transform: uppercase;
+    };
+
+    --paper-font-code2: {
+      @apply(--paper-font-common-code);
+
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 20px;
+    };
+
+    --paper-font-code1: {
+      @apply(--paper-font-common-code);
+
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+    };
+
+  }
+
+</style>
+<style is="custom-style">
+
+  :root {
+
+    --shadow-transition: {
+      transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    };
+
+    --shadow-none: {
+      box-shadow: none;
+    };
+
+    /* from http://codepen.io/shyndman/pen/c5394ddf2e8b2a5c9185904b57421cdb */
+
+    --shadow-elevation-2dp: {
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
                   0 1px 5px 0 rgba(0, 0, 0, 0.12),
-                  0 3px 1px -2px rgba(0, 0, 0, 0.2);};--shadow-elevation-3dp:{box-shadow:0 3px 4px 0 rgba(0, 0, 0, 0.14),
+                  0 3px 1px -2px rgba(0, 0, 0, 0.2);
+    };
+
+    --shadow-elevation-3dp: {
+      box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
                   0 1px 8px 0 rgba(0, 0, 0, 0.12),
-                  0 3px 3px -2px rgba(0, 0, 0, 0.4);};--shadow-elevation-4dp:{box-shadow:0 4px 5px 0 rgba(0, 0, 0, 0.14),
+                  0 3px 3px -2px rgba(0, 0, 0, 0.4);
+    };
+
+    --shadow-elevation-4dp: {
+      box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
                   0 1px 10px 0 rgba(0, 0, 0, 0.12),
-                  0 2px 4px -1px rgba(0, 0, 0, 0.4);};--shadow-elevation-6dp:{box-shadow:0 6px 10px 0 rgba(0, 0, 0, 0.14),
+                  0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    };
+
+    --shadow-elevation-6dp: {
+      box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14),
                   0 1px 18px 0 rgba(0, 0, 0, 0.12),
-                  0 3px 5px -1px rgba(0, 0, 0, 0.4);};--shadow-elevation-8dp:{box-shadow:0 8px 10px 1px rgba(0, 0, 0, 0.14),
+                  0 3px 5px -1px rgba(0, 0, 0, 0.4);
+    };
+
+    --shadow-elevation-8dp: {
+      box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
                   0 3px 14px 2px rgba(0, 0, 0, 0.12),
-                  0 5px 5px -3px rgba(0, 0, 0, 0.4);};--shadow-elevation-12dp:{box-shadow:0 12px 16px 1px rgba(0, 0, 0, 0.14),
+                  0 5px 5px -3px rgba(0, 0, 0, 0.4);
+    };
+
+    --shadow-elevation-12dp: {
+      box-shadow: 0 12px 16px 1px rgba(0, 0, 0, 0.14),
                   0 4px 22px 3px rgba(0, 0, 0, 0.12),
-                  0 6px 7px -4px rgba(0, 0, 0, 0.4);};--shadow-elevation-16dp:{box-shadow:0 16px 24px 2px rgba(0, 0, 0, 0.14),
+                  0 6px 7px -4px rgba(0, 0, 0, 0.4);
+    };
+
+    --shadow-elevation-16dp: {
+      box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14),
                   0  6px 30px 5px rgba(0, 0, 0, 0.12),
-                  0  8px 10px -5px rgba(0, 0, 0, 0.4);};}</style>
+                  0  8px 10px -5px rgba(0, 0, 0, 0.4);
+    };
+
+  }
+
+</style>
 <dom-module id="paper-dialog-shared-styles" assetpath="../../bower_components/paper-dialog-behavior/">
   <template>
-    <style>:host{display:block;margin:24px 40px;background:var(--paper-dialog-background-color, --primary-background-color);color:var(--paper-dialog-color, --primary-text-color);@apply (--paper-font-body1);@apply (--shadow-elevation-16dp);@apply (--paper-dialog);}:host > ::content > *{margin-top:20px;padding:0 24px;}:host > ::content > .no-padding{padding:0;}:host > ::content > *:first-child{margin-top:24px;}:host > ::content > *:last-child{margin-bottom:24px;}:host > ::content h2{position:relative;margin:0;@apply (--paper-font-title);@apply (--paper-dialog-title);}:host > ::content .buttons{position:relative;padding:8px 8px 8px 24px;margin:0;color:var(--paper-dialog-button-color, --primary-color);@apply (--layout-horizontal);@apply (--layout-end-justified);}</style>
+    <style>
+      :host {
+        display: block;
+        margin: 24px 40px;
+
+        background: var(--paper-dialog-background-color, --primary-background-color);
+        color: var(--paper-dialog-color, --primary-text-color);
+
+        @apply(--paper-font-body1);
+        @apply(--shadow-elevation-16dp);
+        @apply(--paper-dialog);
+      }
+
+      :host > ::content > * {
+        margin-top: 20px;
+        padding: 0 24px;
+      }
+
+      :host > ::content > .no-padding {
+        padding: 0;
+      }
+
+      :host > ::content > *:first-child {
+        margin-top: 24px;
+      }
+
+      :host > ::content > *:last-child {
+        margin-bottom: 24px;
+      }
+
+      :host > ::content h2 {
+        position: relative;
+        margin: 0;
+        @apply(--paper-font-title);
+
+        @apply(--paper-dialog-title);
+      }
+
+      :host > ::content .buttons {
+        position: relative;
+        padding: 8px 8px 8px 24px;
+        margin: 0;
+
+        color: var(--paper-dialog-button-color, --primary-color);
+
+        @apply(--layout-horizontal);
+        @apply(--layout-end-justified);
+      }
+    </style>
   </template>
 </dom-module>
 <dom-module id="paper-dialog" assetpath="../../bower_components/paper-dialog/">
@@ -225,13 +1363,42 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 <script>Polymer.PaperButtonBehaviorImpl={properties:{elevation:{type:Number,reflectToAttribute:!0,readOnly:!0}},observers:["_calculateElevation(focused, disabled, active, pressed, receivedFocusFromKeyboard)","_computeKeyboardClass(receivedFocusFromKeyboard)"],hostAttributes:{role:"button",tabindex:"0",animated:!0},_calculateElevation:function(){var e=1;this.disabled?e=0:this.active||this.pressed?e=4:this.receivedFocusFromKeyboard&&(e=3),this._setElevation(e)},_computeKeyboardClass:function(e){this.toggleClass("keyboard-focus",e)},_spaceKeyDownHandler:function(e){Polymer.IronButtonStateImpl._spaceKeyDownHandler.call(this,e),this.hasRipple()&&this.getRipple().ripples.length<1&&this._ripple.uiDownAction()},_spaceKeyUpHandler:function(e){Polymer.IronButtonStateImpl._spaceKeyUpHandler.call(this,e),this.hasRipple()&&this._ripple.uiUpAction()}},Polymer.PaperButtonBehavior=[Polymer.IronButtonState,Polymer.IronControlState,Polymer.PaperRippleBehavior,Polymer.PaperButtonBehaviorImpl];</script>
 <dom-module id="paper-material-shared-styles" assetpath="../../bower_components/paper-material/">
   <template>
-    <style>:host{display:block;position:relative;}:host([elevation="1"]){@apply (--shadow-elevation-2dp);}:host([elevation="2"]){@apply (--shadow-elevation-4dp);}:host([elevation="3"]){@apply (--shadow-elevation-6dp);}:host([elevation="4"]){@apply (--shadow-elevation-8dp);}:host([elevation="5"]){@apply (--shadow-elevation-16dp);}</style>
+    <style>
+      :host {
+        display: block;
+        position: relative;
+      }
+
+      :host([elevation="1"]) {
+        @apply(--shadow-elevation-2dp);
+      }
+
+      :host([elevation="2"]) {
+        @apply(--shadow-elevation-4dp);
+      }
+
+      :host([elevation="3"]) {
+        @apply(--shadow-elevation-6dp);
+      }
+
+      :host([elevation="4"]) {
+        @apply(--shadow-elevation-8dp);
+      }
+
+      :host([elevation="5"]) {
+        @apply(--shadow-elevation-16dp);
+      }
+    </style>
   </template>
 </dom-module>
 <dom-module id="paper-material" assetpath="../../bower_components/paper-material/">
   <template>
     <style include="paper-material-shared-styles"></style>
-    <style>:host([animated]){@apply (--shadow-transition);}</style>
+    <style>
+      :host([animated]) {
+        @apply(--shadow-transition);
+      }
+    </style>
 
     <content></content>
   </template>
@@ -239,7 +1406,56 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 <script>Polymer({is:"paper-material",properties:{elevation:{type:Number,reflectToAttribute:!0,value:1},animated:{type:Boolean,reflectToAttribute:!0,value:!1}}});</script>
 <dom-module id="paper-button" assetpath="../../bower_components/paper-button/">
   <template strip-whitespace="">
-    <style include="paper-material">:host{@apply (--layout-inline);@apply (--layout-center-center);position:relative;box-sizing:border-box;min-width:5.14em;margin:0 0.29em;background:transparent;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);-webkit-tap-highlight-color:transparent;font:inherit;text-transform:uppercase;outline-width:0;border-radius:3px;-moz-user-select:none;-ms-user-select:none;-webkit-user-select:none;user-select:none;cursor:pointer;z-index:0;padding:0.7em 0.57em;@apply (--paper-font-common-base);@apply (--paper-button);}:host([raised].keyboard-focus){font-weight:bold;@apply (--paper-button-raised-keyboard-focus);}:host(:not([raised]).keyboard-focus){font-weight:bold;@apply (--paper-button-flat-keyboard-focus);}:host([disabled]){background:#eaeaea;color:#a8a8a8;cursor:auto;pointer-events:none;@apply (--paper-button-disabled);}paper-ripple{color:var(--paper-button-ink-color);}</style>
+    <style include="paper-material">
+      :host {
+        @apply(--layout-inline);
+        @apply(--layout-center-center);
+        position: relative;
+        box-sizing: border-box;
+        min-width: 5.14em;
+        margin: 0 0.29em;
+        background: transparent;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        -webkit-tap-highlight-color: transparent;
+        font: inherit;
+        text-transform: uppercase;
+        outline-width: 0;
+        border-radius: 3px;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        z-index: 0;
+        padding: 0.7em 0.57em;
+
+        @apply(--paper-font-common-base);
+        @apply(--paper-button);
+      }
+
+      :host([raised].keyboard-focus) {
+        font-weight: bold;
+        @apply(--paper-button-raised-keyboard-focus);
+      }
+
+      :host(:not([raised]).keyboard-focus) {
+        font-weight: bold;
+        @apply(--paper-button-flat-keyboard-focus);
+      }
+
+      :host([disabled]) {
+        background: #eaeaea;
+        color: #a8a8a8;
+        cursor: auto;
+        pointer-events: none;
+
+        @apply(--paper-button-disabled);
+      }
+
+      paper-ripple {
+        color: var(--paper-button-ink-color);
+      }
+    </style>
 
     <content></content>
   </template>
@@ -251,7 +1467,76 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed&amp;subset=latin-ext">
 <dom-module id="az-hex" assetpath="../az-hex/">
   <template>
-    <style>:host{display:inline-block;cursor:pointer;font-family:'Roboto', 'Noto', sans-serif;position:relative;line-height:1;width:var(--az-hex-width, 51px);height:calc(var(--az-hex-width, 51px) * 1.15463);}.hex-path{fill:var(--az-hex-bkg-color, #e9e9e9);}:host[animate]{transition:color 1s;}:host[animate] .hex-path{transition:fill 1s;}:host[hex-state="teamA"]{color:var(--az-hex-team-a-text-color, #ffffff);cursor:default;}:host[hex-state="teamA"] .hex-path{fill:var(--az-hex-team-a-bkg-color, #ff8427);}:host[hex-state="teamB"]{color:var(--az-hex-team-b-text-color, #ffffff);cursor:default;}:host[hex-state="teamB"] .hex-path{fill:var(--az-hex-team-b-bkg-color, #00d3d8);}:host[hex-state="unknown"]{color:var(--az-hex-unknown-text-color, #ffffff);}:host[hex-state="unknown"] .hex-path{fill:var(--az-hex-unknown-bkg-color, #3e3e3e);}:host[disabled]{cursor:default;}svg{display:block;width:100%;}.content-wrapper{@apply (--layout-fit);@apply (--layout);@apply (--layout-center);@apply (--layout-center-justified);font-size:22px;font-weight:500;}</style>
+    <style>
+      :host {
+        display: inline-block;
+        cursor: pointer;
+
+        font-family: 'Roboto', 'Noto', sans-serif;
+
+        position: relative;
+        line-height: 1;
+        width: var(--az-hex-width, 51px);
+        height: calc(var(--az-hex-width, 51px) * 1.15463);
+      }
+
+      .hex-path {
+        fill: var(--az-hex-bkg-color, #e9e9e9);
+      }
+
+      :host[animate] {
+        transition: color 1s;
+      }
+
+      :host[animate] .hex-path {
+        transition: fill 1s;
+      }
+
+      :host[hex-state="teamA"] {
+        color: var(--az-hex-team-a-text-color, #ffffff);
+        cursor: default;
+      }
+
+      :host[hex-state="teamA"] .hex-path {
+        fill: var(--az-hex-team-a-bkg-color, #ff8427);
+      }
+
+      :host[hex-state="teamB"] {
+        color: var(--az-hex-team-b-text-color, #ffffff);
+        cursor: default;
+      }
+
+      :host[hex-state="teamB"] .hex-path {
+        fill: var(--az-hex-team-b-bkg-color, #00d3d8);
+      }
+
+      :host[hex-state="unknown"] {
+        color: var(--az-hex-unknown-text-color, #ffffff);
+      }
+
+      :host[hex-state="unknown"] .hex-path {
+        fill: var(--az-hex-unknown-bkg-color, #3e3e3e);
+      }
+
+      :host[disabled] {
+        cursor: default;
+      }
+
+      svg {
+        display: block;
+        width: 100%;
+      }
+
+      .content-wrapper {
+        @apply(--layout-fit);
+        @apply(--layout);
+        @apply(--layout-center);
+        @apply(--layout-center-justified);
+
+        font-size: 22px;
+        font-weight: 500;
+      }
+    </style>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 59.000001">
       <path d="M51 44.222L25.5 58.945 0 44.222V14.778L25.5.055 51 14.778z" class="hex-path"></path>
     </svg>
@@ -264,7 +1549,30 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 </dom-module>
 <dom-module id="az-pyramid" assetpath="../az-pyramid/">
   <template>
-    <style>:host{@apply (--layout-vertical);@apply (--layout-center-justified);}.pyramid-line{margin:-5px auto;text-align:center;font-size:0;}.pyramid-line:first-child{margin-top:0;}.pyramid-line:last-child{margin-bottom:0;}az-hex{margin:0 2.5px;}</style>
+    <style>
+      :host {
+        @apply(--layout-vertical);
+        @apply(--layout-center-justified);
+      }
+
+      .pyramid-line {
+        margin: -5px auto;
+        text-align: center;
+        font-size: 0;
+      }
+
+      .pyramid-line:first-child {
+        margin-top: 0;
+      }
+
+      .pyramid-line:last-child {
+        margin-bottom: 0;
+      }
+
+      az-hex {
+        margin: 0 2.5px;
+      }
+    </style>
     <div class="pyramid-line">
       <az-hex hex-state="[[states.1]]" on-tap="_onHexTap">1</az-hex>
     </div>
@@ -314,7 +1622,49 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 <script>Polymer({is:"wave-animation",behaviors:[Polymer.NeonAnimationBehavior],configure:function(e){var t=e.node;return this._effect=new KeyframeEffect(t,[{opacity:"0.7",transform:"translate(-50%, -50%) scale(0.07, 0.07)"},{opacity:"0",transform:"translate(-50%, -50%) scale(1, 1)"}],this.timingFromConfig(e)),this._effect}});</script>
 <dom-module id="az-team-indicator" assetpath="../az-team-indicator/">
   <template>
-    <style>:host{display:block;width:0;height:0;border-style:solid;border-width:20px 40px 0 40px;border-color:transparent;margin:auto;position:relative;}:host[team="teamA"]{border-top-color:var(--az-team-indicator-team-a-color, #ff8427);}:host[team="teamB"]{border-top-color:var(--az-team-indicator-team-b-color, #00d3d8);}#wave{position:absolute;top:-15px;left:50%;transform:translate(-50%, -50%);opacity:0;border-radius:50%;width:200px;height:200px;background-color:var(--az-team-indicator-team-a-color, #ff8427);}:host[team="teamA"] #wave{background-color:var(--az-team-indicator-team-a-color, #ff8427);}:host[team="teamB"] #wave{background-color:var(--az-team-indicator-team-b-color, #00d3d8);}</style>
+    <style>
+      :host {
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 20px 40px 0 40px;
+        border-color: transparent;
+
+        margin: auto;
+
+        position: relative;
+      }
+
+      :host[team="teamA"] {
+        border-top-color: var(--az-team-indicator-team-a-color, #ff8427);
+      }
+
+      :host[team="teamB"] {
+        border-top-color: var(--az-team-indicator-team-b-color, #00d3d8);
+      }
+
+      #wave {
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        background-color: var(--az-team-indicator-team-a-color, #ff8427);
+      }
+
+      :host[team="teamA"] #wave {
+        background-color: var(--az-team-indicator-team-a-color, #ff8427);
+      }
+
+      :host[team="teamB"] #wave {
+        background-color: var(--az-team-indicator-team-b-color, #00d3d8);
+      }
+    </style>
 
     <div id="wave"></div>
   </template>
@@ -338,7 +1688,22 @@ if(Array.isArray(e)){for(var t=[],n=0;n<e.length;n++)for(var r=e[n].toString().s
 </iron-iconset-svg>
 <dom-module id="az-pyramid-screen" assetpath="../az-pyramid-screen/">
   <template>
-    <style>:host{@apply (--layout-vertical);}#backButton{position:absolute;top:4px;left:4px;}az-pyramid{@apply (--layout-flex);}</style>
+    <style>
+      :host {
+        @apply(--layout-vertical);
+        /*position: relative;*/
+      }
+
+      #backButton {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+      }
+
+      az-pyramid {
+        @apply(--layout-flex);
+      }
+    </style>
     <paper-icon-button id="backButton" icon="az:arrow-back" on-tap="_onBackTap">
     </paper-icon-button>
     <az-team-indicator team="[[game.currentTeam]]"></az-team-indicator>
@@ -374,7 +1739,21 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 
   <template>
 
-    <style>:host{display:block;transition-duration:300ms;overflow:visible;}:host(.iron-collapse-closed){display:none;}:host(:not(.iron-collapse-opened)){overflow:hidden;}</style>
+    <style>
+      :host {
+        display: block;
+        transition-duration: 300ms;
+        overflow: visible;
+      }
+
+      :host(.iron-collapse-closed) {
+        display: none;
+      }
+
+      :host(:not(.iron-collapse-opened)) {
+        overflow: hidden;
+      }
+    </style>
 
     <content></content>
 
@@ -385,7 +1764,13 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 <script>Polymer({is:"iron-collapse",behaviors:[Polymer.IronResizableBehavior],properties:{horizontal:{type:Boolean,value:!1,observer:"_horizontalChanged"},opened:{type:Boolean,value:!1,notify:!0,observer:"_openedChanged"},noAnimation:{type:Boolean}},get dimension(){return this.horizontal?"width":"height"},get _dimensionMax(){return this.horizontal?"maxWidth":"maxHeight"},get _dimensionMaxCss(){return this.horizontal?"max-width":"max-height"},hostAttributes:{role:"group","aria-hidden":"true","aria-expanded":"false"},listeners:{transitionend:"_transitionEnd"},attached:function(){this._transitionEnd()},toggle:function(){this.opened=!this.opened},show:function(){this.opened=!0},hide:function(){this.opened=!1},updateSize:function(t,i){var e=this.style[this._dimensionMax];if(e!==t&&("auto"!==t||e)){if(this._updateTransition(!1),i&&!this.noAnimation&&this._isDisplayed){var n=this._calcSize();"auto"===t&&(this.style[this._dimensionMax]="",t=this._calcSize()),this.style[this._dimensionMax]=n,this.offsetHeight=this.offsetHeight,this._updateTransition(!0)}"auto"===t?this.style[this._dimensionMax]="":this.style[this._dimensionMax]=t}},enableTransition:function(t){Polymer.Base._warn("`enableTransition()` is deprecated, use `noAnimation` instead."),this.noAnimation=!t},_updateTransition:function(t){this.style.transitionDuration=t&&!this.noAnimation?"":"0s"},_horizontalChanged:function(){this.style.transitionProperty=this._dimensionMaxCss;var t="maxWidth"===this._dimensionMax?"maxHeight":"maxWidth";this.style[t]="",this.updateSize(this.opened?"auto":"0px",!1)},_openedChanged:function(){this.setAttribute("aria-expanded",this.opened),this.setAttribute("aria-hidden",!this.opened),this.toggleClass("iron-collapse-closed",!1),this.toggleClass("iron-collapse-opened",!1),this.updateSize(this.opened?"auto":"0px",!0),this.opened&&this.focus(),this.noAnimation&&this._transitionEnd()},_transitionEnd:function(){this.opened&&(this.style[this._dimensionMax]=""),this.toggleClass("iron-collapse-closed",!this.opened),this.toggleClass("iron-collapse-opened",this.opened),this._updateTransition(!1),this.notifyResize()},get _isDisplayed(){var t=this.getBoundingClientRect();for(var i in t)if(0!==t[i])return!0;return!1},_calcSize:function(){return this.getBoundingClientRect()[this.dimension]+"px"}});</script>
 <script>Polymer.IronFormElementBehavior={properties:{name:{type:String},value:{notify:!0,type:String},required:{type:Boolean,value:!1},_parentForm:{type:Object}},attached:function(){this.fire("iron-form-element-register")},detached:function(){this._parentForm&&this._parentForm.fire("iron-form-element-unregister",{target:this})}};</script>
 <dom-module id="iron-a11y-announcer" assetpath="../../bower_components/iron-a11y-announcer/">
-  <style>:host{display:inline-block;position:fixed;clip:rect(0px,0px,0px,0px);}</style>
+  <style>
+    :host {
+      display: inline-block;
+      position: fixed;
+      clip: rect(0px,0px,0px,0px);
+    }
+  </style>
 
   <template>
     <div aria-live$="[[mode]]">[[_text]]</div>
@@ -399,7 +1784,23 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 <script>Polymer.PaperInputAddonBehavior={hostAttributes:{"add-on":""},attached:function(){this.fire("addon-attached")},update:function(t){}};</script>
 <dom-module id="paper-input-char-counter" assetpath="../../bower_components/paper-input/">
   <template>
-    <style>:host{display:inline-block;float:right;@apply (--paper-font-caption);@apply (--paper-input-char-counter);}:host([hidden]){display:none !important;}:host-context([dir="rtl"]){float:left;}</style>
+    <style>
+      :host {
+        display: inline-block;
+        float: right;
+
+        @apply(--paper-font-caption);
+        @apply(--paper-input-char-counter);
+      }
+
+      :host([hidden]) {
+        display: none !important;
+      }
+
+      :host-context([dir="rtl"]) {
+        float: left;
+      }
+    </style>
 
     <span>[[_charCounterStr]]</span>
   </template>
@@ -408,16 +1809,216 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 <script>Polymer({is:"paper-input-char-counter",behaviors:[Polymer.PaperInputAddonBehavior],properties:{_charCounterStr:{type:String,value:"0"}},update:function(t){if(t.inputElement){t.value=t.value||"";var e=t.value.length.toString();t.inputElement.hasAttribute("maxlength")&&(e+="/"+t.inputElement.getAttribute("maxlength")),this._charCounterStr=e}}});</script>
 <dom-module id="paper-input-container" assetpath="../../bower_components/paper-input/">
   <template>
-    <style>:host{display:block;padding:8px 0;@apply (--paper-input-container);}:host[inline]{display:inline-block;}:host([disabled]){pointer-events:none;opacity:0.33;@apply (--paper-input-container-disabled);}:host([hidden]){display:none !important;}.floated-label-placeholder{@apply (--paper-font-caption);}.underline{position:relative;}.focused-line{@apply (--layout-fit);background:var(--paper-input-container-focus-color, --primary-color);height:2px;-webkit-transform-origin:center center;transform-origin:center center;-webkit-transform:scale3d(0,1,1);transform:scale3d(0,1,1);@apply (--paper-input-container-underline-focus);}.underline.is-highlighted .focused-line{-webkit-transform:none;transform:none;-webkit-transition:-webkit-transform 0.25s;transition:transform 0.25s;@apply (--paper-transition-easing);}.underline.is-invalid .focused-line{background:var(--paper-input-container-invalid-color, --error-color);-webkit-transform:none;transform:none;-webkit-transition:-webkit-transform 0.25s;transition:transform 0.25s;@apply (--paper-transition-easing);}.unfocused-line{@apply (--layout-fit);background:var(--paper-input-container-color, --secondary-text-color);height:1px;@apply (--paper-input-container-underline);}:host([disabled]) .unfocused-line{border-bottom:1px dashed;border-color:var(--paper-input-container-color, --secondary-text-color);background:transparent;@apply (--paper-input-container-underline-disabled);}.label-and-input-container{@apply (--layout-flex-auto);@apply (--layout-relative);width:100%;max-width:100%;}.input-content{@apply (--layout-horizontal);@apply (--layout-center);position:relative;}.input-content ::content label,
-      .input-content ::content .paper-input-label{position:absolute;top:0;right:0;left:0;width:100%;font:inherit;color:var(--paper-input-container-color, --secondary-text-color);-webkit-transition:-webkit-transform 0.25s, width 0.25s;transition:transform 0.25s, width 0.25s;-webkit-transform-origin:left top;transform-origin:left top;@apply (--paper-font-common-nowrap);@apply (--paper-font-subhead);@apply (--paper-input-container-label);@apply (--paper-transition-easing);}.input-content.label-is-floating ::content label,
-      .input-content.label-is-floating ::content .paper-input-label{-webkit-transform:translateY(-75%) scale(0.75);transform:translateY(-75%) scale(0.75);width:133%;@apply (--paper-input-container-label-floating);}:host-context([dir="rtl"]) .input-content.label-is-floating ::content label,
-      :host-context([dir="rtl"]) .input-content.label-is-floating ::content .paper-input-label{width:100%;-webkit-transform-origin:right top;transform-origin:right top;}.input-content.label-is-highlighted ::content label,
-      .input-content.label-is-highlighted ::content .paper-input-label{color:var(--paper-input-container-focus-color, --primary-color);@apply (--paper-input-container-label-focus);}.input-content.is-invalid ::content label,
-      .input-content.is-invalid ::content .paper-input-label{color:var(--paper-input-container-invalid-color, --error-color);}.input-content.label-is-hidden ::content label,
-      .input-content.label-is-hidden ::content .paper-input-label{visibility:hidden;}.input-content ::content input,
+    <style>
+      :host {
+        display: block;
+        padding: 8px 0;
+
+        @apply(--paper-input-container);
+      }
+
+      :host[inline] {
+        display: inline-block;
+      }
+
+      :host([disabled]) {
+        pointer-events: none;
+        opacity: 0.33;
+
+        @apply(--paper-input-container-disabled);
+      }
+
+      :host([hidden]) {
+        display: none !important;
+      }
+
+      .floated-label-placeholder {
+        @apply(--paper-font-caption);
+      }
+
+      .underline {
+        position: relative;
+      }
+
+      .focused-line {
+        @apply(--layout-fit);
+
+        background: var(--paper-input-container-focus-color, --primary-color);
+        height: 2px;
+
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+        -webkit-transform: scale3d(0,1,1);
+        transform: scale3d(0,1,1);
+
+        @apply(--paper-input-container-underline-focus);
+      }
+
+      .underline.is-highlighted .focused-line {
+        -webkit-transform: none;
+        transform: none;
+        -webkit-transition: -webkit-transform 0.25s;
+        transition: transform 0.25s;
+
+        @apply(--paper-transition-easing);
+      }
+
+      .underline.is-invalid .focused-line {
+        background: var(--paper-input-container-invalid-color, --error-color);
+        -webkit-transform: none;
+        transform: none;
+        -webkit-transition: -webkit-transform 0.25s;
+        transition: transform 0.25s;
+
+        @apply(--paper-transition-easing);
+      }
+
+      .unfocused-line {
+        @apply(--layout-fit);
+
+        background: var(--paper-input-container-color, --secondary-text-color);
+        height: 1px;
+
+        @apply(--paper-input-container-underline);
+      }
+
+      :host([disabled]) .unfocused-line {
+        border-bottom: 1px dashed;
+        border-color: var(--paper-input-container-color, --secondary-text-color);
+        background: transparent;
+
+        @apply(--paper-input-container-underline-disabled);
+      }
+
+      .label-and-input-container {
+        @apply(--layout-flex-auto);
+        @apply(--layout-relative);
+
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .input-content {
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+
+        position: relative;
+      }
+
+      .input-content ::content label,
+      .input-content ::content .paper-input-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        font: inherit;
+        color: var(--paper-input-container-color, --secondary-text-color);
+        -webkit-transition: -webkit-transform 0.25s, width 0.25s;
+        transition: transform 0.25s, width 0.25s;
+        -webkit-transform-origin: left top;
+        transform-origin: left top;
+
+        @apply(--paper-font-common-nowrap);
+        @apply(--paper-font-subhead);
+        @apply(--paper-input-container-label);
+        @apply(--paper-transition-easing);
+      }
+
+      .input-content.label-is-floating ::content label,
+      .input-content.label-is-floating ::content .paper-input-label {
+        -webkit-transform: translateY(-75%) scale(0.75);
+        transform: translateY(-75%) scale(0.75);
+
+        /* Since we scale to 75/100 of the size, we actually have 100/75 of the
+        original space now available */
+        width: 133%;
+
+        @apply(--paper-input-container-label-floating);
+      }
+
+      :host-context([dir="rtl"]) .input-content.label-is-floating ::content label,
+      :host-context([dir="rtl"]) .input-content.label-is-floating ::content .paper-input-label {
+        /* TODO(noms): Figure out why leaving the width at 133% before the animation
+         * actually makes
+         * it wider on the right side, not left side, as you would expect in RTL */
+        width: 100%;
+        -webkit-transform-origin: right top;
+        transform-origin: right top;
+      }
+
+      .input-content.label-is-highlighted ::content label,
+      .input-content.label-is-highlighted ::content .paper-input-label {
+        color: var(--paper-input-container-focus-color, --primary-color);
+
+        @apply(--paper-input-container-label-focus);
+      }
+
+      .input-content.is-invalid ::content label,
+      .input-content.is-invalid ::content .paper-input-label {
+        color: var(--paper-input-container-invalid-color, --error-color);
+      }
+
+      .input-content.label-is-hidden ::content label,
+      .input-content.label-is-hidden ::content .paper-input-label {
+        visibility: hidden;
+      }
+
+      .input-content ::content input,
       .input-content ::content textarea,
       .input-content ::content iron-autogrow-textarea,
-      .input-content ::content .paper-input-input{position:relative;outline:none;box-shadow:none;padding:0;width:100%;max-width:100%;background:transparent;border:none;color:var(--paper-input-container-input-color, --primary-text-color);-webkit-appearance:none;text-align:inherit;@apply (--paper-font-subhead);@apply (--paper-input-container-input);}::content [prefix]{@apply (--paper-font-subhead);@apply (--paper-input-prefix);@apply (--layout-flex-none);}::content [suffix]{@apply (--paper-font-subhead);@apply (--paper-input-suffix);@apply (--layout-flex-none);}.input-content ::content input{min-width:0;}.input-content ::content textarea{resize:none;}.add-on-content{position:relative;}.add-on-content.is-invalid ::content *{color:var(--paper-input-container-invalid-color, --error-color);}.add-on-content.is-highlighted ::content *{color:var(--paper-input-container-focus-color, --primary-color);}</style>
+      .input-content ::content .paper-input-input {
+        position: relative; /* to make a stacking context */
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        background: transparent;
+        border: none;
+        color: var(--paper-input-container-input-color, --primary-text-color);
+        -webkit-appearance: none;
+        text-align: inherit;
+
+        @apply(--paper-font-subhead);
+        @apply(--paper-input-container-input);
+      }
+
+      ::content [prefix] {
+        @apply(--paper-font-subhead);
+
+        @apply(--paper-input-prefix);
+        @apply(--layout-flex-none);
+      }
+
+      ::content [suffix] {
+        @apply(--paper-font-subhead);
+
+        @apply(--paper-input-suffix);
+        @apply(--layout-flex-none);
+      }
+
+      /* Firefox sets a min-width on the input, which can cause layout issues */
+      .input-content ::content input {
+        min-width: 0;
+      }
+
+      .input-content ::content textarea {
+        resize: none;
+      }
+
+      .add-on-content {
+        position: relative;
+      }
+
+      .add-on-content.is-invalid ::content * {
+        color: var(--paper-input-container-invalid-color, --error-color);
+      }
+
+      .add-on-content.is-highlighted ::content * {
+        color: var(--paper-input-container-focus-color, --primary-color);
+      }
+    </style>
 
     <template is="dom-if" if="[[!noLabelFloat]]">
       <div class="floated-label-placeholder" aria-hidden="true">&nbsp;</div>
@@ -447,7 +2048,24 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 <script>Polymer({is:"paper-input-container",properties:{noLabelFloat:{type:Boolean,value:!1},alwaysFloatLabel:{type:Boolean,value:!1},attrForValue:{type:String,value:"bind-value"},autoValidate:{type:Boolean,value:!1},invalid:{observer:"_invalidChanged",type:Boolean,value:!1},focused:{readOnly:!0,type:Boolean,value:!1,notify:!0},_addons:{type:Array},_inputHasContent:{type:Boolean,value:!1},_inputSelector:{type:String,value:"input,textarea,.paper-input-input"},_boundOnFocus:{type:Function,value:function(){return this._onFocus.bind(this)}},_boundOnBlur:{type:Function,value:function(){return this._onBlur.bind(this)}},_boundOnInput:{type:Function,value:function(){return this._onInput.bind(this)}},_boundValueChanged:{type:Function,value:function(){return this._onValueChanged.bind(this)}}},listeners:{"addon-attached":"_onAddonAttached","iron-input-validate":"_onIronInputValidate"},get _valueChangedEvent(){return this.attrForValue+"-changed"},get _propertyForValue(){return Polymer.CaseMap.dashToCamelCase(this.attrForValue)},get _inputElement(){return Polymer.dom(this).querySelector(this._inputSelector)},get _inputElementValue(){return this._inputElement[this._propertyForValue]||this._inputElement.value},ready:function(){this._addons||(this._addons=[]),this.addEventListener("focus",this._boundOnFocus,!0),this.addEventListener("blur",this._boundOnBlur,!0)},attached:function(){this.attrForValue?this._inputElement.addEventListener(this._valueChangedEvent,this._boundValueChanged):this.addEventListener("input",this._onInput),""!=this._inputElementValue?this._handleValueAndAutoValidate(this._inputElement):this._handleValue(this._inputElement)},_onAddonAttached:function(t){this._addons||(this._addons=[]);var n=t.target;this._addons.indexOf(n)===-1&&(this._addons.push(n),this.isAttached&&this._handleValue(this._inputElement))},_onFocus:function(){this._setFocused(!0)},_onBlur:function(){this._setFocused(!1),this._handleValueAndAutoValidate(this._inputElement)},_onInput:function(t){this._handleValueAndAutoValidate(t.target)},_onValueChanged:function(t){this._handleValueAndAutoValidate(t.target)},_handleValue:function(t){var n=this._inputElementValue;n||0===n||"number"===t.type&&!t.checkValidity()?this._inputHasContent=!0:this._inputHasContent=!1,this.updateAddons({inputElement:t,value:n,invalid:this.invalid})},_handleValueAndAutoValidate:function(t){if(this.autoValidate){var n;n=t.validate?t.validate(this._inputElementValue):t.checkValidity(),this.invalid=!n}this._handleValue(t)},_onIronInputValidate:function(t){this.invalid=this._inputElement.invalid},_invalidChanged:function(){this._addons&&this.updateAddons({invalid:this.invalid})},updateAddons:function(t){for(var n,e=0;n=this._addons[e];e++)n.update(t)},_computeInputContentClass:function(t,n,e,i,a){var u="input-content";if(t)a&&(u+=" label-is-hidden");else{var o=this.querySelector("label");n||a?(u+=" label-is-floating",this.$.labelAndInputContainer.style.position="static",i?u+=" is-invalid":e&&(u+=" label-is-highlighted")):o&&(this.$.labelAndInputContainer.style.position="relative")}return u},_computeUnderlineClass:function(t,n){var e="underline";return n?e+=" is-invalid":t&&(e+=" is-highlighted"),e},_computeAddOnContentClass:function(t,n){var e="add-on-content";return n?e+=" is-invalid":t&&(e+=" is-highlighted"),e}});</script>
 <dom-module id="paper-input-error" assetpath="../../bower_components/paper-input/">
   <template>
-    <style>:host{display:inline-block;visibility:hidden;color:var(--paper-input-container-invalid-color, --error-color);@apply (--paper-font-caption);@apply (--paper-input-error);position:absolute;left:0;right:0;}:host([invalid]){visibility:visible;}</style>
+    <style>
+      :host {
+        display: inline-block;
+        visibility: hidden;
+
+        color: var(--paper-input-container-invalid-color, --error-color);
+
+        @apply(--paper-font-caption);
+        @apply(--paper-input-error);
+        position: absolute;
+        left:0;
+        right:0;
+      }
+
+      :host([invalid]) {
+        visibility: visible;
+      };
+    </style>
 
     <content></content>
   </template>
@@ -456,7 +2074,31 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 <script>Polymer({is:"paper-input-error",behaviors:[Polymer.PaperInputAddonBehavior],properties:{invalid:{readOnly:!0,reflectToAttribute:!0,type:Boolean}},update:function(e){this._setInvalid(e.invalid)}});</script>
 <dom-module id="paper-input" assetpath="../../bower_components/paper-input/">
   <template>
-    <style>:host{display:block;}:host([hidden]){display:none !important;}input::-webkit-input-placeholder{color:var(--paper-input-container-color, --secondary-text-color);}input:-moz-placeholder{color:var(--paper-input-container-color, --secondary-text-color);}input::-moz-placeholder{color:var(--paper-input-container-color, --secondary-text-color);}input:-ms-input-placeholder{color:var(--paper-input-container-color, --secondary-text-color);}</style>
+    <style>
+      :host {
+        display: block;
+      }
+
+      :host([hidden]) {
+        display: none !important;
+      }
+
+      input::-webkit-input-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input:-moz-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input::-moz-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      }
+
+      input:-ms-input-placeholder {
+        color: var(--paper-input-container-color, --secondary-text-color);
+      }
+    </style>
 
     <paper-input-container no-label-float="[[noLabelFloat]]" always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]" auto-validate$="[[autoValidate]]" disabled$="[[disabled]]" invalid="[[invalid]]">
 
@@ -483,8 +2125,35 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 <script>Polymer({is:"paper-input",behaviors:[Polymer.IronFormElementBehavior,Polymer.PaperInputBehavior]});</script>
 <dom-module id="az-timer-setup" assetpath="../az-timer-setup/">
   <template>
-    <style>:host{@apply (--layout-horizontal);font-family:'Roboto', 'Noto', sans-serif;font-size:14px;color:var(--az-timer-setup-text-color, --secondary-text-color);}#timerIcon[active]{color:var(--primary-color);}.right-box{height:40px;}.right-box .label{line-height:40px;}paper-input{margin-top:-20px;}.right-box,
-      paper-input{display:inline-block;}</style>
+    <style>
+      :host {
+        @apply(--layout-horizontal);
+        font-family: 'Roboto', 'Noto', sans-serif;
+        font-size: 14px;
+        color: var(--az-timer-setup-text-color, --secondary-text-color);
+      }
+
+      #timerIcon[active] {
+        color: var(--primary-color);
+      }
+
+      .right-box {
+        height: 40px;
+      }
+
+      .right-box .label {
+        line-height: 40px;
+      }
+
+      paper-input {
+        margin-top: -20px;
+      }
+
+      .right-box,
+      paper-input {
+        display: inline-block;
+      }
+    </style>
     <paper-icon-button id="timerIcon" icon="[[_timerIcon]]" toggles="" active="{{active}}"></paper-icon-button>
     <div class="right-box">
       <iron-collapse opened="[[active]]" no-animation="">
@@ -501,7 +2170,45 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 </dom-module>
 <dom-module id="az-team-selection-screen" assetpath="../az-team-selection-screen/">
   <template>
-    <style>:host{@apply (--layout-vertical);@apply (--layout-center);@apply (--layout-center-justified);}#backButton{position:absolute;top:4px;left:4px;}#whoText{font-family:'Roboto Condensed', sans-serif;font-size:33px;margin-bottom:10px;text-align:center;}#teamAButton{color:#fff;--az-hex-bkg-color:#ff8427;}#teamBButton{color:#fff;--az-hex-bkg-color:#00d3d8;}#randomButton{color:#fff;--az-hex-bkg-color:#3e3e3e;}az-timer-setup{margin:8px 0 20px -8px;}</style>
+    <style>
+      :host {
+        @apply(--layout-vertical);
+        @apply(--layout-center);
+        @apply(--layout-center-justified);
+      }
+
+      #backButton {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+      }
+
+      #whoText {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-size: 33px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      #teamAButton {
+        color: #fff;
+        --az-hex-bkg-color: #ff8427;
+      }
+
+      #teamBButton {
+        color: #fff;
+        --az-hex-bkg-color: #00d3d8;
+      }
+
+      #randomButton {
+        color: #fff;
+        --az-hex-bkg-color: #3e3e3e;
+      }
+
+      az-timer-setup {
+        margin: 8px 0 20px -8px;
+      }
+    </style>
 
     <paper-icon-button id="backButton" icon="az:arrow-back" on-tap="_onBackTap">
     </paper-icon-button>
@@ -520,7 +2227,55 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 </dom-module>
 <dom-module id="az-welcome-screen" assetpath="../az-welcome-screen/">
   <template>
-    <style>:host{@apply (--layout-vertical);font-family:'Roboto', 'Noto', sans-serif;}h1{font-size:35px;}#headerBox{@apply (--layout-flex);@apply (--layout-horizontal);@apply (--layout-center);@apply (--layout-center-justified);}#headerBox h1{margin:0 0.3em;font-family:'Roboto', sans-serif;}#openHex{--az-hex-width:60px;color:#fff;--az-hex-bkg-color:#ff8427;}#footer{margin:0.5em 1.7em 1.7em 1.7em;text-align:center;color:#777;font-size:14px;}#footer a{color:inherit;font-size:85%;}#file{display:none;}#helpButton{color:var(--secondary-text-color);}</style>
+    <style>
+      :host {
+        @apply(--layout-vertical);
+        font-family: 'Roboto', 'Noto', sans-serif;
+      }
+
+      h1 {
+        font-size: 35px;
+      }
+
+      #headerBox {
+        @apply(--layout-flex);
+
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+        @apply(--layout-center-justified);
+      }
+
+      #headerBox h1 {
+        margin: 0 0.3em;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      #openHex {
+        --az-hex-width: 60px;
+        color: #fff;
+        --az-hex-bkg-color: #ff8427;
+      }
+
+      #footer {
+        margin: 0.5em 1.7em 1.7em 1.7em;
+        text-align: center;
+        color: #777;
+        font-size: 14px;
+      }
+
+      #footer a {
+        color: inherit;
+        font-size: 85%;
+      }
+
+      #file {
+        display: none;
+      }
+
+      #helpButton {
+        color: var(--secondary-text-color);
+      }
+    </style>
 
     <div id="headerBox">
       <h1><span style="font-weight: 300">AZ</span><span style="font-weight: 900">Kvíz</span></h1>
@@ -539,10 +2294,62 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 
   <script>var __extends=this&&this.__extends||function(e,t){function n(){this.constructor=e}for(var o in t)t.hasOwnProperty(o)&&(e[o]=t[o]);e.prototype=null===t?Object.create(t):(n.prototype=t.prototype,new n)},__decorate=this&&this.__decorate||function(e,t,n,o){var r,i=arguments.length,a=i<3?t:null===o?o=Object.getOwnPropertyDescriptor(t,n):o;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,n,o);else for(var c=e.length-1;c>=0;c--)(r=e[c])&&(a=(i<3?r(a):i>3?r(t,n,a):r(t,n))||a);return i>3&&a&&Object.defineProperty(t,n,a),a},__metadata=this&&this.__metadata||function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)},AzWelcomeScreen=function(e){function t(){e.apply(this,arguments)}return __extends(t,e),t.prototype._onHelpButtonTap=function(){this.fire("open-help")},t.prototype._onOpenButtonTap=function(){this.$.file.click()},t.prototype._onFileChange=function(e){e.target.files[0]&&(this.fire("file-change",{file:e.target.files[0]}),this._resetFileInput())},t.prototype._resetFileInput=function(){var e=document.createElement("form"),t=this.$.file;t.parentNode.insertBefore(e,t),e.appendChild(t),e.reset(),e.parentNode.appendChild(t),e.parentNode.removeChild(e)},t=__decorate([component("az-welcome-screen"),__metadata("design:paramtypes",[])],t)}(polymer.Base);AzWelcomeScreen.register();</script>
 </dom-module>
-<style is="custom-style">:root{--az-question:{font-family:'Roboto Condensed', sans-serif;font-size:33px;margin:10px 0;};--az-answer:{font-family:'Roboto Condensed', sans-serif;font-size:24px;margin:0;padding:2px 10px;};--az-answer-correct-bkg:#e2f4c0;--az-answer-wrong-bkg:#ffd3c4;}</style>
+<style is="custom-style">
+  :root {
+
+    --az-question: {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 33px;
+      margin: 10px 0;
+    };
+
+    --az-answer: {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 24px;
+
+      margin: 0;
+      padding: 2px 10px;
+    };
+
+    --az-answer-correct-bkg: #e2f4c0;
+    --az-answer-wrong-bkg: #ffd3c4;
+  }
+
+</style>
 <dom-module id="az-question-multiple-answers" assetpath="../az-question-multiple-answers/">
   <template>
-    <style>:host{display:block;line-height:1.42857;}#question{@apply (--az-question);}#answersList{list-style-position:inside;padding-left:0;margin:0;}.answer{@apply (--az-answer);}.answer.clickable{cursor:pointer;}.answer.correct{background:var(--az-answer-correct-bkg);}.answer.wrong{background:var(--az-answer-wrong-bkg);}</style>
+    <style>
+      :host {
+        display: block;
+        line-height: 1.42857;
+      }
+
+      #question {
+        @apply(--az-question);
+      }
+
+      #answersList {
+        list-style-position: inside;
+        padding-left: 0;
+        margin: 0;
+      }
+
+      .answer {
+        @apply(--az-answer);
+      }
+
+      .answer.clickable {
+        cursor: pointer;
+      }
+
+      .answer.correct {
+        background: var(--az-answer-correct-bkg);
+      }
+
+      .answer.wrong {
+        background: var(--az-answer-wrong-bkg);
+      }
+    </style>
 
     
     <div id="question">{{question.text}}</div>
@@ -558,13 +2365,57 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 
   </template>
 
-  <script>var __extends=this&&this.__extends||function(e,t){function o(){this.constructor=e}for(var r in t)t.hasOwnProperty(r)&&(e[r]=t[r]);e.prototype=null===t?Object.create(t):(o.prototype=t.prototype,new o)},__decorate=this&&this.__decorate||function(e,t,o,r){var n,s=arguments.length,a=s<3?t:null===r?r=Object.getOwnPropertyDescriptor(t,o):r;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,r);else for(var c=e.length-1;c>=0;c--)(n=e[c])&&(a=(s<3?n(a):s>3?n(t,o,a):n(t,o))||a);return s>3&&a&&Object.defineProperty(t,o,a),a},__metadata=this&&this.__metadata||function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)},AzQuestionMultipleAnswers=function(e){function t(){e.apply(this,arguments)}return __extends(t,e),t.prototype.reset=function(){this.answered=!1,this._selectedAnswer=void 0},t.prototype._onAnswerTap=function(e){this._selectedAnswer=this.$.answersRepeat.itemForElement(e.target),this._selectedAnswer&&(this.correct=this._selectedAnswer.correct,this.answered=!0)},t.prototype._computeAnswerClasses=function(e){return this.answered?e.correct?"correct":e===this._selectedAnswer?"wrong":"":"clickable"},__decorate([property({type:Object}),__metadata("design:type",Object)],t.prototype,"question",void 0),__decorate([property({type:Boolean,notify:!0}),__metadata("design:type",Boolean)],t.prototype,"correct",void 0),__decorate([property({type:Boolean,notify:!0,value:!1}),__metadata("design:type",Boolean)],t.prototype,"answered",void 0),t=__decorate([component("az-question-multiple-answers"),__metadata("design:paramtypes",[])],t)}(polymer.Base);AzQuestionMultipleAnswers.register();</script>
+  <script>var __extends=this&&this.__extends||function(e,t){function o(){this.constructor=e}for(var r in t)t.hasOwnProperty(r)&&(e[r]=t[r]);e.prototype=null===t?Object.create(t):(o.prototype=t.prototype,new o)},__decorate=this&&this.__decorate||function(e,t,o,r){var n,s=arguments.length,a=s<3?t:null===r?r=Object.getOwnPropertyDescriptor(t,o):r;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)a=Reflect.decorate(e,t,o,r);else for(var c=e.length-1;c>=0;c--)(n=e[c])&&(a=(s<3?n(a):s>3?n(t,o,a):n(t,o))||a);return s>3&&a&&Object.defineProperty(t,o,a),a},__metadata=this&&this.__metadata||function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)},AzQuestionMultipleAnswers=function(e){function t(){e.apply(this,arguments)}return __extends(t,e),t.prototype.reset=function(){this.answered=!1,this._selectedAnswer=void 0},t.prototype._onAnswerTap=function(e){this._selectedAnswer=this.$.answersRepeat.itemForElement(e.target),this._selectedAnswer&&!this.answered&&(this.correct=this._selectedAnswer.correct,this.answered=!0)},t.prototype._computeAnswerClasses=function(e){return this.answered?e.correct?"correct":e===this._selectedAnswer?"wrong":"":"clickable"},__decorate([property({type:Object}),__metadata("design:type",Object)],t.prototype,"question",void 0),__decorate([property({type:Boolean,notify:!0}),__metadata("design:type",Boolean)],t.prototype,"correct",void 0),__decorate([property({type:Boolean,notify:!0,value:!1}),__metadata("design:type",Boolean)],t.prototype,"answered",void 0),t=__decorate([component("az-question-multiple-answers"),__metadata("design:paramtypes",[])],t)}(polymer.Base);AzQuestionMultipleAnswers.register();</script>
 </dom-module>
 <dom-module id="az-question-single-answer" assetpath="../az-question-single-answer/">
   <template>
-    <style>:host{display:block;}#question{@apply (--az-question);}#question.clickable{cursor:pointer;}#answerLine{@apply (--layout-horizontal);}#answer{@apply (--az-answer);@apply (--layout-flex);padding-left:0;}#correctWrongBtns{margin-top:-9px;}#correctButton,
-      #wrongButton{color:#fff;opacity:0.4;transition:opacity 0.5s;}#correctButton.active,
-      #wrongButton.active{opacity:1;}#correctButton{--az-hex-bkg-color:#97d71e;}#wrongButton{--az-hex-bkg-color:#ff602b;}</style>
+    <style>
+      :host {
+        display: block;
+      }
+
+      #question {
+        @apply(--az-question);
+      }
+
+      #question.clickable {
+        cursor: pointer;
+      }
+
+      #answerLine {
+        @apply(--layout-horizontal);
+      }
+
+      #answer {
+        @apply(--az-answer);
+        @apply(--layout-flex);
+        padding-left: 0;
+      }
+
+      #correctWrongBtns {
+        margin-top: -9px;
+      }
+
+      #correctButton,
+      #wrongButton {
+        color: #fff;
+        opacity: 0.4;
+        transition: opacity 0.5s;
+      }
+
+      #correctButton.active,
+      #wrongButton.active {
+        opacity: 1;
+      }
+
+      #correctButton {
+        --az-hex-bkg-color: #97d71e;
+      }
+
+      #wrongButton {
+        --az-hex-bkg-color: #ff602b;
+      }
+    </style>
 
     <div id="question" class$="[[_questionClickableClass]]" on-tap="_onQuestionTap">
       {{question.text}}
@@ -586,11 +2437,36 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
     </div>
   </template>
 
-  <script>var __extends=this&&this.__extends||function(e,t){function o(){this.constructor=e}for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n]);e.prototype=null===t?Object.create(t):(o.prototype=t.prototype,new o)},__decorate=this&&this.__decorate||function(e,t,o,n){var r,a=arguments.length,i=a<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)i=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(r=e[s])&&(i=(a<3?r(i):a>3?r(t,o,i):r(t,o))||i);return a>3&&i&&Object.defineProperty(t,o,i),i},__metadata=this&&this.__metadata||function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)},AzQuestionSingleAnswer=function(e){function t(){e.apply(this,arguments),this.correct=null,this._correctAnswer=null}return __extends(t,e),t.prototype.ready=function(){this.reset()},t.prototype.reset=function(){this.correct=null,this.answered=!1},t.prototype._answersChanged=function(e){this._correctAnswer=e&&e.length>0?e[0]:null},t.prototype._answeredChanged=function(e){this._answerVisible=e},t.prototype._onQuestionTap=function(){this._answerVisible=!0},t.prototype._onCorrectTap=function(){this.correct=!0,this.answered=!0},t.prototype._onWrongTap=function(){this.correct=!1,this.answered=!0},t.prototype._questionClickableClass=function(e){return e?"":"clickable"},t.prototype._computeWrongButtonActiveClass=function(e){return void 0===e&&(e=null),e===!1?"active":""},t.prototype._computeCorrectButtonActiveClass=function(e,t){return void 0===e&&(e=null),e===!0?"active":""},__decorate([property({type:Object}),__metadata("design:type",Object)],t.prototype,"question",void 0),__decorate([property({type:Boolean,notify:!0,value:null}),__metadata("design:type",Object)],t.prototype,"correct",void 0),__decorate([property({type:Boolean,notify:!0,value:!1}),__metadata("design:type",Boolean)],t.prototype,"answered",void 0),__decorate([observe("question.answers"),__metadata("design:type",Function),__metadata("design:paramtypes",[Array]),__metadata("design:returntype",void 0)],t.prototype,"_answersChanged",null),__decorate([observe("answered"),__metadata("design:type",Function),__metadata("design:paramtypes",[Boolean]),__metadata("design:returntype",void 0)],t.prototype,"_answeredChanged",null),__decorate([property({computed:"_answerVisible"}),__metadata("design:type",Function),__metadata("design:paramtypes",[Boolean]),__metadata("design:returntype",String)],t.prototype,"_questionClickableClass",null),t=__decorate([component("az-question-single-answer"),__metadata("design:paramtypes",[])],t)}(polymer.Base);AzQuestionSingleAnswer.register();</script>
+  <script>var __extends=this&&this.__extends||function(e,t){function o(){this.constructor=e}for(var n in t)t.hasOwnProperty(n)&&(e[n]=t[n]);e.prototype=null===t?Object.create(t):(o.prototype=t.prototype,new o)},__decorate=this&&this.__decorate||function(e,t,o,n){var r,a=arguments.length,i=a<3?t:null===n?n=Object.getOwnPropertyDescriptor(t,o):n;if("object"==typeof Reflect&&"function"==typeof Reflect.decorate)i=Reflect.decorate(e,t,o,n);else for(var s=e.length-1;s>=0;s--)(r=e[s])&&(i=(a<3?r(i):a>3?r(t,o,i):r(t,o))||i);return a>3&&i&&Object.defineProperty(t,o,i),i},__metadata=this&&this.__metadata||function(e,t){if("object"==typeof Reflect&&"function"==typeof Reflect.metadata)return Reflect.metadata(e,t)},AzQuestionSingleAnswer=function(e){function t(){e.apply(this,arguments)}return __extends(t,e),t.prototype.ready=function(){this.reset()},t.prototype.reset=function(){this.correct=null,this.answered=!1},t.prototype._answersChanged=function(e){this._correctAnswer=e&&e.length>0?e[0]:null},t.prototype._answeredChanged=function(e){this._answerVisible=e},t.prototype._onQuestionTap=function(){this._answerVisible=!0},t.prototype._onCorrectTap=function(){this.correct=!0,this.answered=!0},t.prototype._onWrongTap=function(){this.correct=!1,this.answered=!0},t.prototype._questionClickableClass=function(e){return e?"":"clickable"},t.prototype._computeWrongButtonActiveClass=function(e){return e===!1?"active":""},t.prototype._computeCorrectButtonActiveClass=function(e,t){return e===!0?"active":""},__decorate([property({type:Object}),__metadata("design:type",Object)],t.prototype,"question",void 0),__decorate([property({type:Boolean,notify:!0,value:null}),__metadata("design:type",Object)],t.prototype,"correct",void 0),__decorate([property({type:Boolean,notify:!0,value:!1}),__metadata("design:type",Boolean)],t.prototype,"answered",void 0),__decorate([observe("question.answers"),__metadata("design:type",Function),__metadata("design:paramtypes",[Array]),__metadata("design:returntype",void 0)],t.prototype,"_answersChanged",null),__decorate([observe("answered"),__metadata("design:type",Function),__metadata("design:paramtypes",[Boolean]),__metadata("design:returntype",void 0)],t.prototype,"_answeredChanged",null),__decorate([property({computed:"_answerVisible"}),__metadata("design:type",Function),__metadata("design:paramtypes",[Boolean]),__metadata("design:returntype",String)],t.prototype,"_questionClickableClass",null),t=__decorate([component("az-question-single-answer"),__metadata("design:paramtypes",[])],t)}(polymer.Base);AzQuestionSingleAnswer.register();</script>
 </dom-module>
 <dom-module id="az-hex-timer" assetpath="../az-hex-timer/">
   <template>
-    <style>:host{position:relative;display:block;width:51px;height:59px;}.timer-label{position:absolute;left:0;top:0;width:51px;line-height:59px;font-family:'Roboto', 'Noto', sans-serif;text-align:center;font-size:22px;font-weight:500;}#pie{fill:var(--az-hex-timer-color, #ff8427);}</style>
+    <style>
+      :host {
+        position: relative;
+        display: block;
+        width: 51px;
+        height: 59px;
+      }
+
+      .timer-label {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 51px;
+        line-height: 59px;
+
+        font-family: 'Roboto', 'Noto', sans-serif;
+        text-align: center;
+
+        font-size: 22px;
+        font-weight: 500;
+      }
+
+      #pie {
+        fill: var(--az-hex-timer-color, #ff8427);
+      }
+    </style>
 
     <svg xmlns="http://www.w3.org/2000/svg" height="59" width="51">
       <path fill="#e6e6e6" d="M50.998 44.605l-25.504 14.75L-.01 44.63V15.183L25.494.432l25.504 14.723z"></path>
@@ -605,9 +2481,67 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 </dom-module>
 <dom-module id="az-question-screen" assetpath="../az-question-screen/">
   <template>
-    <style>:host{display:block;line-height:1.42857;}.container{@apply (--layout-horizontal);max-width:730px;margin:54px auto 0 auto;}.buttons-box{position:relative;width:90px;height:120px;margin-right:15px;}#backButton,
-      az-hex-timer{position:absolute;top:52px;right:28px;transition:transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);transform:scale(1, 1);}#backButton[hidden],
-      az-hex-timer[hidden]{display:initial !important;transform:scale(0);}:host.neon-animating az-hex-timer{transition-delay:0.28s;}#currentHex{position:absolute;top:5px;right:0;}.question-box{@apply (--layout-flex);margin-right:90px;}az-hex-timer.teamA{--az-hex-timer-color:#ff8427;}az-hex-timer.teamB{--az-hex-timer-color:#00d3d8;}</style>
+    <style>
+      :host {
+        display: block;
+        line-height: 1.42857;
+      }
+
+      .container {
+        @apply(--layout-horizontal);
+        max-width: 730px;
+        margin: 54px auto 0 auto;
+      }
+
+      .buttons-box {
+        position: relative;
+        width: 90px;
+        height: 120px;
+        margin-right: 15px;
+      }
+
+      #backButton,
+      az-hex-timer {
+        position: absolute;
+        top: 52px;
+        right: 28px;
+        transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: scale(1, 1);
+      }
+
+      #backButton[hidden],
+      az-hex-timer[hidden] {
+        display: initial !important;
+        transform: scale(0);
+      }
+
+      /* Delay hex-timer animation especially when leaving the page
+         so az-hex-timer's ghost doesn't reappear */
+      :host.neon-animating az-hex-timer {
+        transition-delay: 0.28s;
+      }
+
+      #currentHex {
+        position: absolute;
+        top: 5px;
+        right: 0;
+      }
+
+      .question-box {
+        @apply(--layout-flex);
+        margin-right: 90px;
+      }
+
+      /* Not working in the shim,
+         changed programatically. */
+      az-hex-timer.teamA {
+        --az-hex-timer-color: #ff8427;
+      }
+
+      az-hex-timer.teamB {
+        --az-hex-timer-color: #00d3d8;
+      }
+    </style>
 
     <div class="container">
       <div class="buttons-box">
@@ -642,8 +2576,116 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 <script>"use strict";Polymer({is:"iron-ajax",hostAttributes:{hidden:!0},properties:{url:{type:String},params:{type:Object,value:function(){return{}}},method:{type:String,value:"GET"},headers:{type:Object,value:function(){return{}}},contentType:{type:String,value:null},body:{type:Object,value:null},sync:{type:Boolean,value:!1},handleAs:{type:String,value:"json"},withCredentials:{type:Boolean,value:!1},timeout:{type:Number,value:0},auto:{type:Boolean,value:!1},verbose:{type:Boolean,value:!1},lastRequest:{type:Object,notify:!0,readOnly:!0},loading:{type:Boolean,notify:!0,readOnly:!0},lastResponse:{type:Object,notify:!0,readOnly:!0},lastError:{type:Object,notify:!0,readOnly:!0},activeRequests:{type:Array,notify:!0,readOnly:!0,value:function(){return[]}},debounceDuration:{type:Number,value:0,notify:!0},jsonPrefix:{type:String,value:""},bubbles:{type:Boolean,value:!1},_boundHandleResponse:{type:Function,value:function(){return this._handleResponse.bind(this)}}},observers:["_requestOptionsChanged(url, method, params.*, headers, contentType, body, sync, handleAs, jsonPrefix, withCredentials, timeout, auto)"],get queryString(){var e,t,s=[];for(e in this.params)if(t=this.params[e],e=window.encodeURIComponent(e),Array.isArray(t))for(var n=0;n<t.length;n++)s.push(e+"="+window.encodeURIComponent(t[n]));else null!==t?s.push(e+"="+window.encodeURIComponent(t)):s.push(e);return s.join("&")},get requestUrl(){var e=this.queryString;if(e){var t=this.url.indexOf("?")>=0?"&":"?";return this.url+t+e}return this.url},get requestHeaders(){var e={},t=this.contentType;null==t&&"string"==typeof this.body&&(t="application/x-www-form-urlencoded"),t&&(e["content-type"]=t);var s;if(this.headers instanceof Object)for(s in this.headers)e[s]=this.headers[s].toString();return e},toRequestOptions:function(){return{url:this.requestUrl||"",method:this.method,headers:this.requestHeaders,body:this.body,async:!this.sync,handleAs:this.handleAs,jsonPrefix:this.jsonPrefix,withCredentials:this.withCredentials,timeout:this.timeout}},generateRequest:function(){var e=document.createElement("iron-request"),t=this.toRequestOptions();return this.activeRequests.push(e),e.completes.then(this._boundHandleResponse).catch(this._handleError.bind(this,e)).then(this._discardRequest.bind(this,e)),e.send(t),this._setLastRequest(e),this._setLoading(!0),this.fire("request",{request:e,options:t},{bubbles:this.bubbles}),e},_handleResponse:function(e){e===this.lastRequest&&(this._setLastResponse(e.response),this._setLastError(null),this._setLoading(!1)),this.fire("response",e,{bubbles:this.bubbles})},_handleError:function(e,t){this.verbose&&console.error(t),e===this.lastRequest&&(this._setLastError({request:e,error:t}),this._setLastResponse(null),this._setLoading(!1)),this.fire("error",{request:e,error:t},{bubbles:this.bubbles})},_discardRequest:function(e){var t=this.activeRequests.indexOf(e);t>-1&&this.activeRequests.splice(t,1)},_requestOptionsChanged:function(){this.debounce("generate-request",function(){null!=this.url&&this.auto&&this.generateRequest()},this.debounceDuration)}});</script>
 <dom-module id="az-help-screen" assetpath="../az-help-screen/">
   <template>
-    <style>:host{display:block;position:relative;color:var(--primary-text-color);@apply (--paper-font-body1);}.content{padding:21px 60px;max-width:800px;margin:21px auto;}#backButton{float:left;margin-left:-48px;margin-right:8px;}.header-box{@apply (--layout-horizontal);}.header-box h1{@apply (--layout-flex);}paper-button{@apply (--paper-font-button);margin:4px;}paper-button:first-child{margin-left:0;}@media (max-width: 530px){.content{padding-left:16px;padding-right:16px;}#backButton{margin-left:-8px;}}@media (max-width: 690px){paper-button{display:-ms-flexbox;display:-webkit-flex;display:flex;margin-left:0;margin-right:0;}}a{text-decoration:none;}img{display:block;margin:0 auto;max-width:200%;}h1{@apply (--paper-font-display1);margin:0;}h2{@apply (--paper-font-title);}#downloadButton{--paper-button:{background:var(--primary-color);color:var(--dark-theme-base-color);};}#openButton{--paper-button:{color:var(--primary-color);};}.excel-table{border-collapse:collapse;}.excel-table td{padding:4px;border:1px solid #9b9b9b;}.excel-table tr:first-child td,
-      .excel-table td:first-child{background-color:#303030;color:#aaaaaa;text-align:center;border-color:#646464;}</style>
+    <style>
+      :host {
+        display: block;
+        position: relative;
+        color: var(--primary-text-color);
+        @apply(--paper-font-body1);
+      }
+
+      .content {
+        padding: 21px 60px;
+        max-width: 800px;
+        margin: 21px auto;
+      }
+
+      #backButton {
+        float: left;
+        margin-left: -48px;
+        margin-right: 8px;
+      }
+
+      .header-box {
+        @apply(--layout-horizontal);
+      }
+
+      .header-box h1 {
+        @apply(--layout-flex);
+      }
+
+      paper-button {
+        @apply(--paper-font-button);
+        margin: 4px;
+      }
+
+      paper-button:first-child {
+        margin-left: 0;
+      }
+
+      @media (max-width: 530px) {
+        .content {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        #backButton {
+          margin-left: -8px;
+        }
+      }
+
+      @media (max-width: 690px) {
+        paper-button {
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        margin: 0 auto;
+        max-width: 200%;
+      }
+
+      h1 {
+        @apply(--paper-font-display1);
+        margin: 0;
+      }
+
+      h2 {
+        @apply(--paper-font-title);
+      }
+
+
+
+      #downloadButton {
+        --paper-button: {
+          background: var(--primary-color);
+          color: var(--dark-theme-base-color);
+        }
+      }
+
+      #openButton {
+        --paper-button: {
+          color: var(--primary-color);
+        }
+      }
+
+      .excel-table {
+        border-collapse: collapse;
+      }
+
+      .excel-table td {
+        padding: 4px;
+        border: 1px solid #9b9b9b;
+      }
+
+      .excel-table tr:first-child td,
+      .excel-table td:first-child {
+        background-color: #303030;
+        color: #aaaaaa;
+        text-align: center;
+        border-color: #646464;
+      }
+    </style>
 
     <iron-ajax id="demoFileAjax" url="/demo.xlsx" handle-as="arraybuffer" on-response="_onDemoFileResponse"></iron-ajax>
 
@@ -721,13 +2763,13 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 
       <h2>Jak hra probíhá?</h2>
       <p>Po otevření souboru je možné vybrat začínající tým (oranžový, modrý nebo náhodně).</p>
-      <img src="../../images/help-team-selection.png" alt="Team selection screen" onload="this.width/=2;this.onload=null">
+      <img src="../../images/help-team-selection.png" alt="Team selection screen" onload="this.width/=2;this.onload=null;">
       <p>Na obrazovce s pyramidou je nahoře vidět barva týmu, který je na řadě. Hráč z týmu vybere hex, který není obsazený.</p>
-      <img src="../../images/help-winner.png" alt="Pyramid screen" onload="this.width/=2;this.onload=null">
+      <img src="../../images/help-winner.png" alt="Pyramid screen" onload="this.width/=2;this.onload=null;">
       <p>Zobrazí se náhodně vybraná otázka. Pokud je u otázky více odpovědí, zobrazí se promíchané. Když hráč vybere správnou odpověď, získá vybraný hex pro svůj tým.</p>
-      <img src="../../images/help-question-multiple.png" alt="Multiple answers screen" onload="this.width/=2;this.onload=null">
+      <img src="../../images/help-question-multiple.png" alt="Multiple answers screen" onload="this.width/=2;this.onload=null;">
       <p>V případě otevřených otázek s jedinou zadanou odpovědí se zobrazí pouze otázka. Hráč odpoví nahlas nebo na tabuli a pro kontrolu klepnutím na otázku zobrazí správnou odpověď. Podle svého svědomí (a davového nátlaku) si potom sám klikne, jestli odpověděl správně nebo špatně.</p>
-      <img src="../../images/help-question-open.png" alt="Open question screen" onload="this.width/=2;this.onload=null">
+      <img src="../../images/help-question-open.png" alt="Open question screen" onload="this.width/=2;this.onload=null;">
       <p>Cílem je, stejně jako v televizní hře, propojit všechny tři stěny pyramidy. Aplikace zatím neumí konečný stav sama rozpoznat.</p>
     </div>
   </template>
@@ -736,7 +2778,27 @@ n:"Table",f:uu},574:{n:"Window2",f:ic},638:{n:"RK",f:St},659:{n:"Style",f:nc},10
 </dom-module>
 </div><dom-module id="az-app">
   <template>
-    <style>:host{display:block;--primary-color:#ff8427;--paper-button:{@apply (--paper-font-button);line-height:normal;};}neon-animated-pages{@apply (--layout-fit);overflow-x:hidden;}</style>
+    <style>
+      :host {
+        display: block;
+
+        --primary-color: #ff8427;
+
+        --paper-button: {
+          @apply(--paper-font-button);
+          line-height: normal;
+        };
+      }
+
+      neon-animated-pages {
+        @apply(--layout-fit);
+        overflow-x: hidden;
+      }
+
+      /*iron-pages > * {
+        @apply(--layout-fit);
+      }*/
+    </style>
 
     
     <az-questions-model id="questionsModel" questions="{{questions}}">
