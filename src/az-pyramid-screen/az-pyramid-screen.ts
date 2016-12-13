@@ -47,6 +47,10 @@ class AzPyramidScreen extends polymer.Base {
       this.fire('back-tap');
     }
   }
+
+  private _computeBackButtonClass(gameFinished: boolean) {
+    return gameFinished ? 'white' : '';
+  }
 }
 
 AzPyramidScreen.register();

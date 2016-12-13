@@ -19,12 +19,16 @@ DEMO PAGE FOR COMPONENT 'az-team-indicator'
       <style>
         .horizontal-section {
           min-width: 100px;
+          max-width: 500px;
+          height: 400px;
+          overflow: hidden;
+          border: 1px solid grey;
         }
       </style>
       <div>
         <h3>Demo: az-team-indicator</h3>
+        <button type="button" on-tap="toggleTeam">Toggle Team</button>
         <div class="horizontal-section">
-          <button type="button" on-tap="toggleTeam">Toggle Team</button>
           <az-team-indicator
             team="[[team]]">
           </az-team-indicator>

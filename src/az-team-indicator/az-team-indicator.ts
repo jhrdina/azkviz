@@ -15,6 +15,9 @@ class AzTeamIndicator extends polymer.Base {
   @property({ type: Boolean, value: false })
   public noWave: boolean;
 
+  @property({ type: Boolean, value: false, reflectToAttribute: true })
+  public finished: boolean;
+
   @property({ type: Object, value: function() {
     return {
       name: 'wave-animation',

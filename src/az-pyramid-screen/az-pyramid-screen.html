@@ -27,16 +27,21 @@
         left: 4px;
       }
 
+      .white {
+        color: white;
+      }
+
       az-pyramid {
         @apply(--layout-flex);
       }
     </style>
     <paper-icon-button
       id="backButton"
+      class$="[[_computeBackButtonClass(game.finished)]]"
       icon="az:arrow-back"
       on-tap="_onBackTap">
     </paper-icon-button>
-    <az-team-indicator team="[[game.currentTeam]]"></az-team-indicator>
+    <az-team-indicator finished="[[game.finished]]" team="[[game.currentTeam]]"></az-team-indicator>
     <az-pyramid
       states="[[game.pyramid]]"
       on-hex-tap="_onHexTap">
