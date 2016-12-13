@@ -9,19 +9,21 @@
     <style>
       :host {
         display: block;
-        width: 80px;
-        height: 20px;
 
         margin: auto;
 
         position: relative;
-
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      #rectangle {
-        height: 0;
-        transition: height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      #triangle {
+        width: 80px;
+        height: 20px;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, 0);
+        transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                    height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       :host[finished] {
@@ -29,24 +31,12 @@
         height: auto;
       }
 
-      :host[finished] #rectangle {
-        height: 52px;
-      }
-
       :host[team="teamA"] #triangle {
         fill: var(--az-team-indicator-team-a-color, #ff8427);
       }
 
-      :host[team="teamA"] #rectangle {
-        background-color: var(--az-team-indicator-team-a-color, #ff8427);
-      }
-
       :host[team="teamB"] #triangle {
         fill: var(--az-team-indicator-team-b-color, #00d3d8);
-      }
-
-      :host[team="teamB"] #rectangle {
-        background-color: var(--az-team-indicator-team-b-color, #00d3d8);
       }
 
       #wave {
@@ -70,8 +60,7 @@
         background-color: var(--az-team-indicator-team-b-color, #00d3d8);
       }
     </style>
-    <div id="rectangle"></div>
-    <svg id="triangle" viewBox="0 0 80.000001 20">
+    <svg id="triangle" viewBox="0 0 80.000001 20" preserveAspectRatio="none">
       <path d="M0-.03h80L40 19.95z"/>
     </svg>
     <div id="wave"></div>

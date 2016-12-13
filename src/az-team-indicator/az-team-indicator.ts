@@ -38,6 +38,32 @@ class AzTeamIndicator extends polymer.Base {
       this.playAnimation();
     }
   }
+
+  @observe('finished')
+  private _finishedChanged(finished): void {
+    if (finished) {
+      window.addEventListener("resize", this._onWindowResize.bind(this));
+    } else {
+      window.removeEventListener('resize', this._onWindowResize.bind(this));
+    }
+    this._updateWidth(100);
+  }
+
+  private _onWindowResize() {
+    this._updateWidth(100);
+  }
+
+  private _updateWidth(height: number): void {
+    const panelHeight = 48;
+    height = Math.max(height, panelHeight + 1)
+    if (this.finished) {
+      this.$.triangle.style.width = (this.clientWidth * height) / (height - panelHeight) + 'px';
+      this.$.triangle.style.height = height + 'px';
+    } else {
+      this.$.triangle.style.width = '';
+      this.$.triangle.style.height = '';
+    }
+  }
 }
 
 AzTeamIndicator.register();
