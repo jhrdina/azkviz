@@ -1,42 +1,40 @@
 {
-    "version": "1.5.0-beta",
-    "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "isolatedModules": false,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "declaration": false,
-        "noImplicitAny": false,
-        "removeComments": true,
-        "noLib": false,
-        "preserveConstEnums": true,
-        "suppressImplicitAnyIndexErrors": true,
-        "sourceMap": true,
-        "inlineSourceMap": true,
-        "strictNullChecks": true
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "webpack-env",
+      "jest"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
     },
-    "filesGlob": [
-        "./src/**/*.ts"
-    ],
-    "files": [
-        "./src/az-app/az-app.ts",
-        "./src/az-game-model/az-game-model.ts",
-        "./src/az-help-screen/az-help-screen.ts",
-        "./src/az-hex-timer/az-hex-timer.ts",
-        "./src/az-hex/az-hex.ts",
-        "./src/az-pyramid-screen/az-pyramid-screen.ts",
-        "./src/az-pyramid/az-pyramid.ts",
-        "./src/az-question-multiple-answers/az-question-multiple-answers.ts",
-        "./src/az-question-screen/az-question-screen.ts",
-        "./src/az-question-single-answer/az-question-single-answer.ts",
-        "./src/az-questions-model/az-questions-model.ts",
-        "./src/az-team-indicator/az-team-indicator.ts",
-        "./src/az-team-selection-screen/az-team-selection-screen.ts",
-        "./src/az-timer-setup/az-timer-setup.ts",
-        "./src/az-welcome-screen/az-welcome-screen.ts"
-    ],
-    "atom": {
-        "rewriteTsconfig": true
-    }
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

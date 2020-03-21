@@ -1,38 +1,37 @@
-# \<azkviz\>
+# AZKvíz
 
 Simple quiz app inspired by a Czech TV-show
 
-## Install the Polymer-CLI
-
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your application locally.
-
-## Viewing Your Application
+## Project setup
 
 ```
-$ polymer serve
+yarn install
 ```
 
-## Building Your Application
+### Compiles and hot-reloads for development
 
 ```
-$ polymer build
+yarn serve
 ```
 
-This will create a `build/` folder with `bundled/` and `unbundled/` sub-folders
-containing a bundled (Vulcanized) and unbundled builds, both run through HTML,
-CSS, and JS optimizers.
-
-You can serve the built versions by giving `polymer serve` a folder to serve
-from:
+### Compiles and minifies for production
 
 ```
-$ polymer serve build/bundled
+yarn build
 ```
 
-## Running Tests
+### Run your unit tests
 
 ```
-$ polymer test
+yarn test:unit
 ```
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+### Lints and fixes files
+
+```
+yarn lint
+```
+
+### Customize configuration
+
+See [Configuration Reference](https://cli.vuejs.org/config/).

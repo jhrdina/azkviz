@@ -1,7 +1,0 @@
-{
-  "name": "azkviz",
-  "short_name": "azkviz",
-  "description": "Simple quiz app inspired by a Czech TV-show",
-  "start_url": "/",
-  "display": "standalone"
-}
