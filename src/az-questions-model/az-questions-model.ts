@@ -1,11 +1,13 @@
-/// <reference path="../../bower_components/polymer-ts/polymer-ts.d.ts"/>
+import 'js-xlsx/dist/xlsx.core.min.js';
+import { PolymerElement, html } from "@polymer/polymer";
+import { customElement, property } from "@polymer/decorators";
 
-interface AzQuestion {
+export interface AzQuestion {
   text: string;
   answers: AzAnswer[];
 }
 
-interface AzAnswer {
+export interface AzAnswer {
   text: string;
   correct: boolean;
 }
@@ -27,8 +29,8 @@ declare module XLSX {
   }
 }
 
-@component('az-questions-model')
-class AzQuestionsModel extends polymer.Base {
+@customElement('az-questions-model')
+class AzQuestionsModel extends PolymerElement {
 
   @property({ type: Array, notify: true, readOnly: true })
   public questions: AzQuestion[];
@@ -80,4 +82,3 @@ class AzQuestionsModel extends polymer.Base {
   }
 }
 
-AzQuestionsModel.register();

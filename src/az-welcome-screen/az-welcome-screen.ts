@@ -1,11 +1,12 @@
-/// <reference path="../../bower_components/polymer-ts/polymer-ts.d.ts"/>
+import { PolymerElement, html } from "@polymer/polymer";
+import { customElement, property } from "@polymer/decorators";
 
 interface AzFileChangeDetail {
   file: File;
 }
 
-@component('az-welcome-screen')
-class AzWelcomeScreen extends polymer.Base {
+@customElement('az-welcome-screen')
+class AzWelcomeScreen extends PolymerElement {
 
   $: {
     file: HTMLInputElement;
@@ -50,4 +51,3 @@ class AzWelcomeScreen extends polymer.Base {
   }
 }
 
-AzWelcomeScreen.register();

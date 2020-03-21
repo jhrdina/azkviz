@@ -2,3 +2,4 @@ bower_components
 build
 *.js
 .gh
+node_modules

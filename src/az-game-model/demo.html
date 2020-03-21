@@ -6,9 +6,9 @@ DEMO PAGE FOR COMPONENT 'az-game-model'
 <head>
   <title>DEMO az-game-model</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-  <link rel="import" href="az-game-model.html">
+  <script type="module" src="./az-game-model.js"></script>
 </head>
 
 <body unresolved>
@@ -32,17 +32,18 @@ DEMO PAGE FOR COMPONENT 'az-game-model'
     </template>
   </dom-module>
 
-  <script>
-    Polymer({
-      is: 'x-app',
-      ready: function() {
-        this.prop1 = "az-game-model demo";
-      }
-    });
+  <script type="module">
+import './az-game-model.js';
+Polymer({
+  is: 'x-app',
+  ready: function() {
+    this.prop1 = "az-game-model demo";
+  }
+});
 
-    (function(document) {
-      'use strict';
-    })(document);
-  </script>
+(function(document) {
+  'use strict';
+})(document);
+</script>
 </body>
 </html>

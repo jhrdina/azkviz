@@ -6,9 +6,9 @@ DEMO PAGE FOR COMPONENT 'az-question-single-answer'
 <head>
   <title>DEMO az-question-single-answer</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-  <link rel="import" href="az-question-single-answer.html">
+  <script type="module" src="./az-question-single-answer.js"></script>
 </head>
 
 <body unresolved>
@@ -32,25 +32,26 @@ DEMO PAGE FOR COMPONENT 'az-question-single-answer'
     </template>
   </dom-module>
 
-  <script>
-    Polymer({
-      is: 'x-app',
-      ready: function() {
-        this.question = {
-          text: "Question text",
-          answers: [
-            {
-              correct: true,
-              text: 'Correct answer'
-            }
-          ]
-        };
-      }
-    });
+  <script type="module">
+import './az-question-single-answer.js';
+Polymer({
+  is: 'x-app',
+  ready: function() {
+    this.question = {
+      text: "Question text",
+      answers: [
+        {
+          correct: true,
+          text: 'Correct answer'
+        }
+      ]
+    };
+  }
+});
 
-    (function(document) {
-      'use strict';
-    })(document);
-  </script>
+(function(document) {
+  'use strict';
+})(document);
+</script>
 </body>
 </html>

@@ -6,9 +6,9 @@ DEMO PAGE FOR COMPONENT 'az-team-selection-screen'
 <head>
   <title>DEMO az-team-selection-screen</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-  <link rel="import" href="az-team-selection-screen.html">
+  <script type="module" src="./az-team-selection-screen.js"></script>
 </head>
 
 <body unresolved>
@@ -37,17 +37,18 @@ DEMO PAGE FOR COMPONENT 'az-team-selection-screen'
     </template>
   </dom-module>
 
-  <script>
-    Polymer({
-      is: 'x-app',
-      ready: function() {
-        this.prop1 = "az-team-selection-screen demo";
-      }
-    });
+  <script type="module">
+import './az-team-selection-screen.js';
+Polymer({
+  is: 'x-app',
+  ready: function() {
+    this.prop1 = "az-team-selection-screen demo";
+  }
+});
 
-    (function(document) {
-      'use strict';
-    })(document);
-  </script>
+(function(document) {
+  'use strict';
+})(document);
+</script>
 </body>
 </html>

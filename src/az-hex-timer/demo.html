@@ -6,11 +6,11 @@ DEMO PAGE FOR COMPONENT 'az-hex-timer'
 <head>
   <title>DEMO az-hex-timer</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-  <link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+  <script type="module" src="../../../@polymer/paper-checkbox/paper-checkbox.js"></script>
 
-  <link rel="import" href="az-hex-timer.html">
+  <script type="module" src="./az-hex-timer.js"></script>
 </head>
 
 <body unresolved>
@@ -39,20 +39,22 @@ DEMO PAGE FOR COMPONENT 'az-hex-timer'
     </template>
   </dom-module>
 
-  <script>
-    Polymer({
-      is: 'x-app',
-      ready: function() {
-        this.prop1 = "az-hex-timer demo";
-      },
-      onFinish: function () {
-        console.log('Timer finished.');
-      }
-    });
+  <script type="module">
+import '../../../@polymer/paper-checkbox/paper-checkbox.js';
+import './az-hex-timer.js';
+Polymer({
+  is: 'x-app',
+  ready: function() {
+    this.prop1 = "az-hex-timer demo";
+  },
+  onFinish: function () {
+    console.log('Timer finished.');
+  }
+});
 
-    (function(document) {
-      'use strict';
-    })(document);
-  </script>
+(function(document) {
+  'use strict';
+})(document);
+</script>
 </body>
 </html>

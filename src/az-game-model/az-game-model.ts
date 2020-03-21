@@ -1,6 +1,7 @@
-/// <reference path="../../bower_components/polymer-ts/polymer-ts.d.ts"/>
+import {PolymerElement} from '@polymer/polymer';
+import {customElement, property} from '@polymer/decorators';
 
-interface AzGame {
+export interface AzGame {
   currentTeam: string;
   currentHex?: number;
   currentQuestion?: AzQuestion;
@@ -9,15 +10,15 @@ interface AzGame {
   finished: boolean;
 }
 
-interface AzPyramidStates {
+export interface AzPyramidStates {
   [hexNumber:number]: 'teamA'|'teamB'|'unknown';
 }
 
-@component('az-game-model')
-class AzGameModel extends polymer.Base {
+@customElement('az-game-model')
+export class AzGameModel extends PolymerElement {
 
-  @property({ type: Object, value: [] })
-  public questions: AzQuestion[];
+  @property({ type: Object })
+  public questions: AzQuestion[] = [];
 
   @property({ type: Object, notify: true })
   public game: AzGame | undefined;
@@ -204,5 +205,3 @@ class AzGameModel extends polymer.Base {
     return zeroOrOne === 0 ? 'teamA' : 'teamB';
   }
 }
-
-AzGameModel.register();

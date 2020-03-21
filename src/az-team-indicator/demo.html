@@ -6,9 +6,9 @@ DEMO PAGE FOR COMPONENT 'az-team-indicator'
 <head>
   <title>DEMO az-team-indicator</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-  <link rel="import" href="az-team-indicator.html">
+  <script type="module" src="./az-team-indicator.js"></script>
 </head>
 
 <body unresolved>
@@ -37,20 +37,21 @@ DEMO PAGE FOR COMPONENT 'az-team-indicator'
     </template>
   </dom-module>
 
-  <script>
-    Polymer({
-      is: 'x-app',
-      ready: function() {
-        this.team = "teamA";
-      },
-      toggleTeam: function() {
-        this.team = this.team === 'teamA' ? 'teamB' : 'teamA';
-      }
-    });
+  <script type="module">
+import './az-team-indicator.js';
+Polymer({
+  is: 'x-app',
+  ready: function() {
+    this.team = "teamA";
+  },
+  toggleTeam: function() {
+    this.team = this.team === 'teamA' ? 'teamB' : 'teamA';
+  }
+});
 
-    (function(document) {
-      'use strict';
-    })(document);
-  </script>
+(function(document) {
+  'use strict';
+})(document);
+</script>
 </body>
 </html>

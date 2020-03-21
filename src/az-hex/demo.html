@@ -6,11 +6,11 @@ DEMO PAGE FOR COMPONENT 'az-hex'
 <head>
   <title>DEMO az-hex</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-  <link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
-  <link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+  <!-- <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script> -->
+  <script type="module" src="../../../@polymer/iron-icon/iron-icon.js"></script>
+  <script type="module" src="../../../@polymer/iron-icons/iron-icons.js"></script>
 
-  <link rel="import" href="az-hex.html">
+  <script type="module" src="./az-hex.js"></script>
 </head>
 
 <body unresolved>
@@ -54,28 +54,31 @@ DEMO PAGE FOR COMPONENT 'az-hex'
     </template>
   </dom-module>
 
-  <script>
-    var NEXT_STATE = {
-      '': 'teamA',
-      'teamA': 'teamB',
-      'teamB': 'unknown',
-      'unknown': ''
-    };
+  <script type="module">
+import '../../../@polymer/iron-icon/iron-icon.js';
+import '../../../@polymer/iron-icons/iron-icons.js';
+import './az-hex.js';
+var NEXT_STATE = {
+  '': 'teamA',
+  'teamA': 'teamB',
+  'teamB': 'unknown',
+  'unknown': ''
+};
 
-    Polymer({
-      is: 'x-app',
-      ready: function() {
-        this.prop1 = "az-hex demo";
-        this.hexState = '';
-      },
-      onTap: function() {
-        this.hexState = NEXT_STATE[this.hexState];
-      }
-    });
+Polymer({
+  is: 'x-app',
+  ready: function() {
+    this.prop1 = "az-hex demo";
+    this.hexState = '';
+  },
+  onTap: function() {
+    this.hexState = NEXT_STATE[this.hexState];
+  }
+});
 
-    (function(document) {
-      'use strict';
-    })(document);
-  </script>
+(function(document) {
+  'use strict';
+})(document);
+</script>
 </body>
 </html>

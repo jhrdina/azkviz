@@ -6,9 +6,9 @@ DEMO PAGE FOR COMPONENT 'az-app'
 <head>
   <title>DEMO az-app</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-  <link rel="import" href="az-app.html">
+  <script type="module" src="./az-app.js"></script>
 </head>
 
 <body unresolved>
@@ -32,17 +32,18 @@ DEMO PAGE FOR COMPONENT 'az-app'
     </template>
   </dom-module>
 
-  <script>
-    Polymer({
-      is: 'x-app',
-      ready: function() {
-        this.prop1 = "az-app demo";
-      }
-    });
+  <script type="module">
+import './az-app.js';
+Polymer({
+  is: 'x-app',
+  ready: function() {
+    this.prop1 = "az-app demo";
+  }
+});
 
-    (function(document) {
-      'use strict';
-    })(document);
-  </script>
+(function(document) {
+  'use strict';
+})(document);
+</script>
 </body>
 </html>

@@ -6,9 +6,9 @@ DEMO PAGE FOR COMPONENT 'az-question-multiple-answers'
 <head>
   <title>DEMO az-question-multiple-answers</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-  <link rel="import" href="az-question-multiple-answers.html">
+  <script type="module" src="./az-question-multiple-answers.js"></script>
 </head>
 
 <body unresolved>
@@ -32,33 +32,34 @@ DEMO PAGE FOR COMPONENT 'az-question-multiple-answers'
     </template>
   </dom-module>
 
-  <script>
-    Polymer({
-      is: 'x-app',
-      ready: function() {
-        this.question = {
-          text: "Question text",
-          answers: [
-            {
-              correct: true,
-              text: 'Correct answer'
-            },
-            {
-              correct: false,
-              text: 'Wrong answer'
-            },
-            {
-              correct: false,
-              text: 'Wrong answer 2'
-            }
-          ]
-        };
-      }
-    });
+  <script type="module">
+import './az-question-multiple-answers.js';
+Polymer({
+  is: 'x-app',
+  ready: function() {
+    this.question = {
+      text: "Question text",
+      answers: [
+        {
+          correct: true,
+          text: 'Correct answer'
+        },
+        {
+          correct: false,
+          text: 'Wrong answer'
+        },
+        {
+          correct: false,
+          text: 'Wrong answer 2'
+        }
+      ]
+    };
+  }
+});
 
-    (function(document) {
-      'use strict';
-    })(document);
-  </script>
+(function(document) {
+  'use strict';
+})(document);
+</script>
 </body>
 </html>

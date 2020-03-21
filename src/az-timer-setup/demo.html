@@ -6,9 +6,9 @@ DEMO PAGE FOR COMPONENT 'az-timer-setup'
 <head>
   <title>DEMO az-timer-setup</title>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
-  <script src="../../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
-  <link rel="import" href="az-timer-setup.html">
+  <script type="module" src="./az-timer-setup.js"></script>
 </head>
 
 <body unresolved>
@@ -35,17 +35,18 @@ DEMO PAGE FOR COMPONENT 'az-timer-setup'
     </template>
   </dom-module>
 
-  <script>
-    Polymer({
-      is: 'x-app',
-      ready: function() {
-        this.prop1 = "az-timer-setup demo";
-      }
-    });
+  <script type="module">
+import './az-timer-setup.js';
+Polymer({
+  is: 'x-app',
+  ready: function() {
+    this.prop1 = "az-timer-setup demo";
+  }
+});
 
-    (function(document) {
-      'use strict';
-    })(document);
-  </script>
+(function(document) {
+  'use strict';
+})(document);
+</script>
 </body>
 </html>

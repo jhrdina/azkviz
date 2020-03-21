@@ -1,19 +1,16 @@
-/// <reference path="../../bower_components/polymer-ts/polymer-ts.d.ts"/>
+import { PolymerElement, html } from "@polymer/polymer";
+import { customElement, property } from "@polymer/decorators";
 
-@component('az-timer-setup')
-class AzTimerSetup extends polymer.Base {
+@customElement("az-timer-setup")
+class AzTimerSetup extends PolymerElement {
+  @property({ type: Boolean, notify: true })
+  public active = false;
 
-  @property({ type: Boolean, notify: true, value: false })
-  public active: string;
+  @property({ type: Number, notify: true })
+  public time = 30;
 
-  @property({ type: Number, notify: true, value: 30 })
-  public time: number;
-
-
-  @property({computed: 'active'})
+  @property({ type: String, computed: "active" })
   public _timerIcon(active): string {
-    return active ? 'az:timer' : 'az:timer-off';
+    return active ? "az:timer" : "az:timer-off";
   }
 }
-
-AzTimerSetup.register();

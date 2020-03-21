@@ -1,39 +1,49 @@
-/// <reference path="../../bower_components/polymer-ts/polymer-ts.d.ts"/>
+import { PolymerElement, html } from "@polymer/polymer";
+import { customElement, property } from "@polymer/decorators";
 
 interface AzTeamSelectEventDetail {
-  selectedTeam: 'teamA' | 'teamB' | 'random';
+  selectedTeam: "teamA" | "teamB" | "random";
 }
 
-@component('az-team-selection-screen')
-class AzTeamSelectionScreen extends polymer.Base {
-
-  @property({ type: Boolean, notify: true, value: false })
-  public timeoutActive: boolean;
+@customElement("az-team-selection-screen")
+class AzTeamSelectionScreen extends PolymerElement {
+  @property({ type: Boolean, notify: true })
+  public timeoutActive: boolean = false;
 
   @property({ type: Number, notify: true })
   public timeoutSeconds: number;
 
   private _onBackTap() {
-    this.fire('back-tap');
+    this.dispatchEvent(new CustomEvent("back-tap"));
   }
 
   private _onTeamATap() {
-    this.fire('team-select', <AzTeamSelectEventDetail> {
-      selectedTeam: 'teamA'
-    });
+    this.dispatchEvent(
+      new CustomEvent("team-select", {
+        detail: <AzTeamSelectEventDetail>{
+          selectedTeam: "teamA"
+        }
+      })
+    );
   }
 
   private _onTeamBTap() {
-    this.fire('team-select', <AzTeamSelectEventDetail> {
-      selectedTeam: 'teamB'
-    });
+    this.dispatchEvent(
+      new CustomEvent("team-select", {
+        detail: <AzTeamSelectEventDetail>{
+          selectedTeam: "teamB"
+        }
+      })
+    );
   }
 
   private _onRandomTap() {
-    this.fire('team-select', <AzTeamSelectEventDetail> {
-      selectedTeam: 'random'
-    });
+    this.dispatchEvent(
+      new CustomEvent("team-select", {
+        detail: <AzTeamSelectEventDetail>{
+          selectedTeam: "random"
+        }
+      })
+    );
   }
 }
-
-AzTeamSelectionScreen.register();

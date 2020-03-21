@@ -1,12 +1,26 @@
-/// <reference path="../../bower_components/polymer-ts/polymer-ts.d.ts"/>
+import '../az-game-model/az-game-model.js';
+import '../az-pyramid-screen/az-pyramid-screen.js';
+import '../az-questions-model/az-questions-model.js';
+import '../az-team-selection-screen/az-team-selection-screen.js';
+import '../az-welcome-screen/az-welcome-screen.js';
+import '../az-question-screen/az-question-screen.js';
+import '../az-help-screen/az-help-screen.js';
 
-@component('az-app')
-class AzApp extends polymer.Base {
+import '@polymer/iron-flex-layout/iron-flex-layout.js';
+import '@polymer/iron-pages/iron-pages.js';
+import '@polymer/neon-animation/neon-animated-pages.js';
+import '@polymer/neon-animation/neon-animations.js';
+import {PolymerElement, html} from '@polymer/polymer';
+import {customElement } from "@polymer/decorators";
+
+@customElement('az-app')
+class AzApp extends PolymerElement {
 
   $: {
     gameModel: AzGameModel;
     questionsModel: AzQuestionsModel;
     questionScreen: AzQuestionScreen;
+    [key: string]: Element;
   };
 
   game: AzGame | undefined;
@@ -18,6 +32,52 @@ class AzApp extends polymer.Base {
 
   pageEntryAnimation: string | undefined;
   pageExitAnimation: string | undefined;
+
+  static get template() {
+    return html`
+      <style>
+        :host {
+          display: block;
+
+          --primary-color: #ff8427;
+
+          --paper-button: {
+            @apply(--paper-font-button);
+            line-height: normal;
+          };
+        }
+
+        neon-animated-pages {
+          @apply(--layout-fit);
+          overflow-x: hidden;
+        }
+
+        /*iron-pages > * {
+          @apply(--layout-fit);
+        }*/
+      </style>
+
+      <!-- Data -->
+      <az-questions-model id="questionsModel" questions="{{questions}}">
+      </az-questions-model>
+      <az-game-model id="gameModel" questions="[[questions]]" game="{{game}}">
+      </az-game-model>
+
+      <!-- Pages -->
+      <neon-animated-pages selected="{{screen}}" attr-for-selected="page-name" entry-animation="[[pageEntryAnimation]]" exit-animation="[[pageExitAnimation]]">
+        <az-welcome-screen page-name="welcome" on-file-change="_onFileChange" on-open-help="_onOpenHelp">
+        </az-welcome-screen>
+        <az-team-selection-screen page-name="team" timeout-active="{{_timeoutActive}}" timeout-seconds="{{_timeoutSeconds}}" on-team-select="_onTeamSelect" on-back-tap="_goToWelcomeScreen">
+        </az-team-selection-screen>
+        <az-pyramid-screen page-name="pyramid" game="[[game]]" on-back-tap="_goToWelcomeScreen" on-hex-tap="_onPyramidHexTap">
+        </az-pyramid-screen>
+        <az-question-screen page-name="question" id="questionScreen" game="[[game]]" hex-number="[[_hexNumber]]" on-back-tap="_onQuestionBackTap" on-select-answer="_onAnswerSelect">
+        </az-question-screen>
+        <az-help-screen page-name="help" on-back-tap="_onHelpBackTap" on-open-demo="_onHelpOpenDemo">
+        </az-help-screen>
+      </neon-animated-pages>
+    `
+  }
 
   @observe('screen')
   private _screenChanged(screen): void {
@@ -123,4 +183,4 @@ class AzApp extends polymer.Base {
   }
 }
 
-AzApp.register();
+customElements.define('az-app', AzApp);
