@@ -1,7 +1,7 @@
 import { Game, Question, Screen, Team } from "./types";
-import { Module, VuexModule, Mutation } from "vuex-module-decorators";
+import { Module, VuexModule, Mutation, Action } from "vuex-module-decorators";
 import store from "@/store";
-import Vue from "vue";
+import parseXLSX from "./parseXLSX";
 
 const getRandomInt = (maxExcl: number) => Math.floor(Math.random() * maxExcl);
 
@@ -20,12 +20,7 @@ const getRandomTeam = () => (getRandomInt(2) === 0 ? Team.A : Team.B);
 export default class Root extends VuexModule {
   screen: Screen = Screen.Welcome;
   game: Game | null = null;
-  questions: Question[] = [
-    {
-      text: "asdf",
-      answers: []
-    }
-  ];
+  questions: Question[] = [];
 
   private remainingQuestions: Question[] = [];
 
@@ -62,5 +57,28 @@ export default class Root extends VuexModule {
     shuffleArray(question.answers);
 
     this.game.currentQuestion = question;
+  }
+
+  @Mutation
+  setScreen(screen: Screen) {
+    this.screen = screen;
+  }
+
+  @Mutation
+  newFileLoaded(questions: Question[]) {
+    this.questions = questions;
+    this.screen = Screen.TeamSelection;
+  }
+
+  @Action
+  loadFile(file: File) {
+    const reader = new FileReader();
+
+    reader.addEventListener("load", e => {
+      if (!e.target) return;
+      this.newFileLoaded(parseXLSX(e.target.result));
+    });
+
+    reader.readAsBinaryString(file);
   }
 }

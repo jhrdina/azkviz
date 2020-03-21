@@ -1,7 +1,10 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" :class="[hexState]" @click="$emit('click')">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 59.000001">
-      <path d="M51 44.222L25.5 58.945 0 44.222V14.778L25.5.055 51 14.778z" class="hex-path" />
+      <path
+        d="M51 44.222L25.5 58.945 0 44.222V14.778L25.5.055 51 14.778z"
+        class="hex-path"
+      />
     </svg>
     <div class="content-wrapper">
       <slot></slot>
@@ -10,13 +13,18 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 
-@Component()
-export default class Hex extends Vue {}
+@Component
+export default class Hex extends Vue {
+  @Prop({ type: String, default: "teamA" }) readonly hexState!:
+    | "teamA"
+    | "teamB"
+    | "unknown";
+}
 </script>
 
-<style>
+<style scoped>
 .wrapper {
   display: inline-block;
   cursor: pointer;
@@ -41,29 +49,29 @@ export default class Hex extends Vue {}
   transition: fill 1s;
 }
 
-.wrapper[hex-state="teamA"] {
+.wrapper.teamA {
   color: var(--az-hex-team-a-text-color, #ffffff);
   cursor: default;
 }
 
-.wrapper[hex-state="teamA"] .hex-path {
+.wrapper.teamA .hex-path {
   fill: var(--az-hex-team-a-bkg-color, #ff8427);
 }
 
-.wrapper[hex-state="teamB"] {
+.wrapper.teamB {
   color: var(--az-hex-team-b-text-color, #ffffff);
   cursor: default;
 }
 
-.wrapper[hex-state="teamB"] .hex-path {
+.wrapper.teamB .hex-path {
   fill: var(--az-hex-team-b-bkg-color, #00d3d8);
 }
 
-.wrapper[hex-state="unknown"] {
+.wrapper.unknown {
   color: var(--az-hex-unknown-text-color, #ffffff);
 }
 
-.wrapper[hex-state="unknown"] .hex-path {
+.wrapper.unknown .hex-path {
   fill: var(--az-hex-unknown-bkg-color, #3e3e3e);
 }
 
@@ -83,7 +91,9 @@ svg {
   bottom: 0;
   left: 0;
   display: flex;
+
   align-items: center;
+  justify-content: center;
 
   font-size: 22px;
   font-weight: 500;

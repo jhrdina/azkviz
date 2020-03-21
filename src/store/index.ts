@@ -1,4 +1,3 @@
-import Root from "./Root";
 import Vue from "vue";
 import Vuex from "vuex";
 
