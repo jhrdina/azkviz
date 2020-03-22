@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <v-app id="app">
     <WelcomeScreen v-if="root.screen === Screen.Welcome" />
     <TeamSelectionScreen v-if="root.screen === Screen.TeamSelection" />
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -26,18 +26,7 @@ export default class App extends Vue {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-}
-
-#app > * {
+.v-application--wrap > * {
   flex: 1;
   width: 100%;
 }

@@ -1,7 +1,9 @@
-import { Game, Question, Screen, Team } from "./types";
+import { Game, Question, Screen, Team, TeamOrRandom } from "./types";
 import { Module, VuexModule, Mutation, Action } from "vuex-module-decorators";
 import store from "@/store";
 import parseXLSX from "./parseXLSX";
+
+const DEFAULT_TIMEOUT = 30;
 
 const getRandomInt = (maxExcl: number) => Math.floor(Math.random() * maxExcl);
 
@@ -14,13 +16,15 @@ const shuffleArray = <T>(o: T[]): T[] => {
   return o;
 };
 
-const getRandomTeam = () => (getRandomInt(2) === 0 ? Team.A : Team.B);
+const getRandomTeam = () => (getRandomInt(2) === 0 ? "teamA" : "teamB");
 
 @Module({ dynamic: true, name: "root", store })
 export default class Root extends VuexModule {
-  screen: Screen = Screen.Welcome;
+  screen = Screen.TeamSelection;
   game: Game | null = null;
   questions: Question[] = [];
+  timeoutActive = false;
+  timeoutSeconds = DEFAULT_TIMEOUT;
 
   private remainingQuestions: Question[] = [];
 
@@ -70,6 +74,21 @@ export default class Root extends VuexModule {
     this.screen = Screen.TeamSelection;
   }
 
+  @Mutation
+  toggleTimer() {
+    this.timeoutActive = !this.timeoutActive;
+  }
+
+  @Action
+  teamSelected(team: TeamOrRandom) {
+    const maybeTeam = team !== "random" ? team : undefined;
+    this.newGame({
+      timeout: this.timeoutActive ? this.timeoutSeconds : 0,
+      startingTeam: maybeTeam
+    });
+    this.setScreen(Screen.Pyramid);
+  }
+
   @Action
   loadFile(file: File) {
     const reader = new FileReader();
@@ -80,5 +99,19 @@ export default class Root extends VuexModule {
     });
 
     reader.readAsBinaryString(file);
+  }
+
+  @Mutation
+  limitTimeout() {
+    if (this.timeoutSeconds > 999) {
+      this.timeoutSeconds = 999;
+    }
+  }
+
+  @Mutation
+  setTimeout(timeoutSeconds: number) {
+    this.timeoutSeconds = isNaN(timeoutSeconds)
+      ? DEFAULT_TIMEOUT
+      : timeoutSeconds;
   }
 }

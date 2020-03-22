@@ -9,13 +9,12 @@ export interface Question {
 }
 
 export interface PyramidStates {
-  [hexNumber: number]: "teamA" | "teamB" | "unknown";
+  [hexNumber: number]: Team | "unknown";
 }
 
-export enum Team {
-  A,
-  B
-}
+export type Team = "teamA" | "teamB";
+
+export type TeamOrRandom = Team | "random";
 
 export interface Game {
   currentTeam: Team;

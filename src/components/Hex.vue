@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="[hexState]" @click="$emit('click')">
+  <div class="hex" :class="[hexState]" @click="$emit('click')">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 59.000001">
       <path
         d="M51 44.222L25.5 58.945 0 44.222V14.778L25.5.055 51 14.778z"
@@ -17,15 +17,12 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 
 @Component
 export default class Hex extends Vue {
-  @Prop({ type: String, default: "teamA" }) readonly hexState!:
-    | "teamA"
-    | "teamB"
-    | "unknown";
+  @Prop({ type: String }) readonly hexState?: "teamA" | "teamB";
 }
 </script>
 
 <style scoped>
-.wrapper {
+.hex {
   display: inline-block;
   cursor: pointer;
 

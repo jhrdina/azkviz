@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import { Team, Screen } from "@/store/types";
+import { Screen } from "@/store/types";
 import Root from "@/store/Root";
 import { getModule } from "vuex-module-decorators";
 import Hex from "@/components/Hex.vue";
@@ -32,7 +32,7 @@ export default class WelcomeScreen extends Vue {
   root = getModule(Root);
 
   doStuff() {
-    this.root.newGame({ timeout: 15, startingTeam: Team.A });
+    this.root.newGame({ timeout: 15, startingTeam: "teamA" });
   }
 
   get currentQuestionText() {
