@@ -1,5 +1,5 @@
 <template>
-  <div class="hex" :class="[hexState]" @click="$emit('click')">
+  <div class="hex" :class="[hexState]" @click="onClick">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 59.000001">
       <path
         d="M51 44.222L25.5 58.945 0 44.222V14.778L25.5.055 51 14.778z"
@@ -14,10 +14,20 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
+import { HexState } from "../store/types";
 
 @Component
-export default class Hex extends Vue {
-  @Prop({ type: String }) readonly hexState?: "teamA" | "teamB";
+export default class AzHex extends Vue {
+  @Prop({ type: String }) readonly hexState?: HexState;
+  onClick(event: MouseEvent) {
+    const hexNum = parseInt(
+      event.currentTarget
+        ? (event.currentTarget as HTMLDivElement).innerText
+        : ""
+    );
+
+    this.$emit("click", hexNum);
+  }
 }
 </script>
 

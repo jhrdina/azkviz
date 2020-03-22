@@ -20,11 +20,12 @@ const getRandomTeam = () => (getRandomInt(2) === 0 ? "teamA" : "teamB");
 
 @Module({ dynamic: true, name: "root", store })
 export default class Root extends VuexModule {
-  screen = Screen.TeamSelection;
+  screen = Screen.Welcome;
   game: Game | null = null;
   questions: Question[] = [];
   timeoutActive = false;
   timeoutSeconds = DEFAULT_TIMEOUT;
+  openedHexNumber: number | null = null;
 
   private remainingQuestions: Question[] = [];
 
@@ -79,6 +80,15 @@ export default class Root extends VuexModule {
     this.timeoutActive = !this.timeoutActive;
   }
 
+  get hexIsAvailable() {
+    return (hexNumber: number) =>
+      Boolean(
+        this.game &&
+          this.game.pyramid[hexNumber] !== "teamA" &&
+          this.game.pyramid[hexNumber] !== "teamB"
+      );
+  }
+
   @Action
   teamSelected(team: TeamOrRandom) {
     const maybeTeam = team !== "random" ? team : undefined;
@@ -113,5 +123,31 @@ export default class Root extends VuexModule {
     this.timeoutSeconds = isNaN(timeoutSeconds)
       ? DEFAULT_TIMEOUT
       : timeoutSeconds;
+  }
+
+  @Mutation
+  setOpenedHexNumber(hexNum: number) {
+    this.openedHexNumber = hexNum;
+  }
+
+  @Action
+  startTimer() {
+    console.log("TODO: start timer");
+  }
+
+  @Action
+  pyramidHexClicked(hexNum: number) {
+    if (!this.hexIsAvailable(hexNum)) {
+      return;
+    }
+
+    this.newQuestion();
+    this.setOpenedHexNumber(hexNum);
+    //this.setAnimation(undefined)
+    this.setScreen(Screen.Question);
+
+    if (this.game && this.game.timeout > 0) {
+      this.startTimer();
+    }
   }
 }

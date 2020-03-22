@@ -5,9 +5,9 @@
         <span style="font-weight: 300;">AZ</span>
         <span style="font-weight: 900;">Kvíz</span>
       </h1>
-      <Hex class="openHex" title="Otevřít soubor" @click="onOpenClick">
+      <AzHex class="openHex" title="Otevřít soubor" @click="onOpenClick">
         <v-icon color="#fff">mdi-folder</v-icon>
-      </Hex>
+      </AzHex>
       <input class="file" ref="file" type="file" @change="onFileChange" />
       <v-btn icon class="helpButton" @click="onHelpClick"
         ><v-icon>mdi-help-circle-outline</v-icon></v-btn
@@ -23,10 +23,10 @@ import { Component, Vue } from "vue-property-decorator";
 import { Screen } from "@/store/types";
 import Root from "@/store/Root";
 import { getModule } from "vuex-module-decorators";
-import Hex from "@/components/Hex.vue";
+import AzHex from "@/components/AzHex.vue";
 
 @Component({
-  components: { Hex }
+  components: { AzHex }
 })
 export default class WelcomeScreen extends Vue {
   root = getModule(Root);

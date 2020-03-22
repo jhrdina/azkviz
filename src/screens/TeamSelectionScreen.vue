@@ -6,9 +6,17 @@
     <div class="who-box">
       <div class="who-text">Kdo začne?</div>
       <div class="who-buttons">
-        <hex class="team-a-button" @click="root.teamSelected('teamA')"></hex>
-        <hex class="random-button" @click="root.teamSelected('random')">?</hex>
-        <hex class="team-b-button" @click="root.teamSelected('teamB')"></hex>
+        <az-hex
+          class="team-a-button"
+          @click="root.teamSelected('teamA')"
+        ></az-hex>
+        <az-hex class="random-button" @click="root.teamSelected('random')"
+          >?</az-hex
+        >
+        <az-hex
+          class="team-b-button"
+          @click="root.teamSelected('teamB')"
+        ></az-hex>
       </div>
     </div>
     <div class="timer-setup">
@@ -44,8 +52,6 @@
         </div>
       </div>
     </div>
-    <!-- <az-timer-setup active="{{timeoutActive}}" time="{{timeoutSeconds}}">
-    </az-timer-setup> -->
   </div>
 </template>
 
@@ -53,11 +59,11 @@
 import { Component, Vue } from "vue-property-decorator";
 import Root from "@/store/Root";
 import { getModule } from "vuex-module-decorators";
-import Hex from "@/components/Hex.vue";
+import AzHex from "@/components/AzHex.vue";
 import { Screen } from "@/store/types";
 
 @Component({
-  components: { Hex }
+  components: { AzHex }
 })
 export default class TeamSelectionScreen extends Vue {
   root = getModule(Root);

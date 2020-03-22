@@ -8,13 +8,15 @@ export interface Question {
   answers: Answer[];
 }
 
-export interface PyramidStates {
-  [hexNumber: number]: Team | "unknown";
-}
-
 export type Team = "teamA" | "teamB";
 
+export type HexState = Team | "unknown";
+
 export type TeamOrRandom = Team | "random";
+
+export interface PyramidStates {
+  [hexNumber: number]: HexState;
+}
 
 export interface Game {
   currentTeam: Team;
@@ -26,9 +28,9 @@ export interface Game {
 }
 
 export enum Screen {
-  Welcome,
-  TeamSelection,
-  Pyramid,
-  Question,
-  Help
+  Welcome = "welcome",
+  TeamSelection = "teamSelection",
+  Pyramid = "pyramid",
+  Question = "question",
+  Help = "help"
 }
