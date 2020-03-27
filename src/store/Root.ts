@@ -36,7 +36,9 @@ export default class Root extends VuexModule {
       currentQuestion: undefined,
       pyramid: {},
       timeout: p.timeout,
-      finished: false
+      finished: false,
+      isAnswered: false,
+      isCorrect: null
     };
     this.remainingQuestions = [];
   }
@@ -126,8 +128,13 @@ export default class Root extends VuexModule {
   }
 
   @Mutation
-  setOpenedHexNumber(hexNum: number) {
+  openHex(hexNum: number) {
     this.openedHexNumber = hexNum;
+    this.screen = Screen.Question;
+    if (this.game) {
+      this.game.isAnswered = false;
+      this.game.isCorrect = null;
+    }
   }
 
   @Action
@@ -142,9 +149,8 @@ export default class Root extends VuexModule {
     }
 
     this.newQuestion();
-    this.setOpenedHexNumber(hexNum);
+    this.openHex(hexNum);
     //this.setAnimation(undefined)
-    this.setScreen(Screen.Question);
 
     if (this.game && this.game.timeout > 0) {
       this.startTimer();

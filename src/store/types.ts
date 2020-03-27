@@ -25,6 +25,8 @@ export interface Game {
   pyramid: PyramidStates;
   timeout: number;
   finished: boolean;
+  isAnswered: boolean;
+  isCorrect: boolean | null;
 }
 
 export enum Screen {

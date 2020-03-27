@@ -2,32 +2,24 @@
   <div class="question-screen">
     <div class="container">
       <div class="buttons-box">
-        <template v-if="root.timeoutActive">
-          <az-hex-timer
-            class="timer"
-            active="_timerRunning"
-            seconds="[[game.timeout]]"
-            on-finish="_onTimerFinish"
-            hidden="[[_isAnswered]]"
-            :class="root.game ? root.game.currentTeam : 'teamA'"
-          >
-          </az-hex-timer>
-        </template>
-        <az-hex
-          class="back-button"
-          on-tap="_onBackTap"
-          hidden="[[!_isAnswered]]"
-        >
+        <az-hex-timer
+          v-if="root.timeoutActive"
+          class="timer"
+          :class="hexTimerClasses"
+          :seconds="root.game ? root.game.timeout : 0"
+        ></az-hex-timer>
+        <az-hex class="back-button" on-tap="_onBackTap" hidden="[[!_isAnswered]]">
           <v-icon>mdi-arrow-left</v-icon>
         </az-hex>
         <az-hex
           class="current-hex"
           :hex-state="root.game ? root.game.currentTeam : 'teamA'"
           disabled
-          >{{
-            root.game && root.game.currentHex ? root.game.currentHex : "X"
-          }}</az-hex
         >
+          {{
+          root.game && root.game.currentHex ? root.game.currentHex : "X"
+          }}
+        </az-hex>
       </div>
       <div class="question-box">
         <!-- Multiple choices -->
@@ -55,6 +47,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Root from "@/store/Root";
 import { getModule } from "vuex-module-decorators";
 import AzHex from "@/components/AzHex.vue";
+import AzHexTimer from "@/components/AzHexTimer/index.vue";
 import AzPyramid from "@/components/AzPyramid.vue";
 import AzTeamIndicator from "@/components/AzTeamIndicator.vue";
 import { Screen } from "@/store/types";
@@ -62,7 +55,7 @@ import { Screen } from "@/store/types";
 type Mode = "multiple" | "single";
 
 @Component({
-  components: { AzHex, AzPyramid, AzTeamIndicator }
+  components: { AzHex, AzHexTimer, AzPyramid, AzTeamIndicator }
 })
 export default class QuestionScreen extends Vue {
   root = getModule(Root);
@@ -74,6 +67,13 @@ export default class QuestionScreen extends Vue {
       this.root.game.currentQuestion.answers.length > 1
       ? "multiple"
       : "single";
+  }
+
+  get hexTimerClasses() {
+    return {
+      hidden: this.root.game ? this.root.game.isAnswered : false,
+      [this.root.game ? this.root.game.currentTeam : "teamA"]: true
+    };
   }
 }
 </script>
